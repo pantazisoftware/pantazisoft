@@ -4,19 +4,19 @@ const CTA = () => {
     return (
       <div className="py-16 pr-4 lg:py-32 flex flex-row items-center space-x-24 relative content">
         <div className="w-full lg:w-7/12 z-10 bg-white rounded-tr-[150px] py-10">
-            <p className="uppercase font-medium text-sm tracking-wide  bg-gray-200 text-black px-4 py-2 inline mb-3">Build your presence online</p>
-          <h1 className="text-5xl md:text-5xl lg:text-7xl mt-5 font-normal lg:leading-lose  tracking-tight">
+            <p className="font-normal text-sm bg-lime-200 text-lime-700 px-4 py-2 inline mb-5">Build your presence online</p>
+          <h1 className="text-5xl md:text-5xl lg:text-7xl mt-5 font-medium tracking-tight">
             Digital Solutions,<br />
-            <span className="font-black">Infinite Possibilities</span>
+            <span className="bg-transparent bg-clip-text text-transparent bg-gradient-to-r from-rose-400 to-indigo-700 underline">Infinite Possibilities</span>
           </h1>
-          <p className="text-2xl tracking-tight w-11/12 text-gray-500 pt-6">
+          <p className="text-xl w-11/12 text-gray-600 pt-6">
             Unlock online potential with our expertise. Innovate, create, and
             excel in the digital landscape. Discover limitless possibilities in
             web development.
           </p>
           <a
             href="#"
-            className="bg-black hover:bg-black/80 text-lg my-10 font-medium text-white hover:bg-blue-600 px-6 py-3 inline-flex">
+            className="bg-indigo-700 hover:bg-indigo-600 hover:shadow text-lg my-10 font-medium text-white px-6 py-3 inline-flex">
             Discover Solutions
           </a>
         </div>

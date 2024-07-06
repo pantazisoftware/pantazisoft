@@ -7,24 +7,24 @@ const Navbar = () => {
           <Logo />
         </div>
         <div className="flex flex-row items-center space-x-12">
-          <a href="#" className="font-medium text-gray-700 hover:text-gray-900">
+          <a href="#" className="font-semibold uppercase text-sm text-gray-500 hover:text-gray-900">
             Solutions
           </a>
-          <a href="#" className="font-medium text-gray-700 hover:text-gray-900">
+          <a href="#" className="font-semibold uppercase text-sm text-gray-500 hover:text-gray-900">
             About
           </a>
-          <a href="#" className="font-medium text-gray-700 hover:text-gray-900">
+          <a href="#" className="font-semibold uppercase text-sm text-gray-500 hover:text-gray-900">
             Products
           </a>
         </div>
         <div>
           <a
             href="#"
-            className="font-medium text-slate-200 hover:text-white px-6 py-3 bg-black hover:bg-gray-900 inline-flex space-x-1.5 items-center">
+            className="font-medium text-indigo-200 hover:text-white px-6 py-3 bg-indigo-700 hover:bg-indigo-600 inline-flex space-x-1.5 items-center">
             <svg
               fill="none"
               stroke="currentColor"
-              strokeWidth={1.5}
+              strokeWidth={2}
               viewBox="0 0 24 24"
               className="w-4 h-4"
               xmlns="http://www.w3.org/2000/svg"
