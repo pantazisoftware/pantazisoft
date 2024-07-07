@@ -1,6 +1,6 @@
 const Features = () => {
     return (
-      <div className="bg-black text-white/80">
+      <div className="bg-black text-neutral-400">
         <div className="content py-24">
           <div className="grid grid-cols-12 lg:grid-rows-2 gap-2">
             <div className="col-span-12 lg:col-span-6 row-span-1">

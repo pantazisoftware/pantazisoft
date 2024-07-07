@@ -1,6 +1,6 @@
 const Custom = () => {
   return (
-    <div className="">
+    <div className="relative z-10">
       <div className="content py-24">
         <div className="grid grid-cols-12 gap-2">
           <div className="col-span-12 mb-16">

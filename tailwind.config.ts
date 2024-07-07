@@ -8,9 +8,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
-        fontFamily: {
-          sans: ["var(--font-inter)"],
+      keyframes: {
+        "zoom-rotate": {
+          "0%, 100%": {
+            transform: "scale(1) rotate(0deg)",
+          },
+          "50%": {
+            transform: "scale(1.8) rotate(4deg)",
+          },
         },
+      },
+      animation: {
+        "zoom-rotate": "zoom-rotate 12s infinite",
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+      },
     },
   },
   plugins: [],
