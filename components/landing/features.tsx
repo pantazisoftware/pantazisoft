@@ -1,13 +1,13 @@
 const Features = () => {
     return (
-      <div className="bg-black text-neutral-400">
+      <div className="bg-gray-900 text-gray-400 relative z-10">
         <div className="content py-24">
           <div className="grid grid-cols-12 lg:grid-rows-2 gap-2">
-            <div className="col-span-12 lg:col-span-6 row-span-1">
-              <h2 className="text-3xl lg:text-4xl font-medium tracking-tight text-white mb-5">
+            <div className="col-span-12 lg:col-span-6 row-span-1 place-content-center">
+              <h2 className="text-3xl font-poppins lg:text-4xl font-bold tracking-tight text-white mb-5">
                 Crafting Tomorrow's Web Today
               </h2>
-              <p className="text-lg lg:text-xl lg:w-10/12 leading-7">
+              <p className="text-lg lg:text-xl leading-7">
                 Experience our forward-thinking web development services, where
                 innovation and creativity come together to shape the future of
                 the digital landscape.
@@ -19,7 +19,7 @@ const Features = () => {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={1.5}
-                  className="w-12 h-12 m-2 fill-stroke text-lime-300"
+                  className="w-12 h-12 m-2 fill-stroke text-purple-400"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true">
@@ -44,7 +44,7 @@ const Features = () => {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={1.5}
-                  className="w-12 h-12 m-2 fill-stroke text-lime-300"
+                  className="w-12 h-12 m-2 fill-stroke text-purple-400"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true">
@@ -66,7 +66,7 @@ const Features = () => {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={1.5}
-                  className="w-12 h-12 m-2 fill-stroke text-lime-300"
+                  className="w-12 h-12 m-2 fill-stroke text-purple-400"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true">
@@ -88,7 +88,7 @@ const Features = () => {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={1.5}
-                  className="w-12 h-12 m-2 fill-stroke text-lime-300"
+                  className="w-12 h-12 m-2 fill-stroke text-purple-400"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true">
@@ -110,7 +110,7 @@ const Features = () => {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={1.5}
-                  className="w-12 h-12 m-2 fill-stroke text-lime-300"
+                  className="w-12 h-12 m-2 fill-stroke text-purple-400"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true">
@@ -132,7 +132,7 @@ const Features = () => {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={1.5}
-                  className="w-12 h-12 m-2 fill-stroke text-lime-300"
+                  className="w-12 h-12 m-2 fill-stroke text-purple-400"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true">
@@ -151,7 +151,7 @@ const Features = () => {
             <div className="col-span-12 text-center">
               <a
                 href="#"
-                className="mx-auto text-xl underline underline-offset-4 font-medium group text-lime-300 hover:text-white inline-flex space-x-2 items-center">
+                className="mx-auto text-xl underline underline-offset-4 font-medium group text-purple-400 hover:text-white inline-flex space-x-2 items-center">
                 <span>Discover our custom solutions</span>
                 <svg
                   fill="none"

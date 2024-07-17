@@ -2,7 +2,7 @@ import Logo from "./Logo"
 
 const Navbar = () => {
     return (
-      <nav className="bg-black/40 backdrop-blur-md py-6 shadow-lg">
+      <nav className="bg-white border-b border-gray-200 py-6 relative z-20">
         <div className="w-full flex justify-between items-center content">
           <div>
             <Logo />
@@ -10,24 +10,22 @@ const Navbar = () => {
           <div className="hidden md:flex flex-row items-center space-x-12">
             <a
               href="#"
-              className="font-medium uppercase text-sm text-gray-300 hover:text-white">
+              className="font-medium uppercase text-sm text-gray-500 hover:text-black">
               Solutions
             </a>
             <a
               href="#"
-              className="font-medium uppercase text-sm text-gray-300 hover:text-white">
+              className="font-medium uppercase text-sm text-gray-500 hover:text-black">
               About
             </a>
             <a
               href="#"
-              className="font-medium uppercase text-sm text-gray-300 hover:text-white">
+              className="font-medium uppercase text-sm text-gray-500 hover:text-black">
               Products
             </a>
           </div>
           <div>
-            <a
-              href="#"
-              className="font-medium text-indigo-200 hover:text-white px-6 py-3 bg-indigo-700 hover:bg-indigo-600 inline-flex space-x-1.5 items-center">
+            <a href="#" className="primary-btn-icon">
               <svg
                 fill="none"
                 stroke="currentColor"

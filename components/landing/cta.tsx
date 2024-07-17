@@ -2,35 +2,29 @@ import Image from "next/image";
 
 const CTA = () => {
     return (
-      <div className="h-[calc(100%/0.8)] w-full overflow-hidden">
-        <Image
-          src={"/hero4.jpeg"}
-          width={1200}
-          height={1000}
-          className="aspect-auto object-cover object-top animate-zoom-rotate w-full h-[calc(100%/1.1)] absolute top-0 -z-10 left-0 right-0 overflow-hidden"
-          alt="Digital Solutions, Infinite Possibilities"
-        />
-
+      <div className="h-[calc(100%/0.8)] w-full overflow-hidden bg-white">
         <div className="py-16 lg:py-48 px-4 md:px-8 lg:px-12 space-x-24 relative content">
-          <div className="w-full">
-            <p className="font-normal text-xs uppercase bg-lime-200 text-lime-700 px-4 py-2 inline mb-5">
-              Build your presence online
-            </p>
-            <h1 className="text-5xl md:text-6xl lg:text-8xl text-white mt-5 font-black tracking-tight">
+          <div className="w-full flex flex-col items-center">
+            <div className="font-medium rounded-full uppercase bg-gradient-to-br from-rose-400 to-purple-700 text-purple-700 p-[2px] inline mb-5">
+              <p className="px-4 py-1.5 bg-white rounded-full text-sm">
+                🏋🏼 From ideas to product
+              </p>
+            </div>
+            <h1 className="font-poppins text-5xl text-center md:text-6xl lg:text-8xl text-black mt-5 font-bold tracking-tight">
               Build your amazing
               <br />
-              <span className="bg-transparent bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-yellow-300">
+              <span className="bg-transparent bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-indigo-600">
                 ideas, right now
               </span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-100 font-medium lg:w-6/12 pt-6">
+            <p className="text-lg md:text-xl lg:text-2xl text-center text-gray-500 font-medium sm:w-9/12 lg:w-6/12 pt-6">
               Unlock online potential with our expertise. Innovate, create, and
               excel in the digital landscape. Discover limitless possibilities
               in web development.
             </p>
             <a
               href="#"
-              className="bg-indigo-700 hover:bg-indigo-600 hover:shadow text-lg my-10 font-medium text-white px-6 py-3 inline-flex space-x-1 items-center">
+              className="bg-transparent rounded-lg bg-gradient-to-br from-purple-500 hover:from-purple-600 to-indigo-700 hover:to-indigo-800 transition-all duration-100 ease-linear border-t border-white/50 hover:shadow text-lg my-10 font-medium text-white px-6 py-3 inline-flex space-x-1 items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
