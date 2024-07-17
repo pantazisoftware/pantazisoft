@@ -25,7 +25,9 @@ const Navbar = () => {
             </a>
           </div>
           <div>
-            <a href="#" className="primary-btn-icon">
+            <a
+              href="#https://www.facebook.com/pantazisoftware"
+              className="primary-btn-icon">
               <svg
                 fill="none"
                 stroke="currentColor"
