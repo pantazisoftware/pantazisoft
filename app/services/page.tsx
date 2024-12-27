@@ -1,19 +1,13 @@
+import BuildYourIdea from "@/components/build";
 import Capabilities from "@/components/capabilities";
 import Industries from "@/components/industries";
 import CTA from "@/components/cta";
 import Models from "@/components/models";
-import FAQ from "@/components/faq";
-import Clear from "@/components/clear";
 
 export default function Home() {
   return (
-    <div>
-      <CTA />
-      <Capabilities />
-      <Industries />
-      <Models />
-      <FAQ />
-      <Clear />
+    <div className="container mx-auto py-24 relative">
+      <h1>Services page</h1>
     </div>
   );
 }
