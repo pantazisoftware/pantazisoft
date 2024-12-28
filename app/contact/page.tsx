@@ -1,82 +1,82 @@
-import BuildYourIdea from "@/components/build";
-import Capabilities from "@/components/capabilities";
-import Industries from "@/components/industries";
-import CTA from "@/components/cta";
-import Models from "@/components/models";
-import Link from "next/link";
+import { ContactForm } from "@/components/contact-form";
 import { Button } from "@/components/ui/button";
-import { Facebook, MapPin, Send } from "lucide-react";
+import { Facebook, Instagram, Map, Send } from "lucide-react";
 
-export default function Home() {
+export default function ContactPage() {
   return (
-    <div className="container px-10 md:px-0 mx-auto py-32 relative">
-      <h1 className="text-6xl font-medium">Contact us</h1>
-      <p className="max-w-lg text-lg text-zinc-500 mt-6">
-        If you have any questions or need further information, please don't
-        hesitate to reach out to us. We're here to help!
-      </p>
-
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-16">
-        <div>
-          <h2 className="text-2xl font-medium">Company Details</h2>
-          <p className="text-lg tracking-wide font-medium mt-6">
-            PANTAZI SOFTWARE LLC
+    <main className="min-h-screen py-24 px-4">
+      <div className="max-w-4xl mx-auto space-y-16">
+        {/* Header Section */}
+        <div className="space-y-4">
+          <h1 className="text-5xl font-bold tracking-tight">Contact us</h1>
+          <p className="text-xl text-muted-foreground">
+            If you have any questions or need further information, please don't
+            hesitate to reach out to us. We're here to help!
           </p>
-          <p className="tracking-wide text-zinc-500">
-            Bucharest Street, 47, Poeni, 147270, Teleorman County, Romania
-          </p>
-          <p className="tracking-wide text-zinc-500">
-            Fiscal Number: 42731715 (Romania)
-          </p>
-          <p className="tracking-wide text-zinc-500">
-            Reg No.: ROONRC.J34/308/2020
-          </p>
-          <Button variant={"link"}>
-            <MapPin size={24} />
-            <Link href="https://maps.app.goo.gl/jkwhpyihfiKMG7zE8">
-              View on Google Maps
-            </Link>
-          </Button>
         </div>
-        <div>
-          <div className="flex flex-row items-center space-x-4">
-            <Button variant={"default"}>
-              <Send size={24} />
-              <Link href="mailto:contact@pantazisoft.com">Contact us</Link>
-            </Button>
-            <Button variant={"outline"}>
-              <svg
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <title>Facebook</title>
-                <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z" />
-              </svg>
-              <Link href="mailto:contact@pantazisoft.com">Facebook</Link>
-            </Button>
-            <Button variant={"outline"}>
-              <svg
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <title>Dribbble</title>
-                <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z" />
-              </svg>
-              <Link href="mailto:contact@pantazisoft.com">Dribbble</Link>
-            </Button>
-            <Button variant={"outline"}>
-              <svg
-                role="img"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <title>Instagram</title>
-                <path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077" />
-              </svg>
-              <Link href="mailto:contact@pantazisoft.com">Instagram</Link>
-            </Button>
+
+        {/* Company Details and Social Links */}
+        <div className="grid md:grid-cols-2 gap-12">
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-2xl font-semibold mb-4">Company Details</h2>
+              <div className="space-y-2 text-muted-foreground">
+                <p className="font-medium">PANTAZI SOFTWARE LLC</p>
+                <p>
+                  Bucharest Street, 47, Poeni, 147270, Teleorman County, Romania
+                </p>
+                <p>Fiscal Number: 42731715 (Romania)</p>
+                <p>Reg No.: ROONRC.J34/308/2020</p>
+                <Button variant="link" className="p-0 h-auto" asChild>
+                  <a
+                    href="https://maps.google.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2">
+                    <Map className="h-4 w-4" />
+                    View on Google Maps
+                  </a>
+                </Button>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <Button variant="outline" size="icon" asChild>
+                <a href="#" aria-label="Contact us">
+                  <Send className="h-4 w-4" />
+                </a>
+              </Button>
+              <Button variant="outline" size="icon" asChild>
+                <a href="#" aria-label="Facebook">
+                  <Facebook className="h-4 w-4" />
+                </a>
+              </Button>
+              <Button variant="outline" size="icon" asChild>
+                <a href="#" aria-label="Dribbble">
+                  <svg
+                    className="h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C5.375 0 0 5.375 0 12s5.375 12 12 12 12-5.375 12-12S18.625 0 12 0zm7.938 5.5a10.203 10.203 0 0 1 2.312 6.406c-.344-.063-3.782-.719-7.25-.313-.063-.156-.156-.344-.25-.5-.25-.563-.469-1.125-.719-1.688 4.032-1.656 5.907-4 5.907-4.093zM12 1.75c2.625 0 5.063.969 6.938 2.563-.063.093-1.75 2.343-5.594 3.718A54.255 54.255 0 0 0 9.28 2.75c.875-.219 1.781-.313 2.719-.313zM7.375 3.5a54.047 54.047 0 0 1 4.094 5.219c-5.156 1.375-9.719 1.344-10.188 1.344.719-3.438 3.094-6.281 6.094-6.563zM1.75 12v-.375c.469 0 5.719.063 11.25-1.563.313.625.594 1.25.875 1.875-.156.031-.281.094-.438.156-5.688 1.844-8.719 6.844-8.719 6.844A10.203 10.203 0 0 1 1.75 12zm10.25 10.25c-2.406 0-4.625-.813-6.406-2.188.188-.25 2.375-4.563 8.469-6.656.031-.031.031-.031.063-.031 1.5 3.906 2.156 7.188 2.313 8.125a10.39 10.39 0 0 1-4.439.75zm6.406-2.031c-.125-.75-.781-4.031-2.188-7.844 3.313-.531 6.188.344 6.563.438a10.287 10.287 0 0 1-4.375 7.406z" />
+                  </svg>
+                </a>
+              </Button>
+              <Button variant="outline" size="icon" asChild>
+                <a href="#" aria-label="Instagram">
+                  <Instagram className="h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div>
+            <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
+            <ContactForm />
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

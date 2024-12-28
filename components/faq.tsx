@@ -11,10 +11,8 @@ const FAQ: React.FC = () => {
     <div className="bg-white py-24 relative">
       <div className="container mx-auto grid grid-cols-6 gap-32 items-start">
         <div className="col-span-6">
-          <h4 className="text-3xl font-normal text-black text-center">FAQ</h4>
-          <h2 className="text-6xl mt-6 text-center">
-            Your questions, answered
-          </h2>
+          <h4 className="text-3xl font-normal text-black text-left">FAQ</h4>
+          <h2 className="text-6xl mt-6 text-left">Your questions, answered</h2>
         </div>
         <div className="col-span-6">
           <Accordion type="single" collapsible className="w-full">
