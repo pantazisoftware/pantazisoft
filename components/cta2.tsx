@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-background">
+    <div className="relative min-h-[60vh] flex pt-32 pb-24 md:pb-32 items-center justify-center overflow-hidden bg-background">
       {/* Floating Tags */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -70,7 +70,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="space-y-4">
-          <h1 className="text-5xl md:text-8xl font-bold tracking-tight">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-black tracking-tight">
             <motion.span
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -97,7 +97,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="max-w-2xl mx-auto text-xl text-muted-foreground">
+            className="max-w-2xl mx-auto text-3xl text-muted-foreground">
             We provide top-notch software solutions to help your business grow
             and succeed in the competitive market.
           </motion.p>

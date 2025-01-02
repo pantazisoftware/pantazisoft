@@ -75,7 +75,7 @@ const industries = [
   },
 ];
 
-export default function Industries() {
+export default function Industries2() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -111,7 +111,7 @@ export default function Industries() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="mb-20">
-          <h2 className="text-xl md:text-7xl font-medium mb-6 text-gray-900 max-w-2xl">
+          <h2 className="text-xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900 max-w-2xl">
             Industries
           </h2>
           <p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-3xl">
@@ -121,7 +121,7 @@ export default function Industries() {
 
         {/* Industries Carousel */}
         <div
-          className="relative overflow-hidden h-[500px] flex flex-col justify-between"
+          className="relative overflow-hidden h-[550px] flex flex-col justify-between"
           ref={carouselRef}>
           <div className="flex items-center justify-center h-full">
             {industries.map((industry, index) => {
@@ -188,9 +188,9 @@ export default function Industries() {
         </div>
 
         {/* Asymmetric decorative elements */}
-        <div className="absolute top-1/4 right-0 w-64 h-64 bg-green-50 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-1/4 right-0 w-64 h-64 bg-green-50 rounded-full mix-blend-multiply filter blur-xl opacity-90 animate-blob"></div>
         <div className="absolute top-1/3 left-0 w-72 h-72 bg-blue-50 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-50 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-50 rounded-full mix-blend-multiply filter blur-xl opacity-90 animate-blob animation-delay-4000"></div>
       </div>
     </section>
   );

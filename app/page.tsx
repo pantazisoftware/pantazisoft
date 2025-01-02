@@ -1,6 +1,7 @@
 import Capabilities from "@/components/capabilities2";
-import Industries from "@/components/industries2";
-import CTA from "@/components/cta2";
+import Industries2 from "@/components/industries2";
+import Industries from "@/components/industries3";
+import CTA from "@/components/cta3";
 import Models from "@/components/models2";
 import FAQ from "@/components/faq";
 import Clear from "@/components/clear";
@@ -10,8 +11,8 @@ export default function Home() {
     <div>
       <CTA />
       <Capabilities />
+<Industries2 />
       <Industries />
-
       <Models />
       <FAQ />
       <Clear />

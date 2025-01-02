@@ -9,7 +9,7 @@ export default function EngagementModels() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
 
   return (
-    <section className="relative bg-black text-white py-24 px-4 overflow-hidden">
+    <section className="relative bg-black text-white pt-24 pb-32 px-4 overflow-hidden">
       <motion.div
         style={{ opacity, scale }}
         className="relative z-10 max-w-5xl mx-auto space-y-16">
@@ -17,11 +17,11 @@ export default function EngagementModels() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-4xl md:text-5xl font-light text-left mb-16">
+          className="text-3xl md:text-6xl font-bold mb-16">
           Engagement Models
         </motion.h2>
 
-        <div className="space-y-12">
+        <div className="space-y-16">
           {[
             {
               title: "Finite",
@@ -45,23 +45,23 @@ export default function EngagementModels() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + index * 0.2, duration: 0.8 }}
               className="group">
-              <div className="relative overflow-hidden rounded-lg bg-white bg-opacity-5 p-8 transition-all duration-500 ease-in-out group-hover:bg-opacity-10">
+              <div className="relative overflow-hidden rounded-lg bg-white bg-opacity-5 p-12 transition-all duration-500 ease-in-out group-hover:bg-opacity-10">
                 <div className="relative z-10 flex items-start">
                   <motion.div
                     className="flex-shrink-0 p-3 rounded-full bg-white bg-opacity-10 mr-6"
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.5 }}>
-                    <model.icon className="w-6 h-6 text-white" />
+                    <model.icon className="w-8 h-8 text-white" />
                   </motion.div>
                   <div>
-                    <h3 className="text-5xl font-normal mb-4 flex items-center">
+                    <h3 className="text-5xl font-medium mb-4 flex items-center">
                       {model.title}
                       <motion.div
                         className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         initial={{ x: -10 }}
                         animate={{ x: 0 }}
                         transition={{ duration: 0.3 }}>
-                        <Zap className="w-5 h-5 text-gray-400" />
+                        <Zap className="w-5 h-5 text-zinc-400" />
                       </motion.div>
                     </h3>
                     <p className="text-xl text-zinc-300 font-light mb-2">
@@ -76,7 +76,7 @@ export default function EngagementModels() {
                   <ArrowRight className="w-6 h-6 text-white" />
                 </motion.div>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-white to-gray-500 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-10"
+                  className="absolute inset-0 bg-gradient-to-r from-white to-zinc-500 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-10"
                   initial={{ rotate: 0 }}
                   animate={{ rotate: 360 }}
                   transition={{

@@ -8,7 +8,7 @@ export default function ContactPage() {
       <div className="max-w-4xl mx-auto space-y-16">
         {/* Header Section */}
         <div className="space-y-4">
-          <h1 className="text-5xl font-bold tracking-tight">Contact us</h1>
+          <h1 className="title">Contact us</h1>
           <p className="text-xl text-muted-foreground">
             If you have any questions or need further information, please don't
             hesitate to reach out to us. We're here to help!
@@ -19,7 +19,7 @@ export default function ContactPage() {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-semibold mb-4">Company Details</h2>
+              <h2 className="subtitle">Company Details</h2>
               <div className="space-y-2 text-muted-foreground">
                 <p className="font-medium">PANTAZI SOFTWARE LLC</p>
                 <p>
@@ -27,32 +27,21 @@ export default function ContactPage() {
                 </p>
                 <p>Fiscal Number: 42731715 (Romania)</p>
                 <p>Reg No.: ROONRC.J34/308/2020</p>
-                <Button variant="link" className="p-0 h-auto" asChild>
-                  <a
-                    href="https://maps.google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2">
-                    <Map className="h-4 w-4" />
-                    View on Google Maps
-                  </a>
-                </Button>
               </div>
             </div>
 
             <div className="flex gap-4">
               <Button variant="outline" size="icon" asChild>
-                <a href="#" aria-label="Contact us">
-                  <Send className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button variant="outline" size="icon" asChild>
-                <a href="#" aria-label="Facebook">
+                <a
+                  href="https://www.facebook.com/pantazisoftware"
+                  aria-label="Facebook">
                   <Facebook className="h-4 w-4" />
                 </a>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <a href="#" aria-label="Dribbble">
+                <a
+                  href="https://dribbble.com/pantazisoft#"
+                  aria-label="Dribbble">
                   <svg
                     className="h-4 w-4"
                     fill="currentColor"
@@ -63,7 +52,9 @@ export default function ContactPage() {
                 </a>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <a href="#" aria-label="Instagram">
+                <a
+                  href="https://www.instagram.com/pantazisoftware/"
+                  aria-label="Instagram">
                   <Instagram className="h-4 w-4" />
                 </a>
               </Button>
@@ -72,7 +63,9 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div>
-            <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
+            <h2 className="subtitle">
+              Send us a message
+            </h2>
             <ContactForm />
           </div>
         </div>

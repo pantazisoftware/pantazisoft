@@ -6,13 +6,12 @@ import { buttonVariants } from "@/components/ui/button";
 const Footer: React.FC = () => {
   return (
     <footer className="border-t border-zinc-100">
-      <div className="flex flex-row justify-between items-start container mx-auto py-12">
+      <div className="flex flex-col md:flex-row space-y-4 justify-between items-start container px-4 mx-auto py-12">
         <div id="logo" className="max-w-full">
           <img src="/logo-bg.png" alt="Logo" className="h-5" />
           <p className="uppercase text-black whitespace-nowrap font-medium pt-4">
             Pantazi Software LLC
           </p>
-          <p className="text-zinc-600">ROONRC.J34/308/2020 </p>
           <p className="text-zinc-600">Romania</p>
           <p className="text-zinc-600 pt-4">
             &copy; 2020 - 2024 Pantazi Software LLC.
@@ -22,7 +21,7 @@ const Footer: React.FC = () => {
             Privacy Policy
           </a>
         </div>
-        <div id="services" className="max-w-full">
+        <div id="services">
           <h4 className="text-base font-medium pb-4">Services</h4>
           <div className="flex flex-col space-y-4">
             <Link
