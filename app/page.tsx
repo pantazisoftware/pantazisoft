@@ -1,4 +1,4 @@
-import Capabilities from "@/components/capabilities2";
+import Capabilities from "@/components/capabilities3";
 import Industries2 from "@/components/industries2";
 import Industries from "@/components/industries3";
 import CTA from "@/components/cta3";
@@ -11,7 +11,6 @@ export default function Home() {
     <div>
       <CTA />
       <Capabilities />
-<Industries2 />
       <Industries />
       <Models />
       <FAQ />

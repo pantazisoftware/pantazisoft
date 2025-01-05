@@ -8,11 +8,11 @@ export async function POST(req: Request) {
     const { name, email, phone, message } = await req.json()
     
     const data = await resend.emails.send({
-      from: 'Contact Form <contact@pantazisoft.com>',
+      from: 'Pantazi Software <contact@pantazisoft.com>',
       to: ['contact@pantazisoft.com'],
-      subject: 'New Message - Pantazi Software',
+      subject: 'New Contact Form Submission',
       html: `
-        <h2>New Contact Form Submission</h2>
+        <h2 className="font-bold text-blue-600">New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>

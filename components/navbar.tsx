@@ -75,7 +75,7 @@ function MainNav() {
   return (
     <div className="mr-4 hidden md:flex">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-       <Image src="/logo-bg.png" width={200} height={40} alt="Logo" />
+       <Image src="/logo-bg.png" width={200} height={40} alt="Pantazi Software Logo" />
       </Link>
       <NavigationMenu>
         <NavigationMenuList>
@@ -89,18 +89,18 @@ function MainNav() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Services</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <div className="grid lg:min-w-[800px] grid-cols-12 gap-3 p-6">
+              <div className="grid grid-cols-9 gap-3 p-6">
                 <div className="col-span-4">
                   <NavigationMenuLink asChild>
                     <a
-                      className="flex h-full w-full select-none aspect-square flex-col justify-end rounded-md bg-zinc-100  p-2 no-underline outline-none focus:shadow-md"
-                      href="https://orderflow.ro">
+                      className="flex h-full w-full select-none aspect-square flex-col justify-end rounded-md bg-zinc-100 no-underline outline-none focus:shadow-md"
+                      href="https://orderflow.ro?ref=pantazisoft">
                       <Image
                         src="/orderflow.jpeg"
                         width={100}
                         height={100}
                         alt="Service Ad"
-                        className="h-full w-full object-cover rounded-md"
+                        className="w-full object-cover rounded-md"
                       />
                       <div className="pt-2 flex flex-col">
                         <span className="font-medium text-lg">OrderFlow.ro</span>
@@ -109,7 +109,7 @@ function MainNav() {
                     </a>
                   </NavigationMenuLink>
                 </div>
-                <ul className="col-span-8 grid gap-2 p-4 md:grid-cols-2 w-full ">
+                <ul className="col-span-5 flex flex-col space-y-4">
                   {services.map((service) => (
                     <ListItem
                       key={service.title}

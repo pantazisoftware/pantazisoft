@@ -1,13 +1,14 @@
 import { ContactForm } from "@/components/contact-form";
 import { Button } from "@/components/ui/button";
 import { Facebook, Instagram, Map, Send } from "lucide-react";
+import Image from "next/image";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen py-24 px-4">
-      <div className="max-w-4xl mx-auto space-y-16">
+    <main className="px-4 relative">
+      <div className="max-w-4xl mx-auto py-24 space-y-16">
         {/* Header Section */}
-        <div className="space-y-4">
+        <div className="space-y-4 z-20">
           <h1 className="title">Contact us</h1>
           <p className="text-xl text-muted-foreground">
             If you have any questions or need further information, please don't
@@ -15,18 +16,20 @@ export default function ContactPage() {
           </p>
         </div>
 
+        
+
         {/* Company Details and Social Links */}
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-6">
             <div>
               <h2 className="subtitle">Company Details</h2>
-              <div className="space-y-2 text-muted-foreground">
-                <p className="font-medium">PANTAZI SOFTWARE LLC</p>
-                <p>
+              <div className="space-y-2">
+                <p className="font-bold">PANTAZI SOFTWARE LLC</p>
+                <p className="text-zinc-500">
                   Bucharest Street, 47, Poeni, 147270, Teleorman County, Romania
                 </p>
-                <p>Fiscal Number: 42731715 (Romania)</p>
-                <p>Reg No.: ROONRC.J34/308/2020</p>
+                <p className="text-zinc-500">Fiscal Number: 42731715 (Romania)</p>
+                <p className="text-zinc-500">Reg No.: ROONRC.J34/308/2020</p>
               </div>
             </div>
 

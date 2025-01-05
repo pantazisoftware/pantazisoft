@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Send } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -21,7 +21,7 @@ import { toast } from 'sonner'
 const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
-  phone: z.string().min(6, 'Phone number must be at least 6 characters'),
+  phone: z.string().min(10, 'Phone number must be at least 10 characters'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
 })
 
@@ -124,7 +124,10 @@ export function ContactForm() {
               Sending...
             </>
           ) : (
-            'Send Message'
+              <>
+                <Send className="mr-2 h-4 w-4" />
+                Send Message
+              </>
           )}
         </Button>
       </form>

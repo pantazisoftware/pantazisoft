@@ -3,20 +3,15 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Link } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button"
+import Image from "next/image";
 
 
 export default function WhoWeAre() {
   return (
     <section className="relative min-h-screen flex items-center">
       {/* Background with sophisticated overlay */}
-      <div
-        className="absolute inset-0 z-0 mix-blend-multiply"
-        style={{
-          backgroundImage: 'url("/intro3.jpg")', // Replace with actual image
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}>
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-indigo-400 to-white select-none">
+        <Image src="/intro3.jpg" className="w-full object cover mix-blend-screen select-none" width={1000} height={1000} alt="Who we are" />
       </div>
 
       {/* Content */}
@@ -28,14 +23,14 @@ export default function WhoWeAre() {
           className="space-y-12">
           {/* Heading with minimal decoration */}
           <div className="space-y-4">
-            <h1 className="text-8xl font-medium tracking-tight text-white">
+            <h1 className="title relative">
               Who we are
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 1213 73"
-                  className="rotate-180 w-1/2"
-                  fill="#fff">
+                  className="rotate-180 w-2/5 absolute -bottom-5"
+                  fill="#000">
                   <path d="M1212.41 5.51c3.05 12.87-22.36 11.93-30.26 15.68-94.32 20.51-269.09 32.42-365.48 37.51-77.91 3.82-155.66 9.93-233.67 11.67-57.49 2.56-115.05-.19-172.57 1.58-121.28.91-243.17 1.88-363.69-13.33-12.51-2.64-25.8-2.92-37.77-7.45-30.66-21.42 26.02-21.53 38.52-19.26 359.95 29.05 364.68 27.36 638.24 17.85 121-3.78 241.22-19.21 426.76-41.46 4.72-.65 9.18 3.56 8.45 8.36a941.74 941.74 0 0 0 54.29-9.21c9.33-2.33 18.7-4.56 27.95-7.19a7.59 7.59 0 0 1 9.23 5.24Z"></path>
                 </svg>
               </span>
@@ -44,13 +39,13 @@ export default function WhoWeAre() {
 
           {/* Description with refined typography */}
           <div className="space-y-8">
-            <p className="text-3xl text-zinc-300 font-medium leading-relaxed">
+            <p className="text-2xl text-zinc-700 font-medium leading-relaxed">
               We specialize in crafting custom web applications, dynamic
               websites, e-commerce platforms, and efficient data management
               solutions.
             </p>
 
-            <p className="text-3xl text-zinc-300 font-medium leading-relaxed">
+            <p className="text-2xl text-zinc-700 font-medium leading-relaxed">
               Our mission is to empower businesses with innovative, tailored
               digital solutions that drive growth, enhance user experiences, and
               streamline operations.
@@ -59,7 +54,7 @@ export default function WhoWeAre() {
 
           {/* Refined button */}
           
-            <Link className={buttonVariants({ variant: "cta" })}>Click here</Link>
+            <Link href="/contact" className={buttonVariants({ variant: "cta" })}>Click here</Link>
          
         </motion.div>
 

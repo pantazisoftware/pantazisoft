@@ -16,6 +16,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const industries = [
   {
@@ -79,40 +80,168 @@ const industries = [
 export default function Industries() {
  
   return (
-    <section className="relative  bg-white py-24 px-4 overflow-hidden font-sans">
-      <div className="container mx-auto max-w-7xl relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-20">
-          <h2 className="text-xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900 max-w-2xl">
-            Industries
-          </h2>
-          <p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-3xl">
-            Focus and dedication in every industry for outstanding results
-          </p>
-        </motion.div>
+		<section className="relative  bg-white py-24 px-4 overflow-hidden font-sans">
+			<div className="container mx-auto max-w-7xl relative z-10">
+				{/* Header */}
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6 }}
+					className="mb-20">
+					<h2 className="text-xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900 max-w-2xl">
+						Industries
+					</h2>
+					<p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-3xl">
+						Focus and dedication in every industry for outstanding results
+					</p>
+				</motion.div>
 
-        {/* Tabs View */}
-
-        <Tabs defaultValue="logistics" className="">
-  <TabsList>
-    <TabsTrigger value="logistics">Logistics</TabsTrigger>
-                      <TabsTrigger value="rental">Rental</TabsTrigger>
-                      
-  </TabsList>
-  <TabsContent value="account">Make changes to your account here.</TabsContent>
-  <TabsContent value="password">Change your password here.</TabsContent>
-</Tabs>
-
-
-        {/* Asymmetric decorative elements */}
-        <div className="absolute top-1/4 right-0 w-64 h-64 bg-green-50 rounded-full mix-blend-multiply filter blur-xl opacity-90 animate-blob"></div>
-        <div className="absolute top-1/3 left-0 w-72 h-72 bg-blue-50 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-50 rounded-full mix-blend-multiply filter blur-xl opacity-90 animate-blob animation-delay-4000"></div>
-      </div>
-    </section>
-  );
+				<div className="grid grid-cols-2 gap-8">
+					<div
+						id="industry"
+						className="flex flex-row items-start bg-zinc-100 rounded-xl overflow-hidden">
+						<div
+							id="image"
+							className="w-3/12">
+							<Image
+								src="/web-services.jpg"
+								width={500}
+								height={500}
+								className="aspect-square overflow-hidden object-cover object-right-bottom"
+								alt="Services"
+							/>
+						</div>
+						<div
+							id="content"
+							className="p-6 w-full items-start">
+							<h3 className="text-xl font-medium">Digital Services</h3>
+							<p className="text-zinc-500">
+								We offer a wide range of web services to help you grow your
+								business online.
+							</p>
+						</div>
+					</div>
+					<div
+						id="industry"
+						className="flex flex-row items-start bg-zinc-100 rounded-xl overflow-hidden">
+						<div
+							id="image"
+							className="w-3/12">
+							<Image
+								src="/construction.jpg"
+								width={500}
+								height={500}
+								className="aspect-square overflow-hidden object-cover object-right-bottom"
+								alt="Services"
+							/>
+						</div>
+						<div
+							id="content"
+							className="p-6 w-full items-start">
+							<h3 className="text-xl font-medium">Construction</h3>
+							<p className="text-zinc-500">
+								We offer a wide range of web services to help you grow your
+								business online.
+							</p>
+						</div>
+					</div>
+					<div
+						id="industry"
+						className="flex flex-row items-start bg-zinc-100 rounded-xl overflow-hidden">
+						<div
+							id="image"
+							className="w-3/12">
+							<Image
+								src="/agriculture.jpg"
+								width={500}
+								height={500}
+								className="aspect-square overflow-hidden object-cover object-right-bottom"
+								alt="Services"
+							/>
+						</div>
+						<div
+							id="content"
+							className="p-6 w-full items-start">
+							<h3 className="text-xl font-medium">Agriculture</h3>
+							<p className="text-zinc-500">
+								We offer a wide range of web services to help you grow your
+								business online.
+							</p>
+						</div>
+					</div>
+					<div
+						id="industry"
+						className="flex flex-row items-start bg-zinc-100 rounded-xl overflow-hidden">
+						<div
+							id="image"
+							className="w-3/12">
+							<Image
+								src="/manufacturing.jpg"
+								width={500}
+								height={500}
+								className="aspect-square overflow-hidden object-cover object-right-bottom"
+								alt="Services"
+							/>
+						</div>
+						<div
+							id="content"
+							className="p-6 w-full items-start">
+							<h3 className="text-xl font-medium">Manufacturing</h3>
+							<p className="text-zinc-500">
+								Smart factory and production management tools to optimize
+								processes and increase output quality.
+							</p>
+						</div>
+					</div>
+					<div
+						id="industry"
+						className="flex flex-row items-start bg-zinc-100 rounded-xl overflow-hidden">
+						<div
+							id="image"
+							className="w-3/12">
+							<Image
+								src="/transport.jpg"
+								width={500}
+								height={500}
+								className="aspect-square overflow-hidden object-cover object-right-bottom"
+								alt="Services"
+							/>
+						</div>
+						<div
+							id="content"
+							className="p-6 w-full items-start">
+							<h3 className="text-xl font-medium">Transportation</h3>
+							<p className="text-zinc-500">
+								Optimized supply chain and delivery management systems for
+								improved efficiency and tracking.
+							</p>
+						</div>
+					</div>
+					<div
+						id="industry"
+						className="flex flex-row items-start bg-zinc-100 rounded-xl overflow-hidden">
+						<div
+							id="image"
+							className="w-3/12">
+							<Image
+								src="/logistics.jpg"
+								width={500}
+								height={500}
+								className="aspect-square overflow-hidden object-cover object-right-bottom"
+								alt="Services"
+							/>
+						</div>
+						<div
+							id="content"
+							className="p-6 w-full items-start">
+							<h3 className="text-xl font-medium">Logistic</h3>
+							<p className="text-zinc-500">
+                Optimized supply chain and delivery management systems for improved efficiency and tracking.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	);
 }

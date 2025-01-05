@@ -41,93 +41,82 @@ const missionCards = [
 
 export default function OurMission() {
   return (
-    <section className="bg-black px-6 py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto relative">
-        {/* Header with reveal animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-          viewport={{ once: true }}
-          className="mb-24 max-w-2xl">
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "5rem" }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="h-px bg-gradient-to-r from-white/40 to-transparent mb-8"
-          />
-          <h2 className="text-7xl font-medium tracking-tight text-white mb-8">
-            Our Mission
-          </h2>
-          <p className="text-lg text-zinc-500 leading-relaxed">
-            We are committed to{" "}
-            <span className="relative inline-block group">
-              <span className="absolute -inset-1 inset-y-7 h-[1px] bg-gradient-to-r from-white/70 to-transparent" />
-              <span className="relative text-white">
-                delivering exceptional digital solutions that drive growth
-              </span>
-            </span>
-            , enhance user experiences, and streamline operations.
-          </p>
-        </motion.div>
+		<section className="bg-white px-6 py-24 relative overflow-hidden">
+			<div className="max-w-7xl mx-auto relative">
+				{/* Header with reveal animation */}
+				<motion.div
+					initial={{ opacity: 0, y: 40 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+					viewport={{ once: true }}
+					className="mb-24 max-w-2xl">
+					<motion.div
+						initial={{ width: 0 }}
+						whileInView={{ width: "20rem" }}
+						transition={{ delay: 0.8, duration: 1.2 }}
+						className="h-1 rounded-full bg-gradient-to-r from-indigo-300 to-transparent mb-8"
+					/>
+					<h2 className="title">Our Mission</h2>
+					<p className="text-lg text-zinc-500 leading-relaxed">
+						We are committed to delivering exceptional digital solutions that
+						drive growth enhance user experiences, and streamline operations.
+					</p>
+				</motion.div>
 
-        {/* Asymmetrical grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 [perspective:1000px]">
-          {missionCards.map((card, index) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, rotateX: 10, y: 40 }}
-              whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
-              transition={{
-                delay: index * 0.1,
-                duration: 0.8,
-                ease: [0.215, 0.61, 0.355, 1],
-              }}
-              viewport={{ once: true }}
-              className={`
+				{/* Asymmetrical grid layout */}
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 [perspective:1000px]">
+					{missionCards.map((card, index) => (
+						<motion.div
+							key={card.title}
+							initial={{ opacity: 0, rotateX: 10, y: 40 }}
+							whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
+							transition={{
+								delay: index * 0.1,
+								duration: 0.8,
+								ease: [0.215, 0.61, 0.355, 1],
+							}}
+							viewport={{ once: true }}
+							className={`
                 group relative overflow-hidden
                 ${card.size === "large" ? "md:col-span-2" : ""}
                 backdrop-blur-sm
               `}>
-              {/* Card content with sophisticated hover effects */}
-              <div className="relative p-8 bg-neutral-900/80 border border-white/5 rounded-sm overflow-hidden">
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.07] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+							{/* Card content with sophisticated hover effects */}
+							<div className="relative p-8 bg-zinc-100 rounded-xl overflow-hidden">
+								{/* Gradient overlay */}
+								<div className="absolute inset-0 bg-gradient-to-br from-white/[0.07] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {/* Animated highlight line */}
-                <motion.div
-                  initial={false}
-                  whileHover={{
-                    width: "100%",
-                    transition: { duration: 0.8, ease: "easeOut" },
-                  }}
-                  className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-white/40 to-transparent"
-                />
+								{/* Animated highlight line */}
+								<motion.div
+									initial={false}
+									whileHover={{
+										width: "100%",
+										transition: { duration: 0.8, ease: "easeOut" },
+									}}
+									className="absolute top-0 left-0 h-px w-0 bg-gradient-to-r from-indigo-300 to-transparent"
+								/>
 
-                <div className="relative z-10 flex items-start gap-6">
-                  {/* Icon with hover animation */}
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-white/5 rounded-full blur-lg transform group-hover:scale-150 transition-transform duration-500" />
-                    <div className="relative bg-black/30 p-4 rounded-full backdrop-blur-sm border border-white/10">
-                      <card.icon className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
+								<div className="relative z-10 flex items-start gap-6">
+									{/* Icon with hover animation */}
+									<div className="relative">
+										<div className="relative bg-indigo-300 p-4 rounded-full">
+											<card.icon className="w-6 h-6 text-white" />
+										</div>
+									</div>
 
-                  {/* Text content */}
-                  <div className="space-y-3 pt-2">
-                    <h3 className="text-xl font-medium text-white group-hover:text-white/90 transition-colors">
-                      {card.title}
-                    </h3>
-                    <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors">
-                      {card.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+									{/* Text content */}
+									<div className="space-y-3 pt-2">
+										<h3 className="subtitle">{card.title}</h3>
+										<p className="text-zinc-500 text-lg leading-relaxed transition-colors">
+											{card.description}
+										</p>
+									</div>
+								</div>
+							</div>
+						</motion.div>
+					))}
+				</div>
+			</div>
+		</section>
+	);
 }
