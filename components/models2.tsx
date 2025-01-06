@@ -49,9 +49,9 @@ export default function EngagementModels() {
               transition={{ delay: 0.4 + index * 0.2, duration: 0.8 }}
               className="group">
               <div className="relative overflow-hidden rounded-lg bg-white p-12 transition-all duration-500 ease-in-out group-hover:shadow-2xl">
-                <div className="relative z-10 flex items-start">
+                <div className="relative z-10 flex flex-col md:flex-row items-start">
                   <motion.div
-                    className="flex-shrink-0 p-3 rounded-full bg-indigo-400 mr-6"
+                    className="flex-shrink-0 p-3 rounded-full bg-indigo-400 mb-6 md:mb-0 mr-6"
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.5 }}>
                     <model.icon className="w-8 h-8 text-white" />
@@ -67,7 +67,7 @@ export default function EngagementModels() {
                         <Zap className="w-5 h-5 text-zinc-500 font-medium" />
                       </motion.div>
                     </h3>
-                    <p className="text-xl text-zinc-500 font-light mb-2">
+                    <p className="text-xl font-light mb-2">
                       {model.description}
                     </p>
                     <p className="text-zinc-500">{model.details}</p>

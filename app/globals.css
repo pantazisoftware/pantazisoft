@@ -105,4 +105,22 @@
   @apply text-lg md:text-2xl font-medium tracking-tight;
 }
 
+.NavigationMenuContent {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  animation: enterFromTop 0.2s ease;
+}
+
+@keyframes enterFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 }

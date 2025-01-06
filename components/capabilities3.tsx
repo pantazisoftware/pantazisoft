@@ -52,7 +52,7 @@ export default function Capabilities() {
 	return (
 		<section
 			id="capabilities"
-			className="relative  bg-white py-6 md:py-12 px-4 overflow-hidden">
+			className="relative  bg-white py-6 md:py-12 px-4">
 			<div className="container mx-auto relative z-10">
 				{/* Header */}
 				<motion.div
@@ -61,7 +61,7 @@ export default function Capabilities() {
 					transition={{ duration: 0.6 }}
 					className="mb-20">
 					<h2 className="title">Our Capabilities</h2>
-					<p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-3xl">
+					<p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-3xl text-wrap">
 						Transforming ideas into reality with cutting-edge skills and deep
 						industry knowledge
 					</p>
@@ -78,19 +78,19 @@ export default function Capabilities() {
 						duration: 0.8,
 						ease: [0.25, 0.1, 0.25, 1],
 					}}
-					className="grid grid-cols-12 gap-12 md:gap-16">
-					<div className="col-span-12 lg:col-span-5">
+					className="grid grid-cols-8 md:grid-cols-12 gap-12 md:gap-16">
+					<div className="col-span-8 md:col-span-5 overflow-hidden">
 						<Image
 							src="/web-services2.jpg"
 							width={600}
 							height={400}
 							alt="Web Services"
-							className="w-full h-full aspect-auto rounded-xl"
+							className="w-full object-cover h-auto rounded-xl relative overflow-hidden"
 						/>
 					</div>
-					<div className="col-span-12 lg:col-span-7">
+					<div className="col-span-8 md:col-span-7">
 						<h3 className="subtitle">Backend & API</h3>
-						<p className="text-lg text-zinc-500 mb-8">
+						<p className="text-lg text-zinc-500 mb-8 text-wrap">
 							Our team of experienced developers can help you build scalable and
 							robust backend systems to power your web and mobile applications
 						</p>
@@ -169,8 +169,8 @@ export default function Capabilities() {
 						duration: 0.8,
 						ease: [0.25, 0.1, 0.25, 1],
 					}}
-					className="grid grid-cols-12 gap-12 pt-36 md:gap-16">
-					<div className="col-span-12 order-2 md:order-1 lg:col-span-7">
+					className="grid grid-cols-8 md:grid-cols-12 gap-12 pt-36 md:gap-16">
+					<div className="col-span-8 md:pt-0 order-2 md:order-1 md:col-span-7">
 						<h3 className="subtitle">Frontend</h3>
 						<p className="text-lg text-zinc-500 mb-8">
 							Our frontend development services focus on creating visually
@@ -206,7 +206,9 @@ export default function Capabilities() {
 									id="feature"
 									className="inline-flex space-x-4 items-center">
 									<CircleGauge className="w-5 h-5 text-indigo-400" />
-									<span className="text-zinc-500">Performance Optimization</span>
+									<span className="text-zinc-500">
+										Performance Optimization
+									</span>
 								</div>
 							</div>
 							<div
@@ -239,13 +241,13 @@ export default function Capabilities() {
 							</div>
 						</div>
 					</div>
-					<div className="col-span-12 lg:col-span-5 order-1 md:order-2">
+					<div className="col-span-8 md:col-span-5 order-1 md:order-1">
 						<Image
-							src="/intro6.jpg"
-							width={600}
-							height={400}
+							src="/dev.jpg"
+							width={1000}
+							height={200}
 							alt="Web Services"
-							className="w-full h-4/6 object-cover object-top aspect-auto rounded-xl"
+							className="max-w-full h-auto object-cover rounded-xl "
 						/>
 					</div>
 				</motion.div>
@@ -260,18 +262,18 @@ export default function Capabilities() {
 						duration: 0.8,
 						ease: [0.25, 0.1, 0.25, 1],
 					}}
-					className="flex flex-col space-y-4 justify-center">
+					className="flex flex-col space-y-4 pt-16 md:pt-12 justify-center">
 					<div className="max-w-4xl mx-auto justify-center">
-						<h3 className="subtitle text-center">
+						<h3 className="subtitle md:text-center">
 							Other Services and Products
 						</h3>
-						<p className="text-lg text-zinc-500 mb-8 text-center">
+						<p className="text-lg text-zinc-500 mb-8 md:text-center">
 							Our frontend development services focus on creating visually
 							appealing and highly functional user interfaces.
 						</p>
 					</div>
 					<div className="grid grid-cols-12 gap-12">
-						<div className="col-span-4 p-8">
+						<div className="col-span-8 md:col-span-4 md:p-8">
 							<SwatchBook className="w-8 h-8 text-indigo-400 mb-4" />
 							<h4 className="text-xl font-medium">Visuals</h4>
 							<p className="text-zinc-500">
@@ -286,7 +288,7 @@ export default function Capabilities() {
 								<li>Social Media Graphics</li>
 							</ul>
 						</div>
-						<div className="col-span-4 p-8">
+						<div className="col-span-8 md:col-span-4 md:p-8">
 							<Computer className="w-8 h-8 text-indigo-400 mb-4" />
 							<h4 className="text-xl font-medium">IT&C Consulting</h4>
 							<p className="text-zinc-500">
@@ -300,7 +302,7 @@ export default function Capabilities() {
 								<li>Technical Support</li>
 							</ul>
 						</div>
-						<div className="col-span-4 p-8">
+						<div className="col-span-8 md:col-span-4 md:p-8">
 							<Package className="w-8 h-8 text-indigo-400 mb-4" />
 							<h4 className="text-xl font-medium">Products/Solutions</h4>
 							<p className="text-zinc-500">
@@ -309,7 +311,12 @@ export default function Capabilities() {
 							</p>
 							<ul className="list-disc list-inside pt-2">
 								<li>OrderFlow</li>
-								<li>Dashboards <span className="text-zinc-500 text-sm">(for Developers)</span></li>
+								<li>
+									Dashboards{" "}
+									<span className="text-zinc-500 text-sm">
+										(for Developers)
+									</span>
+								</li>
 							</ul>
 						</div>
 					</div>

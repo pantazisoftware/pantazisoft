@@ -123,7 +123,7 @@ export default function Hero() {
 
 			<div className="bg-gradient-to-b from-indigo-400 via-indigo-100 to-white absolute top-0 bottom-0 right-0 w-full h-full overflow-hidden">
 				<img
-					src="/web-services.jpg"
+					src="/build.jpg"
 					width={"800"}
 					height={"800"}
 					className="object-cover object-center w-full h-full opacity-100 mix-blend-screen"

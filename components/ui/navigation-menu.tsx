@@ -69,7 +69,7 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "-left-16 top-0 w-full md:absolute md:w-auto",
+      "left-0 top-0 w-full md:absolute md:w-auto",
       className
     )}
     {...props}
