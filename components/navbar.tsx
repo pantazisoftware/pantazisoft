@@ -20,28 +20,28 @@ import { cn } from "@/lib/utils";
 
 const services = [
 	{
-		title: "Business Solutions",
-		description: "Enterprise-grade solutions for your business needs",
+		title: "Back-End Development",
+		description: "APIs, databases, and server-side logic",
 		icon: Briefcase,
-		href: "/services/business",
+		href: "/services#backend",
 	},
 	{
-		title: "Development",
-		description: "Custom software development and integration",
+		title: "Front-End Development",
+		description: "User interfaces and client-side logic",
 		icon: Code,
-		href: "/services/development",
+		href: "/services#frontend",
 	},
 	{
-		title: "Design Services",
-		description: "UI/UX design and branding solutions",
+		title: "Visuals & Branding",
+		description: "Designs, logos, and branding",
 		icon: PenTool,
-		href: "/services/design",
+		href: "/services#visuals",
 	},
 	{
-		title: "Digital Marketing",
-		description: "Grow your online presence and reach",
+		title: "IT&C Consulting",
+		description: "Advice and guidance on IT&C",
 		icon: Megaphone,
-		href: "/services/marketing",
+		href: "/services#consulting",
 	},
 ];
 

@@ -81,7 +81,7 @@ export default function Industries() {
  
   return (
 		<section className="relative  bg-white py-24 px-4 overflow-hidden font-sans">
-			<div className="container mx-auto container relative z-10">
+			<div className="container mx-auto relative z-10">
 				{/* Header */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}

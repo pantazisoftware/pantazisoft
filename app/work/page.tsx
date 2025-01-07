@@ -120,6 +120,14 @@ const workItems: WorkItem[] = [
 		height: 400,
 		width: 400,
 	},
+	{
+		id: 14,
+		title: "Ramo Hotel&Restaurant",
+		category: "Logo Design",
+		image: "/work/ramo.jpg",
+		height: 400,
+		width: 400,
+	},
 ];
 
 const categories = ["All", "Website", "Logo Design", "Dashboard"];
