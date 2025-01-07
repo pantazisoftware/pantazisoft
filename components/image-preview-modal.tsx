@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { VisuallyHidden } from "@reach/visually-hidden";
+
 
 interface ImagePreviewModalProps {
 	isOpen: boolean;
@@ -55,9 +55,9 @@ export function ImagePreviewModal({
 			open={isOpen}
 			onOpenChange={onClose}>
 			<DialogContent className="max-w-screen max-h-screen w-screen h-screen p-0 bg-black border-none">
-				<VisuallyHidden>
-					<DialogTitle>Image Preview - {currentImage.title}</DialogTitle>
-				</VisuallyHidden>
+				
+					<DialogTitle className="hidden">Image Preview - {currentImage.title}</DialogTitle>
+				
 
 				<div className="relative w-full h-full flex items-center justify-center">
 					<Button
