@@ -3,6 +3,7 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Cog, Lightbulb, Star } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
@@ -88,7 +89,7 @@ export default function Hero() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 1.6 }}
 					className="p-4 lg:p-8 group">
-          <Lightbulb className="w-8 h-8 text-zinc-500 mb-4 group-hover:text-orange-500 group-hover:scale-105 group-hover:rotate-180 group-hover:fill-orange-500 transition-all ease-linear duration-300" />
+					<Lightbulb className="w-8 h-8 text-zinc-500 mb-4 group-hover:text-orange-500 group-hover:scale-105 group-hover:rotate-180 group-hover:fill-orange-500 transition-all ease-linear duration-300" />
 					<h2 className="font-bold text-xl">Innovate</h2>
 					<p className="text-zinc-500 lg:text-lg">
 						We provide top-notch software solutions to help your business grow
@@ -122,10 +123,11 @@ export default function Hero() {
 			</div>
 
 			<div className="bg-gradient-to-b from-indigo-400 via-indigo-100 to-white absolute top-0 bottom-0 right-0 w-full h-full overflow-hidden">
-				<img
-					src="/build.jpg"
-					width={"800"}
-					height={"800"}
+				<Image
+					src="/build.jpg?height=900&width=1440"
+					width={"1440"}
+				  height={"900"}
+				  alt="Team collaboration"
 					className="object-cover object-center w-full h-full opacity-100 mix-blend-screen"
 				/>
 			</div>

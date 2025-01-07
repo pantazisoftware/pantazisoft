@@ -154,16 +154,16 @@ function MobileNav() {
 					className="flex items-center"
 					onOpenChange={() => {}}>
 					<Image
-						src="/placeholder.svg"
-						width={32}
-						height={32}
+						src="/logo-bg.png"
+						width={140}
+						height={25}
 						alt="Logo"
 					/>
 				</MobileLink>
 				<div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
 					<div className="flex flex-col space-y-3">
 						<MobileLink
-							href="/about"
+							href="/about-us"
 							onOpenChange={() => {}}>
 							About
 						</MobileLink>

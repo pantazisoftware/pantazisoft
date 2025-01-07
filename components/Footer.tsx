@@ -12,10 +12,12 @@ const Footer: React.FC = () => {
 				<div
 					id="details"
 					className="w-full lg:w-1/2 mr-12 mb-4">
-					<img
+					<Image
 						src="/logo-bg.png"
-						alt="Logo"
-						className="h-5"
+            alt="Logo"
+            width={150}
+            height={15}
+						className="h-5 aspect-auto"
 					/>
 
 					<div className="flex space-x-4 bg-zinc-100 rounded-xl overflow-hidden mt-2">

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import Image from "next/image";
 
 const Header: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const Header: React.FC = () => {
         <div id="logo-links" className="flex flex-row space-x-4 items-center">
           <div id="logo">
             <Link href="/">
-              <img src="/logo-bg.png" alt="Logo" className="h-6" />
+              <Image src="/logo-bg.png" width={192} height={24} alt="Logo" className="h-6" />
             </Link>
           </div>
           <div

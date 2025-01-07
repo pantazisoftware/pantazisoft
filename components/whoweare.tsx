@@ -14,8 +14,8 @@ export default function WhoWeAre() {
 				<Image
 					src="/intro3.jpg"
 					className="w-full object cover mix-blend-screen select-none"
-					width={1000}
-					height={1000}
+					width={1440}
+					height={900}
 					alt="Who we are"
 				/>
 			</div>

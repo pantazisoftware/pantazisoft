@@ -103,8 +103,8 @@ export default function Industries() {
 							className="w-full h-auto md:w-3/12 md:h-full">
 							<Image
 								src="/web-services.jpg"
-								width={500}
-								height={500}
+								width={400}
+								height={400}
 								className="aspect-square h-full w-full overflow-hidden object-right-bottom object-cover"
 								alt="Services"
 							/>
@@ -127,8 +127,8 @@ export default function Industries() {
 							className="w-full h-auto md:w-3/12 md:h-full">
 							<Image
 								src="/construction.jpg"
-								width={500}
-								height={500}
+								width={400}
+								height={400}
 								className="aspect-square h-full w-full overflow-hidden object-right-bottom object-cover"
 								alt="Services"
 							/>
@@ -151,8 +151,8 @@ export default function Industries() {
 							className="w-full h-auto md:w-3/12 md:h-full">
 							<Image
 								src="/agriculture.jpg"
-								width={500}
-								height={500}
+								width={400}
+								height={400}
 								className="aspect-square h-full w-full overflow-hidden object-right-bottom object-cover"
 								alt="Services"
 							/>
@@ -175,8 +175,8 @@ export default function Industries() {
 							className="w-full h-auto md:w-3/12 md:h-full">
 							<Image
 								src="/manufacturing.jpg"
-								width={500}
-								height={500}
+								width={400}
+								height={400}
 								className="aspect-square h-full w-full overflow-hidden object-center object-cover"
 								alt="Services"
 							/>
@@ -199,8 +199,8 @@ export default function Industries() {
 							className="w-full h-auto md:w-3/12 md:h-full">
 							<Image
 								src="/transport.jpg"
-								width={500}
-								height={500}
+								width={400}
+								height={400}
 								className="aspect-square h-full w-full overflow-hidden object-right-bottom object-cover"
 								alt="Services"
 							/>
@@ -223,8 +223,8 @@ export default function Industries() {
 							className="w-full h-auto md:w-3/12 md:h-full">
 							<Image
 								src="/logistics.jpg"
-								width={500}
-								height={500}
+								width={400}
+								height={400}
 								className="aspect-square h-full w-full overflow-hidden object-right-bottom object-cover"
 								alt="Services"
 							/>

@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { VisuallyHidden } from "@reach/visually-hidden";
 
 interface ImagePreviewModalProps {
 	isOpen: boolean;
@@ -14,8 +15,6 @@ interface ImagePreviewModalProps {
 		id: number;
 		title: string;
 		image: string;
-		width: number;
-		height: number;
 	}>;
 	currentImageIndex: number;
 	onNavigate: (index: number) => void;
@@ -54,17 +53,13 @@ export function ImagePreviewModal({
 	return (
 		<Dialog
 			open={isOpen}
-			onOpenChange={() => onClose()}>
-			<DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black border-none">
-				<Button
-					variant="ghost"
-					size="icon"
-					className="absolute right-4 top-4 z-50 bg-black text-white hover:bg-zinc-900"
-					onClick={onClose}>
-					<X className="h-6 w-6 text-white" />
-				</Button>
+			onOpenChange={onClose}>
+			<DialogContent className="max-w-screen max-h-screen w-screen h-screen p-0 bg-black border-none">
+				<VisuallyHidden>
+					<DialogTitle>Image Preview - {currentImage.title}</DialogTitle>
+				</VisuallyHidden>
 
-				<div className="relative w-full h-[calc(95vh-8rem)] flex items-center justify-center">
+				<div className="relative w-full h-full flex items-center justify-center">
 					<Button
 						variant="ghost"
 						size="icon"
@@ -91,9 +86,9 @@ export function ImagePreviewModal({
 							<Image
 								src={currentImage.image}
 								alt={currentImage.title}
-								width={currentImage.width}
-								height={currentImage.height}
-								className="max-w-full max-h-[calc(95vh-2rem)] w-auto h-auto object-contain"
+								fill
+								sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 70vw"
+								className="!relative !w-auto !h-auto max-w-[85vw] max-h-[85vh] object-contain"
 								priority
 							/>
 							<div className="absolute bottom-4 left-0 right-0 text-center text-white">
