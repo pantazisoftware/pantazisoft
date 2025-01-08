@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
 						Privacy Policy
 					</a>
 				</div>
-				<div className="flex flex-row justify-between place-content-between items-start mx-auto w-full">
+				<div className="flex flex-row justify-between space-x-6 place-content-between items-start mx-auto w-full">
 					<div id="services">
 						<h4 className="text-base font-medium pb-4">Services</h4>
 						<div className="flex flex-col space-y-4">

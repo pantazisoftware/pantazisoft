@@ -3,10 +3,10 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, Briefcase, Code, PenTool, Megaphone } from "lucide-react";
+import { Menu, Briefcase, Code, PenTool, Megaphone, FolderCode, Blocks, PencilRuler, MessageSquareText } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -22,25 +22,25 @@ const services = [
 	{
 		title: "Back-End Development",
 		description: "APIs, databases, and server-side logic",
-		icon: Briefcase,
+		icon: FolderCode,
 		href: "/services#backend",
 	},
 	{
 		title: "Front-End Development",
 		description: "User interfaces and client-side logic",
-		icon: Code,
+		icon: Blocks,
 		href: "/services#frontend",
 	},
 	{
 		title: "Visuals & Branding",
 		description: "Designs, logos, and branding",
-		icon: PenTool,
+		icon: PencilRuler,
 		href: "/services#visuals",
 	},
 	{
 		title: "IT&C Consulting",
 		description: "Advice and guidance on IT&C",
-		icon: Megaphone,
+		icon: MessageSquareText,
 		href: "/services#consulting",
 	},
 ];
@@ -149,6 +149,7 @@ function MobileNav() {
 			<SheetContent
 				side="left"
 				className="pr-0">
+				<SheetTitle className="hidden">Mobile Nav</SheetTitle>
 				<MobileLink
 					href="/"
 					className="flex items-center"

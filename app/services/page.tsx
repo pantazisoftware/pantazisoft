@@ -13,7 +13,7 @@ import Clear from "@/components/clear";
 
 export default function ServicesSection() {
   return (
-		<section className="min-h-screen bg-white text-black py-32">
+		<section className="min-h-screen bg-white text-black py-12 md:py-24 lg:py-32">
 			<div className="container mx-auto px-4 flex justify-between items-center mb-24">
 				<div id="left">
 					<h1 className="title">Our Services</h1>
@@ -29,7 +29,7 @@ export default function ServicesSection() {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7, delay: 0.2 }}
 						className="space-y-4">
-						<h1 className="text-[8rem] leading-none font-bold tracking-tighter bg-gradient-to-r from-indigo-700 to-sky-400 bg-clip-text text-transparent">
+						<h1 className="text-[clamp(4.5rem,5vw,9rem)] leading-none font-bold tracking-tighter bg-gradient-to-r from-indigo-700 to-sky-400 bg-clip-text text-transparent">
 							FRONT
 							<br />
 							END
@@ -77,7 +77,7 @@ export default function ServicesSection() {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7, delay: 0.2 }}
 						className="space-y-4">
-						<h1 className="text-[8rem] leading-none font-bold tracking-tighter bg-gradient-to-r from-rose-700 to-yellow-400 bg-clip-text text-transparent">
+						<h1 className="text-[clamp(4.5rem,5vw,9rem)] leading-none font-bold tracking-tighter bg-gradient-to-r from-rose-700 to-yellow-400 bg-clip-text text-transparent">
 							BACK
 							<br />
 							END
@@ -125,7 +125,7 @@ export default function ServicesSection() {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7, delay: 0.2 }}
 						className="space-y-4">
-						<h1 className="text-[8rem] leading-none font-bold tracking-tighter bg-gradient-to-r from-blue-600 to-pink-400 bg-clip-text text-transparent">
+						<h1 className="text-[clamp(4.5rem,5vw,9rem)] leading-none font-bold tracking-tighter bg-gradient-to-r from-blue-600 to-pink-400 bg-clip-text text-transparent">
 							VISUALS
 						</h1>
 						<p className="text-xl text-zinc-500">
@@ -172,8 +172,9 @@ export default function ServicesSection() {
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7, delay: 0.2 }}
 						className="space-y-4">
-						<h1 className="text-[8rem] leading-none pb-6 font-bold tracking-tighter bg-gradient-to-r from-emerald-700 to-green-400 bg-clip-text text-transparent">
-							IT&C <br />Consulting
+						<h1 className="text-[clamp(4.5rem,5vw,9rem)] leading-none pb-6 font-bold tracking-tighter bg-gradient-to-r from-emerald-700 to-green-400 bg-clip-text text-transparent">
+							IT&C <br />
+							Consulting
 						</h1>
 						<p className="text-xl text-zinc-500">
 							We offer a wide range of visual design services, including
@@ -207,9 +208,9 @@ export default function ServicesSection() {
 						))}
 					</Accordion>
 				</motion.div>
-      </div>
-      
-      <Clear />
+			</div>
+
+			<Clear />
 		</section>
 	);
 }
