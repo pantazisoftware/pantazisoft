@@ -19,7 +19,7 @@ export default function ContactPage() {
 				{/* Company Details and Social Links */}
 				<div className="grid md:grid-cols-2 gap-12">
 					<div className="space-y-6">
-						<div className="bg-indigo-50 items-start rounded-xl p-4">
+						<div className="border border-indigo-100 items-start rounded-xl p-6">
 							<h2 className="subtitle">Company Details</h2>
 							<div className="space-y-2">
 								<p className="font-bold">PANTAZI SOFTWARE LLC</p>

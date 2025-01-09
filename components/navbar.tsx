@@ -47,7 +47,7 @@ const services = [
 
 export default function Navbar() {
 	return (
-		<header className="sticky top-0 z-50 w-full border-b bg-white/50 shadow-xl backdrop-blur-lg">
+		<header className="sticky top-0 z-50 w-full bg-white/40 shadow-xl backdrop-blur-xl">
 			<div className="container px-4 flex h-16 mx-auto items-center">
 				<MainNav />
 				<MobileNav />

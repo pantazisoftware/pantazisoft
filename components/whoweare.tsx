@@ -57,7 +57,6 @@ export default function WhoWeAre() {
 							streamline operations.
 						</p>
 					</div>
-
 				</motion.div>
 
 				{/* Elegant scroll indicator */}

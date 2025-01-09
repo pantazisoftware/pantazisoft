@@ -28,7 +28,7 @@ export default function Hero() {
 							initial={{ opacity: 0, x: -20 }}
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ delay: 0.4 }}
-							className="block text-black">
+							className="block  text-rose-600">
 							Integrate.
 						</motion.span>
 						<motion.span
@@ -56,7 +56,7 @@ export default function Hero() {
 							<Button
 								asChild
 								size="lg"
-								variant={"default"}
+								variant={"cta"}
 								className="group relative px-8 py-6 text-lg w-full transition-all duration-300">
 								<Link
 									href="#capabilities"
@@ -126,8 +126,8 @@ export default function Hero() {
 				<Image
 					src="/build.jpg?height=900&width=1440"
 					width={"1440"}
-				  height={"900"}
-				  alt="Team collaboration"
+					height={"900"}
+					alt="Team collaboration"
 					className="object-cover object-center w-full h-full opacity-100 mix-blend-screen"
 				/>
 			</div>

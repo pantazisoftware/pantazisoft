@@ -15,12 +15,11 @@ export default function ServicesSection() {
   return (
 		<section className="min-h-screen bg-white text-black py-12 md:py-24 lg:py-32">
 			<div className="container mx-auto px-4 flex justify-between items-center mb-24">
-				<div id="left">
+				<div id="frontend">
 					<h1 className="title">Our Services</h1>
 				</div>
 			</div>
 			<div
-				id="frontend"
 				className="container mx-auto px-4 grid lg:grid-cols-2 gap-16 items-start">
 				{/* Left side */}
 				<div className="space-y-8">
@@ -34,7 +33,7 @@ export default function ServicesSection() {
 							<br />
 							END
 						</h1>
-						<p className="text-xl text-zinc-500">
+						<p className="text-xl font-medium text-zinc-500">
 							We specialize in creating visually appealing and user-friendly
 							interfaces that enhance user experience and engagement.
 						</p>
@@ -82,7 +81,7 @@ export default function ServicesSection() {
 							<br />
 							END
 						</h1>
-						<p className="text-xl text-zinc-500">
+						<p className="text-xl font-medium text-zinc-500">
 							We specialize in building robust and scalable backend systems that
 							power seamless and efficient operations.
 						</p>
@@ -128,7 +127,7 @@ export default function ServicesSection() {
 						<h1 className="text-[clamp(4.5rem,5vw,9rem)] leading-none font-bold tracking-tighter bg-gradient-to-r from-blue-600 to-pink-400 bg-clip-text text-transparent">
 							VISUALS
 						</h1>
-						<p className="text-xl text-zinc-500">
+						<p className="text-xl font-medium text-zinc-500">
 							We offer a wide range of visual design services, including
 							creating stunning graphics, that effectively communicate your
 							brand's message.
@@ -176,7 +175,7 @@ export default function ServicesSection() {
 							IT&C <br />
 							Consulting
 						</h1>
-						<p className="text-xl text-zinc-500">
+						<p className="text-xl font-medium text-zinc-500">
 							We offer a wide range of visual design services, including
 							creating stunning graphics, that effectively communicate your
 							brand's message.

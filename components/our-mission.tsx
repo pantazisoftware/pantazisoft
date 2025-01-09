@@ -42,7 +42,7 @@ const missionCards = [
 export default function OurMission() {
   return (
 		<section className="bg-white px-6 py-24 relative overflow-hidden">
-			<div className="max-w-7xl mx-auto relative">
+			<div className="container mx-auto relative">
 				{/* Header with reveal animation */}
 				<motion.div
 					initial={{ opacity: 0, y: 40 }}
@@ -57,7 +57,7 @@ export default function OurMission() {
 						className="h-1 rounded-full bg-gradient-to-r from-indigo-300 to-transparent mb-8"
 					/>
 					<h2 className="title">Our Mission</h2>
-					<p className="text-lg text-zinc-500 leading-relaxed">
+					<p className="text-lg text-zinc-500 font-medium leading-relaxed">
 						We are committed to delivering exceptional digital solutions that
 						drive growth enhance user experiences, and streamline operations.
 					</p>
@@ -99,15 +99,15 @@ export default function OurMission() {
 								<div className="relative z-10 flex items-start gap-6">
 									{/* Icon with hover animation */}
 									<div className="relative">
-										<div className="relative bg-indigo-300 p-4 rounded-full">
+										<div className="relative bg-indigo-600 p-4 rounded-full">
 											<card.icon className="w-6 h-6 text-white" />
 										</div>
 									</div>
 
 									{/* Text content */}
 									<div className="space-y-3 pt-2">
-										<h3 className="subtitle">{card.title}</h3>
-										<p className="text-zinc-500 text-lg leading-relaxed transition-colors">
+										<h3 className="text-xl font-bold">{card.title}</h3>
+										<p className="text-zinc-500 text-base leading-relaxed transition-colors">
 											{card.description}
 										</p>
 									</div>
