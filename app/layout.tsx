@@ -4,7 +4,10 @@ import Header from "@/components/navbar";
 import Footer from "@/components/Footer";
 import { Manrope, Bricolage_Grotesque, Inter, DM_Sans, Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
+import { GoogleTagManager } from "@next/third-parties/google";
+
 export const metadata: Metadata = {
 	title: "Pantazi Software - Custom Software Development",
 	authors: [{ name: "Pantazi Software" }],
@@ -56,15 +59,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} font-sans text-zinc-800 bg-white antialiased scroll-smooth`}>
-        <Header />
-        {children}
-        <Footer />
-        <SpeedInsights />
-        <Toaster />
-      </body>
-    </html>
-  );
+		<html lang="en">
+			<GoogleTagManager gtmId="G-N8S79HF2L9" />
+			<body
+				className={`${inter.variable} font-sans text-zinc-800 bg-white antialiased scroll-smooth`}>
+				<Header />
+				{children}
+				<Footer />
+				<SpeedInsights />
+				<Analytics />
+				<Toaster />
+			</body>
+		</html>
+	);
 }
