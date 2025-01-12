@@ -25,7 +25,7 @@ const faqData: FAQItem[] = [
 		id: "item-2",
 		question: "What is your unique strength as an agency?",
 		answer:
-			"The Finite model is designed for projects with a clear scope, timeline, and budget, offering a fixed-price approach ideal for specific, time-bound objectives.",
+			"Our unique strength lies in our ability to combine strategic thinking, creative problem-solving, and technical expertise to deliver innovative solutions that drive growth and success for our clients.",
 	},
 	{
 		id: "item-3",
@@ -37,13 +37,13 @@ const faqData: FAQItem[] = [
 		id: "item-4",
 		question: "How do you handle collaboration across time zones?",
 		answer:
-			"The Finite model is designed for projects with a clear scope, timeline, and budget, offering a fixed-price approach ideal for specific, time-bound objectives.",
+			"We manage collaboration across time zones by aligning schedules with tools, prioritizing asynchronous communication, documenting updates clearly, and setting response time expectations to ensure smooth teamwork.",
 	},
 	{
 		id: "item-5",
 		question: "How flexible are your engagement models?",
 		answer:
-			"The Finite model is designed for projects with a clear scope, timeline, and budget, offering a fixed-price approach ideal for specific, time-bound objectives.",
+			"We offer flexible engagement models to accommodate your unique needs, including the Finite model for fixed-price projects, the Infinite model for ongoing support, and the Custom model for tailored solutions.",
 	},
 ];
 

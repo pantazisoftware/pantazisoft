@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /logs/
+Disallow: /backup/

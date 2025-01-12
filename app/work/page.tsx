@@ -18,6 +18,22 @@ interface WorkItem {
 const workItems: WorkItem[] = [
 	{
 		id: 1,
+		title: "REGENVOLT - Business Card",
+		category: "Graphic Design",
+		image: "/work/regenvolt-bs-card.jpeg",
+		height: 400,
+		width: 400,
+	},
+	{
+		id: 2,
+		title: "REGENVOLT - LOGO",
+		category: "Logo Design",
+		image: "/work/regenvolt-logo.jpg",
+		height: 400,
+		width: 400,
+	},
+	{
+		id: 3,
 		title: "Andreea Nails Academy",
 		category: "Website",
 		image: "/work/andreeanails.png",
@@ -25,7 +41,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 2,
+		id: 4,
 		title: "Financial Dashboard",
 		category: "Dashboard",
 		image: "/work/refresh.png",
@@ -33,7 +49,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 3,
+		id: 5,
 		title: "The Runner App",
 		category: "App Logo",
 		image: "/work/the-runner-logo.png",
@@ -41,7 +57,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 4,
+		id: 6,
 		title: "Product Stack Dashboard",
 		category: "Dashboard",
 		image: "/work/productstack.png",
@@ -49,7 +65,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 5,
+		id: 7,
 		title: "OrderFlow",
 		category: "Website",
 		image: "/work/orderflow2.png",
@@ -57,7 +73,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 6,
+		id: 8,
 		title: "Neutronica Template",
 		category: "Dashboard",
 		image: "/work/neutronica-analytics.png",
@@ -65,7 +81,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 7,
+		id: 9,
 		title: "Neutronica Template",
 		category: "Dashboard",
 		image: "/work/neutronica-dashboard.jpeg",
@@ -73,7 +89,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 8,
+		id: 10,
 		title: "Flisto",
 		category: "Logo Design",
 		image: "/work/flisto.jpg",
@@ -81,7 +97,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 9,
+		id: 11,
 		title: "Creative Hub",
 		category: "Logo Design",
 		image: "/work/creativehub.png",
@@ -89,7 +105,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 10,
+		id: 12,
 		title: "Heating Pumps",
 		category: "Logo Design",
 		image: "/work/heatingpumps.jpg",
@@ -97,7 +113,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 11,
+		id: 13,
 		title: "nBrands - IT&C",
 		category: "Logo Design",
 		image: "/work/nbrands.jpg",
@@ -105,7 +121,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 12,
+		id: 14,
 		title: "Analytics Dashboard",
 		category: "Dashboard",
 		image: "/work/analytics.png",
@@ -113,7 +129,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 13,
+		id: 15,
 		title: "Analytics Dashboard - Traffic",
 		category: "Dashboard",
 		image: "/work/analytics2.png",
@@ -121,7 +137,7 @@ const workItems: WorkItem[] = [
 		width: 400,
 	},
 	{
-		id: 14,
+		id: 16,
 		title: "Ramo Hotel&Restaurant",
 		category: "Logo Design",
 		image: "/work/ramo.jpg",
@@ -130,7 +146,7 @@ const workItems: WorkItem[] = [
 	},
 ];
 
-const categories = ["All", "Website", "Logo Design", "Dashboard"];
+const categories = ["All", "Website", "Logo Design", "Dashboard", "Graphic Design"];
 
 export default function WorkPage() {
 	const [selectedCategory, setSelectedCategory] = useState("All");
