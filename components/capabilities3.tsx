@@ -61,7 +61,7 @@ export default function Capabilities() {
 					transition={{ duration: 0.6 }}
 					className="mb-20">
 					<h2 className="title">Our Capabilities</h2>
-					<p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-3xl text-wrap">
+					<p className="text-xl md:text-2xl text-neutral-500 leading-relaxed tracking-tight max-w-3xl text-wrap">
 						Transforming ideas into reality with cutting-edge skills and deep
 						industry knowledge
 					</p>
@@ -90,20 +90,20 @@ export default function Capabilities() {
 					</div>
 					<div className="col-span-8 md:col-span-7">
 						<h3 className="subtitle">Backend & API</h3>
-						<p className="text-lg text-zinc-500 mb-8 text-wrap">
+						<p className="text-lg text-zinc-500 tracking-tight mb-8 text-wrap">
 							Our team of experienced developers can help you build scalable and
 							robust backend systems to power your web and mobile applications
 						</p>
 						<div
 							id="features"
-							className="grid grid-cols-2 gap-4 w-full">
+							className="grid grid-cols-2 gap-6 w-full">
 							<div
 								id="col1"
 								className="col-span-2 md:col-span-1 space-y-2 flex flex-col">
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<Share2 className="w-5 h-5 text-indigo-400" />
+									<Share2 className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">
 										API Endpoints Development
 									</span>
@@ -111,7 +111,7 @@ export default function Capabilities() {
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<Layers className="w-5 h-5 text-indigo-400" />
+									<Layers className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">Micro Services</span>
 								</div>
 								<div

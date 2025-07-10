@@ -85,7 +85,7 @@ function MainNav() {
 							legacyBehavior
 							passHref>
 							<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-								About
+								About us
 							</NavigationMenuLink>
 						</Link>
 					</NavigationMenuItem>

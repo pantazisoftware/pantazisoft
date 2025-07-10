@@ -41,8 +41,8 @@ export default function Numbers() {
 						transition={{ delay: 0.5, duration: 0.8 }}
 						className="h-1 rounded-full bg-gradient-to-r from-indigo-300 to-transparent mb-8"
 					/>
-					<h2 className="title">Why Choose Us</h2>
-					<p className="text-lg text-zinc-500 font-medium leading-relaxed">
+					<h2 className="title">Why to Choose Us</h2>
+					<p className="text-lg text-neutral-500 tracking-tight font-medium leading-relaxed">
 						Pantazi Software delivers tailored solutions designed to meet your
 						unique needs. With a client-focused approach and a proven track
 						record, we ensure high-quality results that drive your success.
@@ -93,7 +93,7 @@ export default function Numbers() {
 								{/* Content */}
 								<div className="space-y-2">
 									<h3 className="text-xl font-bold">{stat.title}</h3>
-									<p className="text-zinc-500 leading-relaxed">
+									<p className="text-neutral-500 text-xl leading-relaxed">
 										{stat.description}
 									</p>
 								</div>

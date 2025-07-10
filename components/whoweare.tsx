@@ -45,13 +45,13 @@ export default function WhoWeAre() {
 
 					{/* Description with refined typography */}
 					<div className="space-y-8">
-						<p className="text-2xl text-zinc-700 font-medium leading-relaxed">
+						<p className="text-2xl text-neutral-600 font-medium tracking-tight leading-relaxed">
 							We specialize in crafting custom web applications, dynamic
 							websites, e-commerce platforms, and efficient data management
 							solutions.
 						</p>
 
-						<p className="text-2xl text-zinc-700 font-medium leading-relaxed">
+						<p className="text-2xl text-neutral-600 font-medium tracking-tight leading-relaxed">
 							Our mission is to empower businesses with innovative, tailored
 							digital solutions that drive growth, enhance user experiences, and
 							streamline operations.

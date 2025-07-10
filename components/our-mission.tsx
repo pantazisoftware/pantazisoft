@@ -57,7 +57,7 @@ export default function OurMission() {
 						className="h-1 rounded-full bg-gradient-to-r from-indigo-300 to-transparent mb-8"
 					/>
 					<h2 className="title">Our Mission</h2>
-					<p className="text-lg text-zinc-500 font-medium leading-relaxed">
+					<p className="text-lg text-neutral-500 font-medium leading-relaxed">
 						We are committed to delivering exceptional digital solutions that
 						drive growth enhance user experiences, and streamline operations.
 					</p>
@@ -78,11 +78,10 @@ export default function OurMission() {
 							viewport={{ once: true }}
 							className={`
                 group relative overflow-hidden
-                ${card.size === "large" ? "md:col-span-2" : ""}
                 backdrop-blur-sm
               `}>
 							{/* Card content with sophisticated hover effects */}
-							<div className="relative p-8 bg-zinc-100 rounded-xl overflow-hidden">
+							<div className="relative p-8 bg-white shadow-lg rounded-xl overflow-hidden">
 								{/* Gradient overlay */}
 								<div className="absolute inset-0 bg-gradient-to-br from-white/[0.07] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -99,15 +98,15 @@ export default function OurMission() {
 								<div className="relative z-10 flex items-start gap-6">
 									{/* Icon with hover animation */}
 									<div className="relative">
-										<div className="relative bg-indigo-600 p-4 rounded-full">
-											<card.icon className="w-6 h-6 text-white" />
+										<div className="relative">
+											<card.icon className="size-10 text-indigo-600" />
 										</div>
 									</div>
 
 									{/* Text content */}
-									<div className="space-y-3 pt-2">
+									<div className="space-y-2">
 										<h3 className="text-xl font-bold">{card.title}</h3>
-										<p className="text-zinc-500 text-base leading-relaxed transition-colors">
+										<p className="text-neutral-500 text-xl leading-relaxed transition-colors">
 											{card.description}
 										</p>
 									</div>

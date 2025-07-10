@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/navbar";
 import Footer from "@/components/Footer";
-import { Manrope, Bricolage_Grotesque, Inter, DM_Sans, Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
+import { Manrope, Bricolage_Grotesque, Inter, DM_Sans, Space_Grotesk, Plus_Jakarta_Sans, Geist } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "sonner";
@@ -39,16 +39,9 @@ export const metadata: Metadata = {
 		"We provide top-notch software solutions to help your business grow and succeed in the competitive market.",
 };
 
-const bricolage = Bricolage_Grotesque({
+const inter = Geist({
   subsets: ["latin"],
-  variable: "--font-bricolage",
-  preload: true,
-  weight: ["400","500","700","800"],
-});
-
-const inter = Manrope({
-  subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist",
   preload: true,
   weight: ["400","500","700", "800"],
 });
@@ -63,7 +56,7 @@ export default function RootLayout({
 			<GoogleTagManager gtmId="G-N8S79HF2L9" />
 			<body
 				className={`${inter.variable} font-sans text-zinc-800 bg-white antialiased scroll-smooth`}>
-				<Header />
+			  <Header />
 				{children}
 				<Footer />
 				<SpeedInsights />

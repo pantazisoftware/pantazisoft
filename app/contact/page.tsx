@@ -10,7 +10,7 @@ export default function ContactPage() {
 				{/* Header Section */}
 				<div className="space-y-4 z-20">
 					<h1 className="title">Contact us</h1>
-					<p className="text-xl text-muted-foreground">
+					<p className="text-xl text-neutral-500 tracking-tight font-medium leading-relaxed">
 						If you have any questions or need further information, please don't
 						hesitate to reach out to us. We're here to help!
 					</p>
@@ -19,7 +19,7 @@ export default function ContactPage() {
 				{/* Company Details and Social Links */}
 				<div className="grid md:grid-cols-2 gap-12">
 					<div className="space-y-6">
-						<div className="border border-indigo-100 items-start rounded-xl p-6">
+						<div id="company-details" className="space-y-4">
 							<h2 className="subtitle">Company Details</h2>
 							<div className="space-y-2">
 								<p className="font-bold">PANTAZI SOFTWARE LLC</p>
@@ -41,7 +41,7 @@ export default function ContactPage() {
 								<a
 									href="https://www.facebook.com/pantazisoftware"
 									aria-label="Facebook">
-									<Facebook className="h-4 w-4" />
+									<Facebook className="size-5" />
 								</a>
 							</Button>
 							<Button
@@ -51,7 +51,7 @@ export default function ContactPage() {
 								<a
 									href="https://www.linkedin.com/company/pantazisoftware"
 									aria-label="Facebook">
-									<Linkedin className="h-4 w-4" />
+									<Linkedin className="size-5" />
 								</a>
 							</Button>
 							<Button
@@ -62,7 +62,7 @@ export default function ContactPage() {
 									href="https://dribbble.com/pantazisoft"
 									aria-label="Dribbble">
 									<svg
-										className="h-4 w-4"
+										className="size-5"
 										fill="currentColor"
 										viewBox="0 0 24 24"
 										xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +77,7 @@ export default function ContactPage() {
 								<a
 									href="https://www.instagram.com/pantazisoftware/"
 									aria-label="Instagram">
-									<Instagram className="h-4 w-4" />
+									<Instagram className="size-5" />
 								</a>
 							</Button>
 						</div>

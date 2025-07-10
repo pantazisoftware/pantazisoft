@@ -10,8 +10,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ["var(--font-inter)"],
-				// jakarta: ["Plus Jakarta Sans", 'sans-serif'],
+				sans: ["var(--font-geist)"],
 				mono: ["var(--font-roboto-mono)"],
 			},
 			colors: {

@@ -16,7 +16,7 @@ export default function Hero() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5 }}
 					className="space-y-4">
-					<h1 className="text-[clamp(4.5rem,5vw,9rem)] font-black text-black tracking-tight leading-none">
+					<h1 className="text-[clamp(4.5rem,5vw,9rem)] font-medium text-black tracking-tighter leading-none">
 						<motion.span
 							initial={{ opacity: 0, x: -20 }}
 							animate={{ opacity: 1, x: 0 }}
@@ -28,7 +28,7 @@ export default function Hero() {
 							initial={{ opacity: 0, x: -20 }}
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ delay: 0.4 }}
-							className="block  text-rose-600">
+							className="block  text-indigo-600">
 							Integrate.
 						</motion.span>
 						<motion.span
@@ -43,9 +43,10 @@ export default function Hero() {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.8 }}
-						className="max-w-3xl mx-auto text-[clamp(1rem,5vw,1.7rem)] text-zinc-600">
-						We provide top-notch software solutions to help your business grow
-						and succeed in the competitive market.
+						className="max-w-3xl mx-auto font-medium text-[clamp(1rem,5vw,1.7rem)] text-zinc-600 tracking-tight">
+						We provide top-notch software solutions to{" "}
+						<span className="text-black">help your business grow and succeed</span> in the competitive
+						market.
 					</motion.p>
 					<div className="flex flex-col items-center md:space-y-0 md:flex-row md:space-x-4 justify-center pt-4">
 						<motion.div
@@ -88,24 +89,22 @@ export default function Hero() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 1.6 }}
-					className="p-4 lg:p-8 group">
-					<Lightbulb className="w-8 h-8 text-zinc-500 mb-4 group-hover:text-orange-500 group-hover:scale-105 group-hover:rotate-180 group-hover:fill-orange-500 transition-all ease-linear duration-300" />
+					className="p-4 lg:p-8">
+					<Lightbulb className="w-8 h-8 text-black mb-4" />
 					<h2 className="font-bold text-xl">Innovate</h2>
-					<p className="text-zinc-500 lg:text-lg">
-						We provide top-notch software solutions to help your business grow
-						and succeed in the competitive market.
+					<p className="text-neutral-500 lg:text-lg">
+						We leverage cutting-edge technologies and creative thinking to develop innovative solutions that transform your business ideas into reality.
 					</p>
 				</motion.div>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 1.8 }}
-					className="p-4 lg:p-8 group">
-					<Cog className="w-8 h-8 text-zinc-500 mb-4 group-hover:text-blue-800 group-hover:scale-105 group-hover:rotate-90 ease-linear duration-300" />
+					className="p-4 lg:p-8">
+					<Cog className="w-8 h-8 text-black mb-4" />
 					<h2 className="font-bold text-xl">Integrate</h2>
-					<p className="text-zinc-500 lg:text-lg">
-						We provide top-notch software solutions to help your business grow
-						and succeed in the competitive market.
+					<p className="text-neutral-500 lg:text-lg">
+						We seamlessly integrate our solutions with your existing systems, ensuring smooth operations and enhanced efficiency across all platforms.
 					</p>
 				</motion.div>
 				<motion.div
@@ -113,18 +112,17 @@ export default function Hero() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 2 }}
 					className="p-4 lg:p-8 group">
-					<Star className="w-8 h-8 text-zinc-500 mb-4 group-hover:text-indigo-600 group-hover:scale-105 group-hover:rotate-[70deg] ease-linear duration-300 group-hover:fill-indigo-600" />
+					<Star className="w-8 h-8 text-black mb-4" />
 					<h2 className="font-bold text-xl">Succeed</h2>
-					<p className="text-zinc-500 lg:text-lg">
-						We provide top-notch software solutions to help your business grow
-						and succeed in the competitive market.
+					<p className="text-neutral-500 lg:text-lg">
+						Our commitment to excellence and customer satisfaction ensures that your business not only meets its goals but exceeds them.
 					</p>
 				</motion.div>
 			</div>
 
-			<div className="bg-gradient-to-b from-indigo-400 via-indigo-100 to-white absolute top-0 bottom-0 right-0 w-full h-full overflow-hidden">
+			<div className="bg-gradient-to-b from-indigo-600 via-indigo-100 to-white absolute top-0 bottom-0 right-0 w-full h-full overflow-hidden">
 				<Image
-					src="/build.jpg?height=900&width=1440"
+					src="/intro.jpg?height=900&width=1440"
 					width={"1440"}
 					height={"900"}
 					alt="Team collaboration"

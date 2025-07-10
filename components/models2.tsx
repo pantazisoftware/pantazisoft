@@ -17,7 +17,7 @@ export default function EngagementModels() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-3xl md:text-6xl font-bold mb-6">
+          className="title">
           Engagement Models
         </motion.h2>
         <p className="text-xl md:text-2xl text-zinc-500 leading-relaxed max-w-3xl mb-16">
@@ -57,7 +57,7 @@ export default function EngagementModels() {
                     <model.icon className="w-8 h-8 text-white" />
                   </motion.div>
                   <div>
-                    <h3 className="text-5xl font-bold mb-4 tracking-tight flex items-center">
+                    <h3 className="subtitle">
                       {model.title}
                       <motion.div
                         className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"

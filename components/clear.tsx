@@ -7,10 +7,10 @@ const Clear: React.FC = () => {
 		<div className="bg-white py-24 px-4">
 			<div className="container mx-auto text-center">
 				<div className="justify-center">
-					<h4 className="text-[clamp(1rem,5vw,1.5rem)]  font-medium">
+					<h4 className="text-[clamp(1rem,5vw,1.5rem)]  font-medium text-neutral-500">
 						Got a clear vision and specific goals?
 					</h4>
-					<h2 className="text-[clamp(2rem,5vw,3rem)] justify-center object-center max-w-4xl font-bold tracking-tight leading-tight mt-6 text-center mx-auto">
+					<h2 className="text-[clamp(2rem,5vw,3rem)] justify-center object-center max-w-4xl font-medium tracking-tight leading-tight mt-6 text-center mx-auto">
 						Let&rsquo;s explore how we can help you achieve them through our Finite
 						Engagement model.
 					</h2>
