@@ -42,9 +42,6 @@ export function ContactForm() {
 
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
 
-  const handleRecaptchaChange = (token: string | null) => {
-    setRecaptchaToken(token)
-  }
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
