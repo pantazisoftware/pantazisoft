@@ -62,7 +62,7 @@ const FAQ: React.FC<FAQProps> = ({
 		<div className={`bg-white py-24 px-4 relative ${className}`}>
 			<div className="container mx-auto grid grid-cols-6 gap-4 items-start">
 				<div className="col-span-6">
-					<h4 className="subtitle">{subtitle}</h4>
+					<h4 className="subtitle text-neutral-500">{subtitle}</h4>
 					<h2 className="title">{title}</h2>
 				</div>
 				<div className="col-span-6">

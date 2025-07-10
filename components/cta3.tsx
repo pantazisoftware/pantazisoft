@@ -86,7 +86,7 @@ export default function Hero() {
 
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 z-10 container mx-auto py-6">
 				<motion.div
-					initial={{ opacity: 0, y: 20 }}
+				  initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 1.6 }}
 					className="p-4 lg:p-8">
@@ -120,9 +120,9 @@ export default function Hero() {
 				</motion.div>
 			</div>
 
-			<div className="bg-gradient-to-b from-indigo-600 via-indigo-100 to-white absolute top-0 bottom-0 right-0 w-full h-full overflow-hidden">
+			<div className="bg-gradient-to-b from-black via-indigo-100 to-white absolute top-0 bottom-0 right-0 w-full h-full overflow-hidden">
 				<Image
-					src="/intro.jpg?height=900&width=1440"
+					src="/intro4.jpg?height=900&width=1440"
 					width={"1440"}
 					height={"900"}
 					alt="Team collaboration"

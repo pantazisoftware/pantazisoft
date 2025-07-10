@@ -51,13 +51,13 @@ export default function EngagementModels() {
               <div className="relative overflow-hidden rounded-lg bg-white p-12 transition-all duration-500 ease-in-out group-hover:shadow-2xl">
                 <div className="relative z-10 flex flex-col md:flex-row items-start">
                   <motion.div
-                    className="flex-shrink-0 p-3 rounded-full bg-indigo-600 mb-6 md:mb-0 mr-6"
+                    className="flex-shrink-0 p-4 rounded-full bg-black group-hover:bg-indigo-600 mb-6 md:mb-0 mr-6"
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.5 }}>
                     <model.icon className="w-8 h-8 text-white" />
                   </motion.div>
                   <div>
-                    <h3 className="subtitle">
+                    <h3 className="subtitle inline-flex space-x-2 items-center">
                       {model.title}
                       <motion.div
                         className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"

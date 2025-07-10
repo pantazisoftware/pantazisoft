@@ -3,26 +3,26 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  Database,
-  Gauge,
-  Share2,
-  Layers,
-  Workflow,
-  CloudCog,
-  CircuitBoard,
-  Blocks,
-  SwatchBook,
-  Computer,
-  Package,
-  CircleGauge,
-  Phone,
-  Smartphone,
-  SquareMousePointer,
-  Frame,
-  ScanSearch,
-  Ruler,
-  SquareStack,
-  Accessibility,
+	Database,
+	Gauge,
+	Share2,
+	Layers,
+	Workflow,
+	CloudCog,
+	CircuitBoard,
+	Blocks,
+	SwatchBook,
+	Computer,
+	Package,
+	CircleGauge,
+	Phone,
+	Smartphone,
+	SquareMousePointer,
+	Frame,
+	ScanSearch,
+	Ruler,
+	SquareStack,
+	Accessibility,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -117,13 +117,13 @@ export default function Capabilities() {
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<Workflow className="w-5 h-5 text-indigo-400" />
+									<Workflow className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">3rd Party Integration</span>
 								</div>
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<CloudCog className="w-5 h-5 text-indigo-400" />
+									<CloudCog className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">Custom Integration</span>
 								</div>
 							</div>
@@ -133,25 +133,25 @@ export default function Capabilities() {
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<Database className="w-5 h-5 text-indigo-400" />
+									<Database className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">Database Optimization</span>
 								</div>
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<CircuitBoard className="w-5 h-5 text-indigo-400" />
+									<CircuitBoard className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">AI Integration</span>
 								</div>
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<Gauge className="w-5 h-5 text-indigo-400" />
+									<Gauge className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">Procces Optimization</span>
 								</div>
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<Blocks className="w-5 h-5 text-indigo-400" />
+									<Blocks className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">Modules Development</span>
 								</div>
 							</div>
@@ -185,7 +185,7 @@ export default function Capabilities() {
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<SquareMousePointer className="w-5 h-5 text-indigo-400" />
+									<SquareMousePointer className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">
 										Cross-Browser Compatibility
 									</span>
@@ -193,19 +193,19 @@ export default function Capabilities() {
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<Frame className="w-5 h-5 text-indigo-400" />
+									<Frame className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">UI/UX Design</span>
 								</div>
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<Smartphone className="w-5 h-5 text-indigo-400" />
+									<Smartphone className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">Mobile Optimization</span>
 								</div>
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<CircleGauge className="w-5 h-5 text-indigo-400" />
+									<CircleGauge className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">
 										Performance Optimization
 									</span>
@@ -217,25 +217,25 @@ export default function Capabilities() {
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<Accessibility className="w-5 h-5 text-indigo-400" />
+									<Accessibility className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">Accessibility</span>
 								</div>
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<SquareStack className="w-5 h-5 text-indigo-400" />
+									<SquareStack className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">Interactivity</span>
 								</div>
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<Ruler className="w-5 h-5 text-indigo-400" />
+									<Ruler className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">Web Performance Metrics</span>
 								</div>
 								<div
 									id="feature"
 									className="inline-flex space-x-4 items-center">
-									<ScanSearch className="w-5 h-5 text-indigo-400" />
+									<ScanSearch className="size-6 text-indigo-400" />
 									<span className="text-zinc-500">SEO</span>
 								</div>
 							</div>
@@ -274,7 +274,7 @@ export default function Capabilities() {
 					</div>
 					<div className="grid grid-cols-12 gap-12">
 						<div className="col-span-8 md:col-span-4 md:p-8">
-							<SwatchBook className="w-8 h-8 text-indigo-400 mb-4" />
+							<SwatchBook className="size-10 text-indigo-400 mb-4" />
 							<h4 className="text-xl font-medium">Visuals</h4>
 							<p className="text-zinc-500">
 								We create visually appealing designs that are both functional
@@ -289,7 +289,7 @@ export default function Capabilities() {
 							</ul>
 						</div>
 						<div className="col-span-8 md:col-span-4 md:p-8">
-							<Computer className="w-8 h-8 text-indigo-400 mb-4" />
+							<Computer className="size-10 text-indigo-400 mb-4" />
 							<h4 className="text-xl font-medium">IT&C Consulting</h4>
 							<p className="text-zinc-500">
 								Expert guidance to navigate technology complexities.
@@ -303,7 +303,7 @@ export default function Capabilities() {
 							</ul>
 						</div>
 						<div className="col-span-8 md:col-span-4 md:p-8">
-							<Package className="w-8 h-8 text-indigo-400 mb-4" />
+							<Package className="size-10 text-indigo-400 mb-4" />
 							<h4 className="text-xl font-medium">Products/Solutions</h4>
 							<p className="text-zinc-500">
 								We create visually appealing designs that are both functional
