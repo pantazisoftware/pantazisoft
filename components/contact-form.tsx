@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -17,15 +17,15 @@ import {
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { toast } from 'sonner'
-import ReCAPTCHA from 'react-google-recaptcha'
 
 const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
   phone: z.string().min(10, 'Phone number must be at least 10 characters'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
-  recaptcha: z.string().min(1, 'Please complete the reCAPTCHA'),
 })
+
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -40,17 +40,26 @@ export function ContactForm() {
     },
   })
 
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
-
+  // Load reCAPTCHA v3 script
+  useEffect(() => {
+    if (!window.grecaptcha) {
+      const script = document.createElement('script')
+      script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`
+      script.async = true
+      document.body.appendChild(script)
+    }
+  }, [])
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true)
     try {
-      setIsSubmitting(true)
-      if (!recaptchaToken) {
-        toast.error('Please complete the reCAPTCHA.')
+      // Wait for grecaptcha to be available
+      if (!window.grecaptcha) {
+        toast.error('reCAPTCHA not loaded. Please try again.')
         setIsSubmitting(false)
         return
       }
+      const recaptchaToken = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
 
       const response = await fetch('/api/send', {
         method: 'POST',
@@ -128,26 +137,6 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-        <div className="flex flex-col items-center">
-          <ReCAPTCHA
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
-            onChange={(token) => {
-              setRecaptchaToken(token)
-              form.setValue('recaptcha', token || '')
-            }}
-            onExpired={() => {
-              setRecaptchaToken(null)
-              form.setValue('recaptcha', '')
-            }}
-          />
-          <FormField
-            control={form.control}
-            name="recaptcha"
-            render={() => (
-              <FormMessage />
-            )}
-          />
-        </div>
         <Button type="submit" className="w-full" disabled={isSubmitting}>
           {isSubmitting ? (
             <>
@@ -166,3 +155,7 @@ export function ContactForm() {
   )
 }
 
+// Add this to global.d.ts if you get TS errors:
+// declare global {
+//   interface Window { grecaptcha: any }
+// }
