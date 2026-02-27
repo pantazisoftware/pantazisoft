@@ -184,7 +184,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="group w-full flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3.5 rounded-button text-sm font-medium hover:bg-zinc-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="group hover:cursor-pointer w-full flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3.5 rounded-button text-sm font-medium hover:bg-zinc-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === "loading" ? (
             <>
@@ -193,7 +193,7 @@ export function ContactForm() {
             </>
           ) : (
             <>
-              <Send className="w-4 h-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <Send className="w-4 h-4 transition-transform duration-200 group-hover:rotate-45 group-hover:-translate-x-2" />
               Send message
             </>
           )}

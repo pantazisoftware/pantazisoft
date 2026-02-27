@@ -25,6 +25,28 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  letter-spacing: -0.02em;
+}
+
+p {
+  text-wrap: pretty;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "tnum" 1;
 }
 
 @keyframes hero-float {

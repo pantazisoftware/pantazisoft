@@ -131,10 +131,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary leading-[1.1]">
+              <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter text-primary leading-[1.05]">
                 We build web apps that businesses love
               </h1>
-              <p className="mt-6 text-lg md:text-xl text-secondary max-w-xl leading-relaxed">
+              <p className="mt-6 text-lg md:text-xl text-secondary max-w-xl leading-[1.65]">
                 From MVP to production — we help businesses launch, grow, and
                 integrate AI into modern web applications.
               </p>
@@ -165,7 +165,7 @@ export default function Home() {
       <section id="services" className="py-24 md:py-32 bg-surface">
         <div className="mx-auto max-w-6xl px-6">
           <div className="max-w-2xl mb-16">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-primary">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tighter text-primary">
               What we do
             </h2>
             <p className="mt-4 text-lg text-secondary">
@@ -185,12 +185,12 @@ export default function Home() {
                 <h3 className="mt-6 font-heading text-xl font-semibold text-primary">
                   {service.title}
                 </h3>
-                <p className="mt-3 text-secondary leading-relaxed flex-1">
+                <p className="mt-3 text-secondary leading-[1.65] flex-1">
                   {service.description}
                 </p>
                 <div className="mt-8">
                   <p className="text-sm text-muted">Starting from</p>
-                  <p className="font-heading text-3xl font-bold text-primary mt-1">
+                  <p className="font-heading text-3xl font-bold tracking-tight text-primary mt-1">
                     {service.price}
                   </p>
                   <a
@@ -211,7 +211,7 @@ export default function Home() {
       <section id="projects" className="py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <div className="max-w-2xl mb-16">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-primary">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tighter text-primary">
               Built by us
             </h2>
             <p className="mt-4 text-lg text-secondary">
@@ -266,16 +266,16 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
             <div>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-primary">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tighter text-primary">
                 About PantaziSoft
               </h2>
-              <p className="mt-4 text-lg text-secondary leading-relaxed">
+              <p className="mt-4 text-lg text-secondary leading-[1.65]">
                 Founded in 2020, PantaziSoft is a software studio focused on
                 building modern web applications. We partner with businesses of
                 all sizes to bring their ideas to life — from early-stage MVPs
                 to full-scale platforms with AI capabilities.
               </p>
-              <p className="mt-4 text-secondary leading-relaxed">
+              <p className="mt-4 text-secondary leading-[1.65]">
                 With years of experience shipping products, we bring a
                 product-first mindset to every engagement. Our work speaks
                 through the applications we&apos;ve built and the businesses
@@ -283,19 +283,19 @@ export default function Home() {
               </p>
               <div className="mt-10 flex gap-10">
                 <div>
-                  <p className="font-heading text-3xl font-bold text-primary">
+                  <p className="font-heading text-3xl font-bold tracking-tight text-primary">
                     2020
                   </p>
                   <p className="text-sm text-muted mt-1">Founded</p>
                 </div>
                 <div>
-                  <p className="font-heading text-3xl font-bold text-primary">
+                  <p className="font-heading text-3xl font-bold tracking-tight text-primary">
                     4+
                   </p>
                   <p className="text-sm text-muted mt-1">Products shipped</p>
                 </div>
                 <div>
-                  <p className="font-heading text-3xl font-bold text-primary">
+                  <p className="font-heading text-3xl font-bold tracking-tight text-primary">
                     100%
                   </p>
                   <p className="text-sm text-muted mt-1">Web focused</p>
@@ -320,7 +320,7 @@ export default function Home() {
                   <p className="text-sm text-muted">Founder</p>
                 </div>
               </div>
-              <blockquote className="mt-6 text-secondary leading-relaxed italic">
+              <blockquote className="mt-6 text-secondary leading-[1.65] italic">
                 &ldquo;I started PantaziSoft with a simple belief: every
                 business deserves a well-crafted web application. We focus on
                 building products that are fast, reliable, and designed to grow
@@ -369,10 +369,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
             <div>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-primary">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tighter text-primary">
                 Let&apos;s build something together
               </h2>
-              <p className="mt-4 text-lg text-secondary leading-relaxed">
+              <p className="mt-4 text-lg text-secondary leading-[1.65]">
                 Have a project in mind? We&apos;d love to hear about it. Tell us
                 what you&apos;re building and we&apos;ll get back to you within
                 24 hours.

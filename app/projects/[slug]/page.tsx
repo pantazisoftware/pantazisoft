@@ -65,12 +65,12 @@ export default async function ProjectPage({ params }: Props) {
               height={40}
               className="rounded-xl"
             />
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary">
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tighter text-primary">
               {project.name}
             </h1>
           </div>
 
-          <p className="mt-4 text-lg md:text-xl text-secondary max-w-2xl">
+          <p className="mt-4 text-lg md:text-xl text-secondary max-w-2xl leading-[1.65]">
             {project.tagline}
           </p>
 
@@ -111,7 +111,7 @@ export default async function ProjectPage({ params }: Props) {
               <h2 className="font-heading text-2xl font-semibold text-primary mb-4">
                 About
               </h2>
-              <p className="text-secondary leading-relaxed">
+              <p className="text-secondary leading-[1.65]">
                 {project.longDescription}
               </p>
             </div>
@@ -137,7 +137,7 @@ export default async function ProjectPage({ params }: Props) {
       <section className="pb-24 md:pb-32">
         <div className="mx-auto max-w-6xl px-6">
           <div className="bg-surface rounded-card p-8 md:p-12 text-center">
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-primary">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tight text-primary">
               Have a similar idea?
             </h2>
             <p className="mt-3 text-secondary max-w-md mx-auto">

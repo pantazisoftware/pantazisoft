@@ -24,8 +24,8 @@ export function Header() {
           <Image
             src="/logo-transparent.svg"
             alt=""
-            width={28}
-            height={28}
+            width={22}
+            height={22}
           />
           PantaziSoft
         </Link>
