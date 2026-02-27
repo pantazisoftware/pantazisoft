@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     // Send email via Resend
     await resend.emails.send({
       from: "PantaziSoft <noreply@pantazisoft.com>",
-      to: process.env.CONTACT_EMAIL || "hello@pantazisoft.com",
+      to: process.env.CONTACT_EMAIL!,
       subject: `New inquiry from ${name}`,
       replyTo: email,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,

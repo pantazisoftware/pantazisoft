@@ -23,7 +23,7 @@ export function Header() {
         >
           <Image
             src="/logo-transparent.svg"
-            alt=""
+            alt="PantaziSoft logo"
             width={22}
             height={22}
           />

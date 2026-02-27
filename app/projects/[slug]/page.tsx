@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: Props) {
           <div className="mt-8 flex items-center gap-4">
             <Image
               src={project.favicon}
-              alt=""
+              alt={`${project.name} icon`}
               width={40}
               height={40}
               className="rounded-xl"

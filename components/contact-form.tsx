@@ -49,23 +49,40 @@ export function ContactForm() {
       }
     };
 
-    if (window.turnstile) {
-      renderWidget();
-      return;
-    }
+    const loadScript = () => {
+      if (window.turnstile) {
+        renderWidget();
+        return;
+      }
 
-    if (document.getElementById("cf-turnstile-script")) {
+      if (document.getElementById("cf-turnstile-script")) {
+        window.onTurnstileLoad = renderWidget;
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.id = "cf-turnstile-script";
+      script.src =
+        "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad";
+      script.async = true;
       window.onTurnstileLoad = renderWidget;
-      return;
-    }
+      document.head.appendChild(script);
+    };
 
-    const script = document.createElement("script");
-    script.id = "cf-turnstile-script";
-    script.src =
-      "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad";
-    script.async = true;
-    window.onTurnstileLoad = renderWidget;
-    document.head.appendChild(script);
+    // Lazy-load Turnstile when the form enters the viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          loadScript();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(turnstileRef.current);
+
+    return () => observer.disconnect();
   }, [handleToken]);
 
   const handleSubmit = async (e: React.FormEvent) => {

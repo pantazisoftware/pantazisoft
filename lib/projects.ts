@@ -68,7 +68,7 @@ export const projects: Project[] = [
       "Offline support with automatic sync",
       "End-to-end encrypted storage",
     ],
-    ogImage: "/projects/me-mo.png",
+    ogImage: "/projects/me-mo.webp",
     favicon: "https://www.me-mo.ro/logo.png",
   },
   {
