@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -6,7 +7,13 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="flex flex-col gap-12 md:flex-row md:justify-between">
           <div>
-            <div className="font-heading font-bold text-xl text-primary">
+            <div className="flex items-center gap-2 font-heading font-bold text-xl text-primary">
+              <Image
+                src="/logo-transparent.svg"
+                alt=""
+                width={28}
+                height={28}
+              />
               PantaziSoft
             </div>
             <p className="mt-2 text-sm text-muted max-w-xs">

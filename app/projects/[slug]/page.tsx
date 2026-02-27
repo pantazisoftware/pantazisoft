@@ -21,10 +21,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: project.name,
     description: project.description,
+    alternates: {
+      canonical: `/projects/${slug}`,
+    },
     openGraph: {
       title: `${project.name} — Built by PantaziSoft`,
       description: project.description,
+      url: `https://pantazisoft.com/projects/${slug}`,
       images: [{ url: project.ogImage }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} — Built by PantaziSoft`,
+      description: project.description,
+      images: [project.ogImage],
+      creator: "@eduard_pantazi",
     },
   };
 }

@@ -29,11 +29,105 @@ const services = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://pantazisoft.com/#organization",
+      name: "PantaziSoft",
+      url: "https://pantazisoft.com",
+      logo: "https://pantazisoft.com/android-chrome-512x512.png",
+      image: "https://pantazisoft.com/og-image.png",
+      foundingDate: "2020",
+      founder: {
+        "@type": "Person",
+        name: "Eduard Pantazi",
+        url: "https://www.linkedin.com/in/eduardpantazi/",
+        sameAs: [
+          "https://x.com/eduard_pantazi",
+          "https://www.linkedin.com/in/eduardpantazi/",
+        ],
+      },
+      sameAs: [
+        "https://x.com/eduard_pantazi",
+        "https://www.linkedin.com/in/eduardpantazi/",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://pantazisoft.com/#website",
+      url: "https://pantazisoft.com",
+      name: "PantaziSoft",
+      publisher: { "@id": "https://pantazisoft.com/#organization" },
+    },
+    {
+      "@type": "Service",
+      name: "MVP Development",
+      provider: { "@id": "https://pantazisoft.com/#organization" },
+      description:
+        "Go from idea to launch, fast. We design, build, and ship your minimum viable product so you can validate your idea with real users.",
+      offers: {
+        "@type": "Offer",
+        price: "500",
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "500",
+          priceCurrency: "USD",
+          unitText: "project",
+        },
+      },
+    },
+    {
+      "@type": "Service",
+      name: "Custom Applications",
+      provider: { "@id": "https://pantazisoft.com/#organization" },
+      description:
+        "Full-stack web applications built with modern technologies. Scalable architecture, clean code, and a product-first mindset.",
+      offers: {
+        "@type": "Offer",
+        price: "100",
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "100",
+          priceCurrency: "USD",
+          unitText: "project",
+        },
+      },
+    },
+    {
+      "@type": "Service",
+      name: "AI Integration",
+      provider: { "@id": "https://pantazisoft.com/#organization" },
+      description:
+        "Add intelligence to your product. From chatbots to content generation, we integrate AI capabilities into your application.",
+      offers: {
+        "@type": "Offer",
+        price: "250",
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "250",
+          priceCurrency: "USD",
+          unitText: "project",
+        },
+      },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero */}
-      <section className="pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden pattern-dots">
+      <section className="pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -68,7 +162,7 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section id="services" className="py-24 md:py-32 bg-surface pattern-grid">
+      <section id="services" className="py-24 md:py-32 bg-surface">
         <div className="mx-auto max-w-6xl px-6">
           <div className="max-w-2xl mb-16">
             <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-primary">
@@ -114,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="py-24 md:py-32 pattern-diagonal">
+      <section id="projects" className="py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <div className="max-w-2xl mb-16">
             <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-primary">
@@ -168,7 +262,7 @@ export default function Home() {
       </section>
 
       {/* About & Founder */}
-      <section id="about" className="py-24 md:py-32 bg-surface pattern-crosses">
+      <section id="about" className="py-24 md:py-32 bg-surface">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
             <div>
@@ -271,7 +365,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 md:py-32 pattern-circles">
+      <section id="contact" className="py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
             <div>

@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   description:
     "Software development studio specializing in MVPs, custom web applications, and AI integration. Let's build something together.",
   metadataBase: new URL("https://pantazisoft.com"),
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -37,6 +40,22 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://pantazisoft.com",
     siteName: "PantaziSoft",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "PantaziSoft — We Build Web Applications",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PantaziSoft — We Build Web Applications",
+    description:
+      "Software development studio specializing in MVPs, custom web applications, and AI integration.",
+    images: ["/og-image.png"],
+    creator: "@eduard_pantazi",
   },
 };
 

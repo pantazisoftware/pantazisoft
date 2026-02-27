@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -18,8 +19,14 @@ export function Header() {
       <div className="mx-auto max-w-6xl px-6 flex h-16 items-center justify-between">
         <Link
           href="/"
-          className="font-heading text-xl font-bold tracking-tight text-primary"
+          className="flex items-center gap-2 font-heading text-xl font-bold tracking-tight text-primary"
         >
+          <Image
+            src="/logo-transparent.svg"
+            alt=""
+            width={28}
+            height={28}
+          />
           PantaziSoft
         </Link>
 
