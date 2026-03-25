@@ -53,6 +53,9 @@ export function Footer() {
                 </svg>
               </a>
             </div>
+            <a href="https://webscore.now/trust/pantazisoft.com" target="_blank" className="mt-2" rel="noopener noreferrer">
+              <img src="https://webscore.now/api/badge/cmm59joqj000wkvl8ec5yjred?theme=light&style=score" alt="WebScore Trust Badge" width="200" height="48" />
+            </a>
           </div>
           <div className="flex gap-16">
             <div>
