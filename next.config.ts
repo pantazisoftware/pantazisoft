@@ -8,7 +8,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com",
       "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://bookify.one https://www.bookify.one https://webscore.now https://www.webscore.now https://me-mo.ro https://www.me-mo.ro https://snnnap.com https://www.snnnap.com",
+      "img-src 'self' data: blob: https://bookify.one https://www.bookify.one https://webscore.now https://www.webscore.now https://me-mo.ro https://www.me-mo.ro https://snnnap.com https://www.snnnap.com https://icons.duckduckgo.com",
       "font-src 'self' https://fonts.gstatic.com",
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://challenges.cloudflare.com",
       "frame-src https://challenges.cloudflare.com",

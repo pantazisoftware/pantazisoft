@@ -258,6 +258,47 @@ export default function Home() {
               </Link>
             ))}
           </div>
+
+          {/* Client projects */}
+          <div className="mt-12 flex flex-wrap gap-3" role="list" aria-label="Client projects">
+            {[
+              { name: "Andreea Nails Academy", url: "https://andreeanailsacademy.ro" },
+              { name: "Max Automotive", url: "https://maxautomotive.ro" },
+              { name: "Info100", url: "https://info100.ro" },
+              { name: "Bonchoux", url: "https://bonchoux.ro" },
+              { name: "Jooob", url: "https://jooob.work" },
+              { name: "Producator Peleti", url: "https://producator-peleti.ro" },
+              { name: "Punctar", url: "https://punctar.ro" },
+              { name: "Repora", url: "https://repora.ro" },
+              { name: "Ship To Moon", url: "https://shiptomoon.com" },
+            ].map((project) => {
+              const domain = new URL(project.url).hostname;
+              return (
+                <a
+                  key={domain}
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  aria-label={`${project.name} — view project (opens in new tab)`}
+                  className="group inline-flex items-center gap-2.5 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm text-secondary hover:border-zinc-300 hover:text-primary hover:shadow-sm transition-all"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
+                    alt=""
+                    width={16}
+                    height={16}
+                    className="rounded-sm"
+                  />
+                  <span aria-hidden="true" className="font-medium">{project.name}</span>
+                  <span aria-hidden="true" className="text-xs text-muted group-hover:text-primary transition-colors">
+                    View&nbsp;project&nbsp;&rarr;
+                  </span>
+                </a>
+              );
+            })}
+          </div>
         </div>
       </section>
 

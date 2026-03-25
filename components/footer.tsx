@@ -19,7 +19,7 @@ export function Footer() {
             <p className="mt-2 text-sm text-muted max-w-xs">
               Building web applications since 2020.
             </p>
-            <div className="mt-4 flex items-center gap-3">
+            <div className="mt-4 flex items-center gap-3 mb-2">
               <a
                 href="https://x.com/eduard_pantazi"
                 target="_blank"
