@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Rocket, Layers, Sparkles, ArrowRight } from "lucide-react";
 import { projects } from "@/lib/projects";
+import { apps } from "@/lib/apps";
 import { ContactForm } from "@/components/contact-form";
 import { HeroAnimation } from "@/components/hero-animation";
+import { AppCardSlider } from "@/components/app-card-slider";
 
 const services = [
   {
@@ -220,6 +222,36 @@ export default function Home() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
+            {apps.map((app) => (
+              <Link
+                key={app.slug}
+                href={`/app/${app.slug}`}
+                className="group relative block rounded-card overflow-hidden bg-zinc-950 ring-1 ring-white/5 hover:ring-orange-500/40 transition-all"
+              >
+                <div className="relative aspect-[4/5] sm:aspect-[4/3] overflow-hidden bg-zinc-900">
+                  <AppCardSlider screenshots={app.screenshots.slice(0, 5)} />
+                </div>
+                <div className="relative p-6 md:p-8">
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src={app.logo}
+                      alt={`${app.name} app icon`}
+                      width={28}
+                      height={28}
+                      className="rounded-[7px] ring-1 ring-white/10"
+                    />
+                    <h3 className="font-heading font-semibold text-white">
+                      {app.name}
+                    </h3>
+                  </div>
+                  <p className="mt-2 text-zinc-400 text-sm">{app.tagline}</p>
+                  <div className="mt-4 flex items-center gap-1 text-sm font-medium text-zinc-500 group-hover:text-orange-500 transition-colors">
+                    View app
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  </div>
+                </div>
+              </Link>
+            ))}
             {projects.map((project) => (
               <Link
                 key={project.slug}
