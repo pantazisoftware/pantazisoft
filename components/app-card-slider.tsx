@@ -48,7 +48,7 @@ export function AppCardSlider({ screenshots, intervalMs = 2800 }: Props) {
           <span
             key={s.src}
             className={`h-1.5 rounded-full transition-all ${
-              i === index ? "w-5 bg-orange-500" : "w-1.5 bg-white/40"
+              i === index ? "w-5 bg-app" : "w-1.5 bg-white/40"
             }`}
           />
         ))}

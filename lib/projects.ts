@@ -7,6 +7,8 @@ export type Project = {
   longDescription: string;
   features: string[];
   ogImage: string;
+  /** Descriptive alt text for the project's screenshot / OG image. */
+  imageAlt?: string;
   favicon: string;
 };
 
@@ -48,7 +50,9 @@ export const projects: Project[] = [
       "Automatic monitoring with email alerts",
       "Google Search Console integration",
     ],
-    ogImage: "https://webscore.now/og-image.png",
+    ogImage: "/webscore_overview.webp",
+    imageAlt:
+      "WebScore dashboard showing an overall website health score of 92, with separate performance, SEO, accessibility, and security scores and a score-evolution chart.",
     favicon: "https://webscore.now/favicon.svg",
   },
   {
@@ -69,27 +73,9 @@ export const projects: Project[] = [
       "End-to-end encrypted storage",
     ],
     ogImage: "/projects/me-mo.webp",
+    imageAlt:
+      "Memo — digital photo albums for events, where guests contribute photos in real time by scanning a QR code.",
     favicon: "https://www.me-mo.ro/logo.png",
-  },
-  {
-    slug: "snnnap",
-    name: "Snnnap",
-    url: "https://snnnap.com",
-    tagline: "Event photo sharing with QR codes",
-    description:
-      "Capture every moment from every angle. Guests scan a QR code to upload photos and videos — no app needed.",
-    longDescription:
-      "Snnnap is an event photo sharing platform that captures every moment from every angle. With a simple QR code scan, guests can upload unlimited photos and videos directly from their phones — no app installation needed. Perfect for weddings, corporate events, and celebrations where you want to see the event through everyone's eyes.",
-    features: [
-      "Unlimited photo & video uploads",
-      "Offline-first with automatic sync",
-      "Customizable QR code templates",
-      "Content moderation controls",
-      "48-hour post-event upload window",
-      "Full resolution ZIP downloads",
-    ],
-    ogImage: "https://snnnap.com/images/og-image.png",
-    favicon: "https://snnnap.com/favicon.ico",
   },
 ];
 

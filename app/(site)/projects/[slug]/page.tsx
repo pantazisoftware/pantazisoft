@@ -94,7 +94,7 @@ export default async function ProjectPage({ params }: Props) {
             <div className="aspect-video relative">
               <Image
                 src={project.ogImage}
-                alt={`${project.name} screenshot`}
+                alt={project.imageAlt ?? `${project.name} screenshot`}
                 fill
                 className="object-cover"
                 priority

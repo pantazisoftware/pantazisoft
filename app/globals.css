@@ -20,6 +20,11 @@
 @theme inline {
   --font-heading: var(--font-jakarta);
   --font-body: var(--font-inter);
+
+  /* Per-app accent. Each iOS-app subtree sets --app-accent / --app-accent-hover
+     on its layout wrapper; falls back to FabricatorPro's orange when unset. */
+  --color-app: var(--app-accent, #f97316);
+  --color-app-hover: var(--app-accent-hover, #fb923c);
 }
 
 html {

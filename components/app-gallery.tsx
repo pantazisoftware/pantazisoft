@@ -37,8 +37,8 @@ export function AppGallery({ screenshots }: Props) {
   return (
     <div className="relative">
       <div className="relative aspect-[9/16] max-w-[320px] mx-auto sm:max-w-[360px] md:max-w-[400px]">
-        <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-orange-500/20 via-orange-500/5 to-transparent blur-2xl" />
-        <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] bg-zinc-900 ring-1 ring-white/10 shadow-2xl shadow-orange-500/10">
+        <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-app/20 via-app/5 to-transparent blur-2xl" />
+        <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] bg-zinc-900 ring-1 ring-white/10 shadow-2xl shadow-app/10">
           <Image
             key={current.src}
             src={current.src}
@@ -62,7 +62,7 @@ export function AppGallery({ screenshots }: Props) {
           type="button"
           onClick={prev}
           aria-label="Previous screenshot"
-          className="w-11 h-11 rounded-full bg-zinc-900 ring-1 ring-white/10 text-white flex items-center justify-center hover:bg-orange-500 hover:ring-orange-500 transition-colors"
+          className="w-11 h-11 rounded-full bg-zinc-900 ring-1 ring-white/10 text-white flex items-center justify-center hover:bg-app hover:ring-app transition-colors"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -78,7 +78,7 @@ export function AppGallery({ screenshots }: Props) {
               onClick={() => setIndex(i)}
               className={`h-1.5 rounded-full transition-all ${
                 i === index
-                  ? "w-6 bg-orange-500"
+                  ? "w-6 bg-app"
                   : "w-1.5 bg-zinc-700 hover:bg-zinc-500"
               }`}
             />
@@ -89,7 +89,7 @@ export function AppGallery({ screenshots }: Props) {
           type="button"
           onClick={next}
           aria-label="Next screenshot"
-          className="w-11 h-11 rounded-full bg-zinc-900 ring-1 ring-white/10 text-white flex items-center justify-center hover:bg-orange-500 hover:ring-orange-500 transition-colors"
+          className="w-11 h-11 rounded-full bg-zinc-900 ring-1 ring-white/10 text-white flex items-center justify-center hover:bg-app hover:ring-app transition-colors"
         >
           <ChevronRight className="w-5 h-5" />
         </button>

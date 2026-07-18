@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Rocket, Layers, Sparkles, ArrowRight } from "lucide-react";
@@ -226,10 +227,28 @@ export default function Home() {
               <Link
                 key={app.slug}
                 href={`/app/${app.slug}`}
-                className="group relative block rounded-card overflow-hidden bg-zinc-950 ring-1 ring-white/5 hover:ring-orange-500/40 transition-all"
+                style={
+                  {
+                    "--app-accent": app.accent.base,
+                    "--app-accent-hover": app.accent.hover,
+                  } as CSSProperties
+                }
+                className="group relative block rounded-card overflow-hidden bg-zinc-950 ring-1 ring-white/5 hover:ring-app/40 transition-all"
               >
                 <div className="relative aspect-[4/5] sm:aspect-[4/3] overflow-hidden bg-zinc-900">
-                  <AppCardSlider screenshots={app.screenshots.slice(0, 5)} />
+                  {app.screenshots.length > 0 ? (
+                    <AppCardSlider screenshots={app.screenshots.slice(0, 5)} />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <Image
+                        src={app.logo}
+                        alt={`${app.name} app icon`}
+                        width={104}
+                        height={104}
+                        className="rounded-[22%] ring-1 ring-white/10"
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className="relative p-6 md:p-8">
                   <div className="flex items-center gap-3">
@@ -244,8 +263,10 @@ export default function Home() {
                       {app.name}
                     </h3>
                   </div>
-                  <p className="mt-2 text-zinc-400 text-sm">{app.tagline}</p>
-                  <div className="mt-4 flex items-center gap-1 text-sm font-medium text-zinc-500 group-hover:text-orange-500 transition-colors">
+                  <p className="mt-2 text-zinc-400 text-sm">
+                    {app.homeTagline ?? app.tagline}
+                  </p>
+                  <div className="mt-4 flex items-center gap-1 text-sm font-medium text-zinc-500 group-hover:text-app transition-colors">
                     View app
                     <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </div>
@@ -261,7 +282,7 @@ export default function Home() {
                 <div className="aspect-video bg-zinc-100 relative overflow-hidden">
                   <Image
                     src={project.ogImage}
-                    alt={project.name}
+                    alt={project.imageAlt ?? `${project.name} — ${project.tagline}`}
                     fill
                     className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
                   />
@@ -294,15 +315,10 @@ export default function Home() {
           {/* Client projects */}
           <div className="mt-12 flex flex-wrap gap-3" role="list" aria-label="Client projects">
             {[
-              { name: "Andreea Nails Academy", url: "https://andreeanailsacademy.ro" },
               { name: "Max Automotive", url: "https://maxautomotive.ro" },
-              { name: "Info100", url: "https://info100.ro" },
               { name: "Bonchoux", url: "https://bonchoux.ro" },
-              { name: "Jooob", url: "https://jooob.work" },
               { name: "Producator Peleti", url: "https://producator-peleti.ro" },
-              { name: "Punctar", url: "https://punctar.ro" },
               { name: "Repora", url: "https://repora.ro" },
-              { name: "Ship To Moon", url: "https://shiptomoon.com" },
             ].map((project) => {
               const domain = new URL(project.url).hostname;
               return (

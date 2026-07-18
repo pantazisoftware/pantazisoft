@@ -106,12 +106,6 @@ export function Footer() {
                 >
                   Memo
                 </Link>
-                <Link
-                  href="/projects/snnnap"
-                  className="text-sm text-secondary hover:text-primary transition-colors"
-                >
-                  Snnnap
-                </Link>
               </div>
             </div>
           </div>

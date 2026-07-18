@@ -7,6 +7,8 @@ type Props = {
   appLogo: string;
   supportEmail: string;
   companyName: string;
+  navLinks: { href: string; label: string }[];
+  footerNote?: string;
 };
 
 export function AppFooter({
@@ -15,6 +17,8 @@ export function AppFooter({
   appLogo,
   supportEmail,
   companyName,
+  navLinks,
+  footerNote,
 }: Props) {
   return (
     <footer className="bg-zinc-950 border-t border-white/5">
@@ -50,24 +54,15 @@ export function AppFooter({
             <div>
               <h3 className="text-sm font-semibold text-white mb-4">App</h3>
               <div className="flex flex-col gap-3">
-                <Link
-                  href={`/app/${appSlug}#features`}
-                  className="text-sm text-zinc-400 hover:text-white transition-colors"
-                >
-                  Features
-                </Link>
-                <Link
-                  href={`/app/${appSlug}#tools`}
-                  className="text-sm text-zinc-400 hover:text-white transition-colors"
-                >
-                  Tools
-                </Link>
-                <Link
-                  href={`/app/${appSlug}#gallery`}
-                  className="text-sm text-zinc-400 hover:text-white transition-colors"
-                >
-                  Gallery
-                </Link>
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             </div>
             <div>
@@ -97,7 +92,12 @@ export function AppFooter({
         </div>
 
         <div className="mt-12 pt-6 border-t border-white/5">
-          <p className="text-sm text-zinc-600 text-center">
+          {footerNote && (
+            <p className="text-xs text-zinc-600 leading-[1.6] max-w-3xl mb-4">
+              {footerNote}
+            </p>
+          )}
+          <p className="text-sm text-zinc-600">
             &copy; {new Date().getFullYear()} {companyName}. All rights
             reserved.
           </p>
