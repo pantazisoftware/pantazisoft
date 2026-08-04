@@ -1,25 +1,66 @@
 @import "tailwindcss";
 
 @theme {
-  --color-page: #fafafa;
+  /* ── Surfaces ─────────────────────────────────────────────────────────── */
+  --color-page: #f5f5f6;
   --color-surface: #ffffff;
+  --color-surface-subtle: #fafafa;
   --color-surface-hover: #f4f4f5;
-  --color-primary: #18181b;
-  --color-secondary: #52525b;
-  --color-muted: #a1a1aa;
+  --color-surface-inverse: #101012;
+
+  /* ── Text (contrast on #ffffff / #f5f5f6) ─────────────────────────────── */
+  --color-primary: #09090b; /* 19.9:1 — headings, key numbers */
+  --color-secondary: #3f3f46; /* 10.4:1 — body copy */
+  --color-muted: #62626b; /*  6.3:1 — labels, meta (AA at any size) */
+
+  /* ── Lines ────────────────────────────────────────────────────────────── */
+  --color-border: #e3e3e7;
+  --color-border-strong: #d1d1d6;
+
+  /* ── Actions ──────────────────────────────────────────────────────────── */
   --color-accent: #18181b;
+  --color-accent-hover: #2f2f35;
   --color-accent-foreground: #ffffff;
-  --color-accent-secondary: #f4f4f5;
-  --color-accent-secondary-hover: #e4e4e7;
+  --color-accent-secondary: #ffffff;
+  --color-accent-secondary-hover: #f4f4f5;
+
+  /* Brand lime, from the logo. Only `brand-ink` is safe on light surfaces. */
+  --color-brand: #7ccf00;
+  --color-brand-ink: #4d7c0f; /* 4.8:1 on white */
 
   --radius-card: 1.5rem;
   --radius-button: 0.875rem;
   --radius-input: 0.875rem;
+
+  /* ── Type scale helpers ───────────────────────────────────────────────── */
+  --tracking-display: -0.033em;
+  --tracking-heading: -0.022em;
+  --tracking-title: -0.014em;
+  --tracking-body: -0.006em;
+  --tracking-eyebrow: 0.09em;
+
+  --leading-display: 1.05;
+  --leading-title: 1.2;
+  --leading-body: 1.6;
+  --leading-prose: 1.72;
+
+  /* ── Elevation — soft, layered, never muddy ───────────────────────────── */
+  --shadow-card: 0 1px 2px rgb(9 9 11 / 0.04), 0 4px 14px -4px rgb(9 9 11 / 0.06);
+  --shadow-card-lift: 0 2px 4px rgb(9 9 11 / 0.05),
+    0 16px 32px -12px rgb(9 9 11 / 0.13);
+  --shadow-action: 0 1px 2px rgb(9 9 11 / 0.16), inset 0 1px 0 rgb(255 255 255 / 0.09);
+  --shadow-panel: 0 1px 2px rgb(9 9 11 / 0.04), 0 24px 48px -20px rgb(9 9 11 / 0.16);
 }
 
 @theme inline {
-  --font-heading: var(--font-jakarta);
-  --font-body: var(--font-inter);
+  /* System UI stack — no webfonts are loaded anywhere on the site. The two
+     names are kept so headings and body copy can diverge in the future. */
+  --font-heading: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
 
   /* Per-app accent. Each iOS-app subtree sets --app-accent / --app-accent-hover
      on its layout wrapper; falls back to FabricatorPro's orange when unset. */
@@ -34,6 +75,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-optical-sizing: auto;
+  font-synthesis-weight: none;
 }
 
 *,
@@ -43,15 +85,178 @@ html {
   -moz-osx-font-smoothing: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  text-wrap: balance;
+body {
+  letter-spacing: var(--tracking-body);
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-  letter-spacing: -0.02em;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  letter-spacing: var(--tracking-heading);
+}
+
+/* Proportional figures in running text; tabular ones only where they line up
+   in columns (see `.numeric`). */
 p {
   text-wrap: pretty;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "tnum" 1;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+/* Numerals in stats/prices line up and never wobble between weights. */
+.numeric {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1, "kern" 1;
+}
+
+::selection {
+  background: #18181b;
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Inputs carry their own focus ring — don't stack a second outline on top. */
+.field:focus-visible {
+  outline: none;
+}
+
+@layer components {
+  /* ── Buttons ───────────────────────────────────────────────────────────
+     Shared shape so every call to action has identical rhythm and optics. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-button);
+    font-size: 0.9375rem;
+    font-weight: 550;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    padding: 0.9375rem 1.5rem;
+    white-space: nowrap;
+    transition: background-color 150ms ease, color 150ms ease,
+      border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+  }
+
+  .btn-sm {
+    padding: 0.6875rem 1.125rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-accent-foreground);
+    box-shadow: var(--shadow-action);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-accent-secondary);
+    color: var(--color-primary);
+    border: 1px solid var(--color-border-strong);
+    box-shadow: var(--shadow-card);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-accent-secondary-hover);
+    border-color: #b9b9c0;
+  }
+
+  .btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  /* ── Cards ─────────────────────────────────────────────────────────────
+     A visible 1px edge + layered shadow, so a white card still reads as an
+     object when it sits on a white section. */
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-interactive {
+    transition: box-shadow 220ms ease, border-color 220ms ease,
+      transform 220ms ease;
+  }
+
+  .card-interactive:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-card-lift);
+    transform: translateY(-2px);
+  }
+
+  /* ── Form fields ───────────────────────────────────────────────────────── */
+  .field {
+    width: 100%;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-input);
+    padding: 0.8125rem 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-primary);
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  /* 4.7:1 on white — readable, still clearly distinct from an entered value. */
+  .field::placeholder {
+    color: #73737b;
+  }
+
+  .field:hover {
+    border-color: #b9b9c0;
+  }
+
+  .field:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgb(24 24 27 / 0.1);
+  }
+
+  /* ── Eyebrow label ─────────────────────────────────────────────────────── */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+}
+
+/* Faint grid used behind hero sections. */
+.grid-backdrop {
+  background-image: linear-gradient(
+      to right,
+      rgb(9 9 11 / 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgb(9 9 11 / 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 70% at 50% 0%,
+    #000 30%,
+    transparent 75%
+  );
 }
 
 @keyframes hero-float {
@@ -74,3 +279,16 @@ p {
   transform-origin: center;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

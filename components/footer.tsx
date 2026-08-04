@@ -1,13 +1,40 @@
 import Link from "next/link";
 import Image from "next/image";
+import { services } from "@/lib/services";
+
+const columns = [
+  {
+    heading: "Services",
+    links: services.map((service) => ({
+      href: `/services/${service.slug}`,
+      label: service.name,
+    })),
+  },
+  {
+    heading: "Company",
+    links: [
+      { href: "/#projects", label: "Work" },
+      { href: "/#about", label: "About" },
+      { href: "/#contact", label: "Contact" },
+    ],
+  },
+  {
+    heading: "Projects",
+    links: [
+      { href: "/projects/bookify", label: "Bookify" },
+      { href: "/projects/webscore", label: "WebScore" },
+      { href: "/projects/memo", label: "Memo" },
+    ],
+  },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-surface">
+    <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="flex flex-col gap-12 md:flex-row md:justify-between">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,20rem)_1fr]">
           <div>
-            <div className="flex items-center gap-2 font-heading font-bold text-xl text-primary">
+            <div className="flex items-center gap-2 text-[1.0625rem] font-bold tracking-title text-primary">
               <Image
                 src="/logo-transparent.svg"
                 alt="PantaziSoft logo"
@@ -16,15 +43,16 @@ export function Footer() {
               />
               PantaziSoft
             </div>
-            <p className="mt-2 text-sm text-muted max-w-xs">
-              Building web applications since 2020.
+            <p className="mt-3 max-w-xs text-sm text-secondary leading-body">
+              A small software studio building web applications since 2020.
+              Fixed scope, fixed price, code you own.
             </p>
-            <div className="mt-4 flex items-center gap-3 mb-2">
+            <div className="mt-5 flex items-center gap-2.5">
               <a
                 href="https://x.com/eduard_pantazi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 bg-zinc-100 rounded-lg flex items-center justify-center text-zinc-400 hover:text-primary hover:bg-zinc-200 transition-colors"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface-subtle text-secondary transition-colors hover:border-border-strong hover:text-primary"
                 aria-label="X (Twitter)"
               >
                 <svg
@@ -40,7 +68,7 @@ export function Footer() {
                 href="https://www.linkedin.com/in/eduardpantazi/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 bg-zinc-100 rounded-lg flex items-center justify-center text-zinc-400 hover:text-primary hover:bg-zinc-200 transition-colors"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface-subtle text-secondary transition-colors hover:border-border-strong hover:text-primary"
                 aria-label="LinkedIn"
               >
                 <svg
@@ -53,66 +81,50 @@ export function Footer() {
                 </svg>
               </a>
             </div>
-            <a href="https://webscore.now/trust/pantazisoft.com" target="_blank" className="mt-2" rel="noopener noreferrer">
-              <img src="https://webscore.now/api/badge/cmm59joqj000wkvl8ec5yjred?theme=light&style=score" alt="WebScore Trust Badge" width="200" height="48" />
+            <a
+              href="https://webscore.now/trust/pantazisoft.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-block"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://webscore.now/api/badge/cmm59joqj000wkvl8ec5yjred?theme=light&style=score"
+                alt="WebScore Trust Badge"
+                width="200"
+                height="48"
+              />
             </a>
           </div>
-          <div className="flex gap-16">
-            <div>
-              <h3 className="text-sm font-semibold text-primary mb-4">
-                Company
-              </h3>
-              <div className="flex flex-col gap-3">
-                <Link
-                  href="/#services"
-                  className="text-sm text-secondary hover:text-primary transition-colors"
-                >
-                  Services
-                </Link>
-                <Link
-                  href="/#projects"
-                  className="text-sm text-secondary hover:text-primary transition-colors"
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="/#contact"
-                  className="text-sm text-secondary hover:text-primary transition-colors"
-                >
-                  Contact
-                </Link>
+
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:justify-items-end">
+            {columns.map((column) => (
+              <div key={column.heading}>
+                <h3 className="text-xs font-semibold uppercase tracking-eyebrow text-muted">
+                  {column.heading}
+                </h3>
+                <div className="mt-4 flex flex-col gap-3">
+                  {column.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-sm font-medium text-secondary transition-colors hover:text-primary"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-primary mb-4">
-                Projects
-              </h3>
-              <div className="flex flex-col gap-3">
-                <Link
-                  href="/projects/bookify"
-                  className="text-sm text-secondary hover:text-primary transition-colors"
-                >
-                  Bookify
-                </Link>
-                <Link
-                  href="/projects/webscore"
-                  className="text-sm text-secondary hover:text-primary transition-colors"
-                >
-                  WebScore
-                </Link>
-                <Link
-                  href="/projects/memo"
-                  className="text-sm text-secondary hover:text-primary transition-colors"
-                >
-                  Memo
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-        <div className="mt-16">
-          <p className="text-sm text-muted text-center">
+
+        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-border pt-8 sm:flex-row">
+          <p className="text-sm text-muted">
             &copy; {new Date().getFullYear()} PantaziSoft. All rights reserved.
+          </p>
+          <p className="text-sm text-muted">
+            Built in-house with Next.js and TypeScript.
           </p>
         </div>
       </div>

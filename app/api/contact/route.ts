@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const { name, email, message, token } = await req.json();
+    const { name, email, message, service, token } = await req.json();
 
     if (!name || !email || !message || !token) {
       return NextResponse.json(
@@ -35,13 +35,28 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // `service` is optional — set when the inquiry comes from a service page
+    const serviceLabel =
+      typeof service === "string" && service.trim() ? service.trim() : null;
+
     // Send email via Resend
     await resend.emails.send({
       from: "PantaziSoft <noreply@pantazisoft.com>",
       to: process.env.CONTACT_EMAIL!,
-      subject: `New inquiry from ${name}`,
+      subject: serviceLabel
+        ? `New ${serviceLabel} inquiry from ${name}`
+        : `New inquiry from ${name}`,
       replyTo: email,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      text: [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        serviceLabel ? `Service: ${serviceLabel}` : null,
+        "",
+        "Message:",
+        message,
+      ]
+        .filter((line) => line !== null)
+        .join("\n"),
     });
 
     return NextResponse.json({ success: true });

@@ -50,22 +50,16 @@ export function CookieConsent() {
       {/* Consent banner — only shown when no decision has been made */}
       {consent === "pending" && (
         <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6">
-          <div className="mx-auto max-w-lg bg-surface rounded-card p-6 shadow-lg">
-            <p className="text-sm text-secondary leading-relaxed">
+          <div className="mx-auto max-w-lg rounded-card border border-border bg-surface p-6 shadow-panel">
+            <p className="text-sm text-secondary leading-body">
               We use cookies to understand how visitors interact with our
               website. Analytics are completely disabled until you accept.
             </p>
-            <div className="mt-4 flex items-center gap-3">
-              <button
-                onClick={accept}
-                className="bg-accent text-accent-foreground px-5 py-2 rounded-button text-sm font-medium hover:bg-zinc-700 transition-colors"
-              >
+            <div className="mt-5 flex items-center gap-2">
+              <button onClick={accept} className="btn btn-primary btn-sm">
                 Accept
               </button>
-              <button
-                onClick={decline}
-                className="text-sm font-medium text-secondary hover:text-primary transition-colors px-3 py-2"
-              >
+              <button onClick={decline} className="btn btn-sm text-secondary hover:text-primary">
                 Decline
               </button>
             </div>

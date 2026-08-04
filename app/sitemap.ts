@@ -1,10 +1,18 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/lib/projects";
 import { apps } from "@/lib/apps";
+import { services } from "@/lib/services";
 
 const BASE = "https://pantazisoft.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const serviceRoutes = services.map((service) => ({
+    url: `${BASE}/services/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }));
+
   const projectRoutes = projects.map((project) => ({
     url: `${BASE}/projects/${project.slug}`,
     lastModified: new Date(),
@@ -40,6 +48,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: `${BASE}/services`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    ...serviceRoutes,
     ...projectRoutes,
     ...appRoutes,
   ];
