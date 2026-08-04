@@ -8,6 +8,7 @@ import { services } from "@/lib/services";
 import { ContactForm } from "@/components/contact-form";
 import { HeroAnimation } from "@/components/hero-animation";
 import { AppCardSlider } from "@/components/app-card-slider";
+import { SiteFavicon } from "@/components/site-favicon";
 
 const clientProjects = [
   { name: "Max Automotive", url: "https://maxautomotive.ro" },
@@ -363,14 +364,7 @@ export default function Home() {
                     aria-label={`${project.name} — view project (opens in new tab)`}
                     className="group inline-flex items-center gap-2.5 rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-secondary shadow-card transition-all hover:border-border-strong hover:text-primary"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
-                      alt=""
-                      width={16}
-                      height={16}
-                      className="rounded-sm"
-                    />
+                    <SiteFavicon domain={domain} />
                     <span aria-hidden="true">{project.name}</span>
                     <ArrowUpRight
                       aria-hidden="true"

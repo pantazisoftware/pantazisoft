@@ -9,7 +9,8 @@ type Props = {
   appSlug: string;
   appName: string;
   appLogo: string;
-  appStoreUrl: string;
+  /** `null` until the app is live on the App Store. */
+  appStoreUrl: string | null;
   navLinks: { href: string; label: string }[];
 };
 
@@ -49,14 +50,20 @@ export function AppHeader({
               {link.label}
             </Link>
           ))}
-          <a
-            href={appStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-app text-white px-5 py-2 rounded-button text-sm font-semibold hover:bg-app-hover transition-colors"
-          >
-            Download
-          </a>
+          {appStoreUrl ? (
+            <a
+              href={appStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-app text-white px-5 py-2 rounded-button text-sm font-semibold hover:bg-app-hover transition-colors"
+            >
+              Download
+            </a>
+          ) : (
+            <span className="bg-white/10 text-zinc-300 px-5 py-2 rounded-button text-sm font-semibold">
+              Coming soon
+            </span>
+          )}
         </nav>
 
         <button
@@ -80,15 +87,21 @@ export function AppHeader({
               {link.label}
             </Link>
           ))}
-          <a
-            href={appStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="bg-app text-white px-5 py-2.5 rounded-button text-sm font-semibold text-center hover:bg-app-hover transition-colors"
-          >
-            Download
-          </a>
+          {appStoreUrl ? (
+            <a
+              href={appStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="bg-app text-white px-5 py-2.5 rounded-button text-sm font-semibold text-center hover:bg-app-hover transition-colors"
+            >
+              Download
+            </a>
+          ) : (
+            <span className="bg-white/10 text-zinc-300 px-5 py-2.5 rounded-button text-sm font-semibold text-center">
+              Coming soon
+            </span>
+          )}
         </nav>
       )}
     </header>

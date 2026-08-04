@@ -81,7 +81,9 @@ export default async function AppLandingPage({ params }: Props) {
                     iOS App
                   </p>
                   <p className="text-zinc-400 text-sm mt-1">
-                    Available on the App Store
+                    {app.appStoreUrl
+                      ? "Available on the App Store"
+                      : "Coming soon to the App Store"}
                   </p>
                 </div>
               </div>

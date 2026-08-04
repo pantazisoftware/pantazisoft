@@ -86,7 +86,9 @@ export type AppProject = {
   description: string;
   longDescription: string;
   logo: string;
-  appStoreUrl: string;
+  /** App Store listing. `null` until the app is live — the download controls
+   *  render a "Coming soon" state instead of linking somewhere that 404s. */
+  appStoreUrl: string | null;
   appStoreId?: string;
   accent: AppAccent;
   screenshots: AppScreenshot[];
@@ -688,7 +690,8 @@ export const apps: AppProject[] = [
     longDescription:
       "Remoto is a clean, native iOS remote that pairs with your Android TV or Google TV device in under 30 seconds and stays out of your way. It replaces the plastic remote you lost between the couch cushions — nothing more.",
     logo: "/app/remoto/remoto-icon.png",
-    appStoreUrl: "https://apps.apple.com/app/remoto",
+    // Not published yet — set this to the real listing URL once it is live.
+    appStoreUrl: null,
     accent: { base: "#6366f1", hover: "#818cf8" },
     // Screenshots are added once the user provides them; drop the files in
     // public/app/remoto/ and list them here to light up the hero + gallery.
