@@ -124,9 +124,13 @@ p {
   outline-offset: 2px;
 }
 
-/* Inputs carry their own focus ring — don't stack a second outline on top. */
+/* Inputs carry their own focus ring (border + shadow), so don't stack a second
+   outline on top. The outline stays transparent rather than removed: forced-colors
+   mode drops box-shadow and overrides border-color, and a transparent outline is
+   the one part it repaints in the system highlight colour. */
 .field:focus-visible {
-  outline: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 @layer components {
@@ -224,7 +228,8 @@ p {
   }
 
   .field:focus {
-    outline: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
     border-color: var(--color-accent);
     box-shadow: 0 0 0 3px rgb(24 24 27 / 0.1);
   }

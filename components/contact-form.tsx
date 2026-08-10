@@ -44,6 +44,14 @@ export function ContactForm({
   const [errorMessage, setErrorMessage] = useState("");
   const turnstileRef = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | null>(null);
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
+
+  // Submitting swaps the whole form out for the confirmation card, which destroys
+  // the focused submit button and drops focus to <body>. Move it to the heading so
+  // keyboard users keep their place and screen readers announce the result.
+  useEffect(() => {
+    if (status === "success") successHeadingRef.current?.focus();
+  }, [status]);
 
   const handleToken = useCallback((t: string) => setToken(t), []);
 
@@ -136,11 +144,15 @@ export function ContactForm({
 
   if (status === "success") {
     return (
-      <div className="card p-8 md:p-12 text-center">
+      <div role="status" className="card p-8 md:p-12 text-center">
         <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white">
           <Check className="w-7 h-7" strokeWidth={2.5} />
         </div>
-        <h3 className="mt-6 text-2xl font-semibold tracking-title text-primary">
+        <h3
+          ref={successHeadingRef}
+          tabIndex={-1}
+          className="mt-6 text-2xl font-semibold tracking-title text-primary"
+        >
           Message sent
         </h3>
         <p className="mt-3 text-secondary leading-body max-w-sm mx-auto">
@@ -225,6 +237,11 @@ export function ContactForm({
           />
         </div>
         <div ref={turnstileRef} className="empty:hidden" />
+        {/* Always mounted — a live region inserted at the same moment as its text
+            is announced unreliably, so the element outlives the state it reports. */}
+        <p aria-live="polite" className="sr-only">
+          {status === "loading" ? "Sending your message…" : ""}
+        </p>
         {status === "error" && errorMessage && (
           <p
             role="alert"
