@@ -35,7 +35,6 @@ export function AppCardSlider({ screenshots, intervalMs = 2800 }: Props) {
           className={`object-cover object-top transition-opacity duration-700 ease-out ${
             i === index ? "opacity-100" : "opacity-0"
           }`}
-          priority={i === 0}
           quality={95}
         />
       ))}

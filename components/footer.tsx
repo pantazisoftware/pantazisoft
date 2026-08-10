@@ -93,6 +93,8 @@ export function Footer() {
                 alt="WebScore Trust Badge"
                 width="200"
                 height="48"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>

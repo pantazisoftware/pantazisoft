@@ -62,6 +62,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Turnstile sits on the conversion path and costs a full handshake before
+            the widget can render, so the connection is warmed up front. Google Tag
+            Manager is deliberately absent: reaching out to Google before the cookie
+            banner has been answered is exactly what the banner exists to prevent. */}
+        <link rel="preconnect" href="https://challenges.cloudflare.com" />
+        <link rel="preconnect" href="https://webscore.now" />
+      </head>
       <body className="font-body antialiased">
         {children}
         <CookieConsentLoader />

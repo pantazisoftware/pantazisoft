@@ -8,7 +8,9 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com",
       "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://bookify.one https://www.bookify.one https://webscore.now https://www.webscore.now https://me-mo.ro https://www.me-mo.ro https://icons.duckduckgo.com",
+      // Site-chip favicons come through /api/site-icon now, so the icon service
+      // is no longer a browser-visible origin.
+      "img-src 'self' data: blob: https://bookify.one https://www.bookify.one https://webscore.now https://www.webscore.now https://me-mo.ro https://www.me-mo.ro",
       "font-src 'self' https://fonts.gstatic.com",
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://challenges.cloudflare.com",
       "frame-src https://challenges.cloudflare.com",
@@ -43,6 +45,18 @@ const securityHeaders = [
     key: "Strict-Transport-Security",
     value: "max-age=63072000; includeSubDomains; preload",
   },
+  {
+    key: "Cross-Origin-Opener-Policy",
+    value: "same-origin",
+  },
+  {
+    key: "Cross-Origin-Resource-Policy",
+    value: "same-origin",
+  },
+  // Deliberately no Cross-Origin-Embedder-Policy: require-corp would block the
+  // WebScore badge, which serves neither CORP nor CORS headers, and its only
+  // payoff is cross-origin isolation (SharedArrayBuffer, high-resolution timers)
+  // that nothing here uses.
 ];
 
 const nextConfig: NextConfig = {

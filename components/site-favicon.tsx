@@ -1,31 +1,26 @@
-"use client";
-
-import { useState } from "react";
-
 type Props = {
   /** Bare hostname, e.g. "example.com". */
   domain: string;
 };
 
 /**
- * Decorative favicon for an external site. The icon service returns 404 for
- * some domains, so the image removes itself rather than leaving a broken-image
- * glyph in the chip — the site name next to it carries the meaning.
+ * Decorative favicon for an external site, served through /api/site-icon.
+ *
+ * The icon service has no entry for some domains. The proxy answers those with a
+ * transparent pixel, so a miss leaves an empty slot — the site name next to it
+ * carries the meaning — without the 404 a direct request would log to the
+ * console. The reserved slot also keeps chip labels aligned with one another.
  */
 export function SiteFavicon({ domain }: Props) {
-  const [failed, setFailed] = useState(false);
-
-  if (failed) return null;
-
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
+      src={`/api/site-icon?domain=${encodeURIComponent(domain)}`}
       alt=""
       width={16}
       height={16}
       loading="lazy"
-      onError={() => setFailed(true)}
+      decoding="async"
       className="rounded-sm"
     />
   );
