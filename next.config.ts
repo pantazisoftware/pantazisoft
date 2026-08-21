@@ -5,14 +5,14 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com",
-      "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com https://feedfa.st",
+      "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com https://feedfa.st",
       "style-src 'self' 'unsafe-inline'",
       // Site-chip favicons come through /api/site-icon now, so the icon service
       // is no longer a browser-visible origin.
-      "img-src 'self' data: blob: https://bookify.one https://www.bookify.one https://webscore.now https://www.webscore.now https://me-mo.ro https://www.me-mo.ro",
+      "img-src 'self' data: blob: https://bookify.one https://www.bookify.one https://webscore.now https://www.webscore.now https://me-mo.ro https://www.me-mo.ro https://feedfa.st",
       "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://challenges.cloudflare.com",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://challenges.cloudflare.com https://feedfa.st",
       "frame-src https://challenges.cloudflare.com",
       "worker-src 'self' blob:",
       "object-src 'none'",
@@ -69,6 +69,7 @@ const nextConfig: NextConfig = {
       { hostname: "www.webscore.now" },
       { hostname: "me-mo.ro" },
       { hostname: "www.me-mo.ro" },
+      { hostname: "feedfa.st" },
     ],
   },
   async headers() {

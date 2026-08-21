@@ -14,6 +14,28 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "feedfast",
+    name: "FeedFast",
+    url: "https://feedfa.st",
+    tagline: "Changelog, feedback, and uptime in one hub",
+    description:
+      "One public hub per project — release notes, a feedback board people vote on, and a status page that stays honest.",
+    longDescription:
+      "FeedFast collapses three separate subscriptions into a single public hub page per project. Users submit ideas and upvote them without creating an account, release notes are written in markdown and published to a page, an RSS feed and an embeddable widget, and scheduled HTTP checks confirm an incident over two consecutive failures before anyone gets an email — so a single blip never pages you. Every module is also exposed over an MCP server, so an AI agent can triage the board and publish a changelog through a scoped, read-only-capable API key.",
+    features: [
+      "One public hub page per project, live in five minutes",
+      "Feedback board with voting and no sign-up wall",
+      "Markdown changelog with RSS feed and embeddable widget",
+      "Uptime checks with two-failure incident confirmation",
+      "Scheduled maintenance excluded from uptime maths",
+      "MCP server so AI agents can publish and triage",
+    ],
+    ogImage: "/projects/feedfast.avif",
+    imageAlt:
+      "The FeedFast dashboard open in a browser, showing a project overview with changelog, feedback and uptime cards side by side.",
+    favicon: "https://feedfa.st/android-chrome-192x192.png",
+  },
+  {
     slug: "bookify",
     name: "Bookify",
     url: "https://bookify.one",
