@@ -1,26 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 413.91 413.91">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #fff;
-      }
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="PantaziSoft">
+  <!--
+    PantaziSoft logomark on brand lime, sized for icon use.
 
-      .cls-2 {
-        fill: #7ccf00;
-      }
-    </style>
-  </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
-    <rect class="cls-2" width="413.91" height="413.91"/>
-    <g>
-      <rect class="cls-1" x="106.16" y="62.13" width="47.3" height="47.3"/>
-      <rect x="181.1" y="212" width="74.94" height="74.94"/>
-      <rect x="106.16" y="212" width="74.94" height="74.94"/>
-      <rect x="106.16" y="137.07" width="74.94" height="74.94"/>
-      <rect x="106.16" y="286.94" width="74.94" height="74.94"/>
-      <rect x="256.04" y="137.07" width="74.94" height="74.94"/>
-      <rect x="181.1" y="62.13" width="74.94" height="74.94"/>
-    </g>
-  </g>
+    Same construction as logo-transparent.svg: the cells that touch are merged
+    into one outline so no interior edge is left to antialias into a visible
+    seam. Canvas is 512 square on a 96-unit cell, with the 3×4 mark centred, so
+    it drops straight into any square icon slot without needing a crop.
+  -->
+  <path fill="#7ccf00" d="M0 0h512v512H0z" />
+
+  <!-- Stem (col 0, rows 1–3) plus the bowl's lower arm (col 1, row 2). -->
+  <path fill="#0b0b0c" d="M112 160h96v96h96v96h-96v96h-96z" />
+
+  <!-- The bowl's two free cells; they meet the stem only at corners. -->
+  <path fill="#0b0b0c" d="M208 64h96v96h-96zM304 160h96v96h-96z" />
+
+  <!-- The opening square, set into the top-left of its cell. -->
+  <path fill="#ffffff" d="M112 64h60v60h-60z" />
 </svg>

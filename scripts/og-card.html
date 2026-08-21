@@ -1,0 +1,153 @@
+<!--
+  Source for public/og-image.png — the 1200x630 social card.
+
+  Regenerating it: serve this file, open it at a device pixel ratio of 2, and
+  capture the #card element, which is parked at the viewport origin at exactly
+  1200x630. Downsample the capture to 1200x630 and write it to
+  public/og-image.png. It is a browser screenshot rather than a build step
+  because the card uses real Outfit/Inter text rendering, and the project has no
+  headless browser dependency to automate it with.
+
+  Keep it in step with the homepage hero: same headline, same three services.
+-->
+<!doctype html>
+<meta charset="utf-8">
+<title>og</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0b0c; --body:#46464d; --muted:#6b6b73;
+    --line:#e4e4e0; --line-strong:#d0d0ca;
+    --panel:#f8f8f6; --lime:#7ccf00; --lime-soft:#eaf7d1; --lime-ink:#45700c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#555;font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}
+
+  /* Exactly the deliverable's pixel size, parked at the origin so the capture
+     region is trivial to describe. */
+  #card{
+    position:absolute; top:0; left:0;
+    width:1200px; height:630px;
+    background:#fff; color:var(--ink);
+    display:flex; flex-direction:column;
+    overflow:hidden;
+  }
+
+  .band{border-bottom:1px solid var(--line)}
+
+  /* Header band — the site's own header, restated. */
+  .top{display:flex; align-items:stretch; height:88px}
+  .brand{display:flex; align-items:center; gap:14px; padding:0 44px; border-right:1px solid var(--line)}
+  .chip-logo{width:44px;height:44px;border:1px solid var(--line);background:var(--panel);display:flex;align-items:center;justify-content:center}
+  .wordmark{font-family:Outfit;font-weight:600;font-size:30px;letter-spacing:-0.018em}
+  .avail{margin-left:auto;display:flex;align-items:center;padding:0 44px;gap:12px}
+  .avail .box{display:inline-flex;align-items:center;gap:11px;border:1px solid #cfe9a3;background:var(--lime-soft);
+    padding:9px 13px;font-size:14px;font-weight:600;letter-spacing:0.11em;text-transform:uppercase;color:var(--lime-ink)}
+  .avail .dot{width:9px;height:9px;background:var(--lime-ink);display:block}
+
+  /* Headline band. Split like the site's hero: copy left, plates right, one
+     hairline between them. */
+  .main{flex:1;display:grid;grid-template-columns:1fr 424px;min-height:0}
+  .copy{position:relative;padding:0 44px;display:flex;flex-direction:column;justify-content:center}
+  .art{position:relative;border-left:1px solid var(--line);background:var(--panel);
+       display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .grid-bg{position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(to right,rgba(11,11,12,.045) 1px,transparent 1px),
+                     linear-gradient(to bottom,rgba(11,11,12,.045) 1px,transparent 1px);
+    background-size:56px 56px;
+    -webkit-mask-image:radial-gradient(ellipse 85% 90% at 30% 40%,#000 15%,transparent 75%)}
+  .h1{position:relative;font-family:Outfit;font-weight:600;font-size:70px;line-height:.97;letter-spacing:-0.038em}
+  .sub{position:relative;margin-top:22px;font-size:22px;line-height:1.5;color:var(--body);letter-spacing:-0.005em}
+
+  /* A single lime mark, the way the site uses it — one accent, never more. */
+  .rule{position:relative;margin-top:28px;width:88px;height:6px;background:var(--lime)}
+
+  /* Footer band of cells, drawn by a 1px gap over a line-coloured parent. */
+  .cells{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)}
+  .cell{background:#fff;padding:24px 44px 26px}
+  .cell .n{font-family:Outfit;font-size:14px;font-weight:600;letter-spacing:.06em;color:var(--muted)}
+  .cell .t{margin-top:10px;font-family:Outfit;font-weight:600;font-size:23px;letter-spacing:-0.018em}
+  .cell .d{margin-top:5px;font-size:16px;color:var(--muted);letter-spacing:-0.005em}
+  .cell:nth-child(2),.cell:nth-child(3){padding-left:34px}
+</style>
+
+<div id="card">
+  <div class="top band">
+    <div class="brand">
+      <span class="chip-logo">
+        <svg width="21" height="28" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#0b0b0c" d="M0 100h100v100h100v100H100v100H0z"/>
+          <path fill="#0b0b0c" d="M100 0h100v100H100zM200 100h100v100H200z"/>
+          <path fill="#7ccf00" d="M0 0h63v63H0z"/>
+        </svg>
+      </span>
+      <span class="wordmark">PantaziSoft</span>
+    </div>
+    <div class="avail">
+      <span class="box"><span class="dot"></span>Available for new projects</span>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="copy">
+      <div class="grid-bg"></div>
+      <div class="h1">We build web apps businesses run on</div>
+      <div class="sub">From MVP to production — fixed scope,<br>fixed price, and a codebase you own.</div>
+      <div class="rule"></div>
+    </div>
+
+    <!-- The hero illustration's plates, reduced to what still reads at
+         thumbnail size: two offset sheets, one crisp, one soft behind it. -->
+    <div class="art">
+      <svg width="380" height="300" viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg">
+        <g opacity=".85">
+          <rect x="70" y="12" width="290" height="200" fill="#fff" stroke="#e4e4e0"/>
+          <rect x="70" y="12" width="290" height="26" fill="#f8f8f6"/>
+          <line x1="70" y1="38" x2="360" y2="38" stroke="#e4e4e0"/>
+        </g>
+        <g>
+          <rect x="20" y="46" width="290" height="200" fill="#fff" stroke="#c9c9c2"/>
+          <rect x="20" y="46" width="290" height="28" fill="#fbfbfa"/>
+          <line x1="20" y1="74" x2="310" y2="74" stroke="#e4e4e0"/>
+          <rect x="33" y="56" width="7" height="7" fill="#e0e0da"/>
+          <rect x="45" y="56" width="7" height="7" fill="#e0e0da"/>
+          <rect x="57" y="56" width="7" height="7" fill="#e0e0da"/>
+          <rect x="264" y="54" width="34" height="12" fill="#7ccf00"/>
+
+          <line x1="86" y1="74" x2="86" y2="246" stroke="#e4e4e0"/>
+          <rect x="32" y="86" width="38" height="9" fill="#0b0b0c"/>
+          <rect x="32" y="103" width="30" height="6" fill="#dcdcd6"/>
+          <rect x="32" y="117" width="34" height="6" fill="#e7e7e2"/>
+          <rect x="32" y="131" width="24" height="6" fill="#eeeeea"/>
+
+          <rect x="100" y="86" width="94" height="44" fill="#f8f8f6" stroke="#e4e4e0"/>
+          <rect x="110" y="96" width="34" height="5" fill="#c9c9c2"/>
+          <rect x="110" y="107" width="44" height="11" fill="#0b0b0c"/>
+          <rect x="202" y="86" width="94" height="44" fill="#f8f8f6" stroke="#e4e4e0"/>
+          <rect x="212" y="96" width="28" height="5" fill="#c9c9c2"/>
+          <rect x="212" y="107" width="38" height="11" fill="#0b0b0c"/>
+
+          <rect x="100" y="142" width="196" height="92" fill="#fff" stroke="#e4e4e0"/>
+          <rect x="112" y="196" width="14" height="26" fill="#eeeeea"/>
+          <rect x="134" y="182" width="14" height="40" fill="#eeeeea"/>
+          <rect x="156" y="190" width="14" height="32" fill="#eeeeea"/>
+          <rect x="178" y="170" width="14" height="52" fill="#eeeeea"/>
+          <rect x="200" y="178" width="14" height="44" fill="#eeeeea"/>
+          <rect x="222" y="158" width="14" height="64" fill="#eeeeea"/>
+          <rect x="244" y="150" width="14" height="72" fill="#7ccf00"/>
+          <rect x="266" y="166" width="14" height="56" fill="#eeeeea"/>
+          <path d="M119 206 L141 194 L163 198 L185 180 L207 186 L229 168 L251 158 L273 172"
+                stroke="#0b0b0c" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="cells">
+    <div class="cell"><div class="n">01</div><div class="t">MVP Development</div><div class="d">Idea to shipped in weeks</div></div>
+    <div class="cell"><div class="n">02</div><div class="t">Custom Applications</div><div class="d">Built around how you work</div></div>
+    <div class="cell"><div class="n">03</div><div class="t">AI Integration</div><div class="d">AI that does a specific job</div></div>
+  </div>
+</div>

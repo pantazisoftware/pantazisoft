@@ -1,21 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286.15 381.54">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #52525b;
-      }
-    </style>
-  </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
-    <g>
-      <rect class="cls-1" x="0" width="60.2" height="60.2"/>
-      <rect x="95.38" y="190.77" width="95.38" height="95.38"/>
-      <rect y="190.77" width="95.38" height="95.38"/>
-      <rect y="95.38" width="95.38" height="95.38"/>
-      <rect x="0" y="286.15" width="95.38" height="95.38"/>
-      <rect x="190.77" y="95.38" width="95.38" height="95.38"/>
-      <rect x="95.38" width="95.38" height="95.38"/>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="PantaziSoft">
+  <!--
+    PantaziSoft logomark — a P built on a 3×4 grid of 100-unit cells.
+
+    Drawn as one path per colour rather than one rect per cell. The previous
+    version used seven separate rects: every pair that shared an edge showed a
+    hairline seam where the two antialiased against each other, and the grid was
+    mis-snapped besides (a row ended at 190.76 while the next began at 190.77,
+    opening a real 0.01-unit gap). Merging the touching cells into a single
+    outline removes the interior edges entirely, so there is nothing left to
+    seam, and every coordinate is now an exact multiple of the cell.
+
+    Cells, as laid out on the grid:
+
+        col   0    1    2
+      row 0   ▫    ■
+      row 1   ■         ■
+      row 2   ■    ■
+      row 3   ■
+  -->
+
+  <!-- Stem (col 0, rows 1–3) plus the bowl's lower arm (col 1, row 2), traced
+       as one continuous outline. -->
+  <path fill="#0b0b0c" d="M0 100h100v100h100v100H100v100H0z" />
+
+  <!-- The bowl's two free cells. They meet the stem only at corners, so they
+       stay separate subpaths without introducing a seam. -->
+  <path fill="#0b0b0c" d="M100 0h100v100H100zM200 100h100v100H200z" />
+
+  <!-- The mark opens on a smaller square, set into the top-left corner of its
+       cell. Brand lime rather than the old grey: at favicon size a mid-grey
+       square beside black cells just reads as a smudge, where the lime stays
+       legible and ties the mark to the one accent colour the site uses. -->
+  <path fill="#7ccf00" d="M0 0h63v63H0z" />
 </svg>

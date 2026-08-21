@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="PantaziSoft">
+  <!--
+    PantaziSoft app icon — the source every favicon and touch icon is rasterised
+    from. Run `npm run icons` after editing this file.
+
+    Until now the icon set had no vector source at all: the PNGs were the only
+    artifacts, and they carried the seams from the old rect-per-cell artwork.
+    Here the cells that touch are merged into one outline, so there is no
+    interior edge left to antialias into a hairline.
+
+    The mark is optically centred, not box-centred. Its filled area sits left of
+    its bounding box — three of the six cells are in column 0 — so centring the
+    box would leave it visibly hanging to the left. The origin below puts the
+    centroid of the filled cells on the canvas centre instead, which is what the
+    hand-placed PNGs were also doing.
+
+    Grid: 94-unit cells, mark origin (151, 68), so 3x4 cells span 151-433 x 68-444.
+  -->
+  <path fill="#0b0b0c" d="M0 0h512v512H0z" />
+
+  <!-- Stem (col 0, rows 1-3) plus the bowl's lower arm (col 1, row 2). -->
+  <path fill="#ffffff" d="M151 162h94v94h94v94h-94v94h-94z" />
+
+  <!-- The bowl's two free cells; they meet the stem only at corners. -->
+  <path fill="#ffffff" d="M245 68h94v94h-94zM339 162h94v94h-94z" />
+
+  <!-- The opening square, set into the top-left of its cell. -->
+  <path fill="#7ccf00" d="M151 68h59v59h-59z" />
+</svg>
