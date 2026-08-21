@@ -1,6 +1,25 @@
 import type { Metadata } from "next";
+import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import { CookieConsentLoader } from "@/components/cookie-consent-loader";
+import { FeedFast } from "@/components/feedfast";
+
+/* Both faces are downloaded at build time and served from this origin, so the
+   page still makes no third-party request for type. Outfit carries every
+   heading; Inter carries everything else. */
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-outfit",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -61,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
       <head>
         {/* Turnstile sits on the conversion path and costs a full handshake before
             the widget can render, so the connection is warmed up front. Google Tag
@@ -69,9 +88,12 @@ export default function RootLayout({
             banner has been answered is exactly what the banner exists to prevent. */}
         <link rel="preconnect" href="https://challenges.cloudflare.com" />
         <link rel="preconnect" href="https://webscore.now" />
+        <link rel="preconnect" href="https://feedfa.st" />
+        <meta name="theme-color" content="#f2f2f0" />
       </head>
       <body className="font-body antialiased">
         {children}
+        <FeedFast />
         <CookieConsentLoader />
       </body>
     </html>

@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, Plus } from "lucide-react";
 import { services, getService } from "@/lib/services";
 import { ContactForm } from "@/components/contact-form";
+import { SectionHead, Index } from "@/components/band";
+import { processGlyphs } from "@/components/process-glyphs";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -114,309 +116,311 @@ export default async function ServicePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20">
-        <div className="grid-backdrop pointer-events-none absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-6">
+      {/* ── Breadcrumb ─────────────────────────────────────────────────── */}
+      <div className="band">
+        <div className="pad py-3.5">
           <Link
             href="/services"
-            className="group inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-primary transition-colors"
+            className="group inline-flex items-center gap-2 text-[0.8125rem] font-medium text-muted transition-colors hover:text-ink"
           >
-            <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
+            <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
             All services
           </Link>
+        </div>
+      </div>
 
-          <div className="mt-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-white shadow-action">
-                <Icon className="h-5 w-5" strokeWidth={2} />
-              </span>
-              <span className="eyebrow">{service.eyebrow}</span>
-            </div>
-
-            <h1 className="mt-7 text-[2.5rem] leading-display tracking-display font-bold text-primary sm:text-5xl md:text-6xl">
-              {service.headline}
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-lg md:text-xl text-secondary leading-body">
-              {service.intro}
-            </p>
-
-            <div className="mt-9 flex flex-col sm:flex-row gap-3">
-              <a href="#contact" className="btn btn-primary group">
-                Start a conversation
-                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-              </a>
-              <Link href="/#projects" className="btn btn-secondary">
-                See our work
-              </Link>
-            </div>
+      {/* ── Hero ───────────────────────────────────────────────────────── */}
+      <section className="band relative overflow-hidden">
+        <div
+          className="grid-backdrop grid-backdrop-fade pointer-events-none absolute inset-0"
+          aria-hidden="true"
+        />
+        <div className="pad relative py-14 md:py-20">
+          <div className="load-in flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center border border-ink bg-ink text-white">
+              <Icon className="h-5 w-5" strokeWidth={1.9} />
+            </span>
+            <span className="eyebrow eyebrow-lime">{service.eyebrow}</span>
           </div>
 
-          {/* Quick facts */}
-          <dl className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-card border border-border bg-border shadow-card lg:grid-cols-4">
-            {service.highlights.map((item) => (
-              <div key={item.label} className="bg-surface px-6 py-6">
-                <dt className="text-xs font-semibold uppercase tracking-eyebrow text-muted">
-                  {item.label}
-                </dt>
-                <dd className="numeric mt-2 text-lg font-semibold tracking-title text-primary">
-                  {item.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <h1 className="load-in d1 mt-7 max-w-[20ch] text-[2.5rem] font-semibold leading-display tracking-display text-ink sm:text-[3.25rem] md:text-[4rem]">
+            {service.headline}
+          </h1>
+
+          <p className="load-in d2 mt-7 max-w-2xl text-lg leading-body text-body md:text-xl">
+            {service.intro}
+          </p>
+
+          <div className="load-in d3 mt-9 flex flex-col sm:flex-row">
+            <a
+              href="#contact"
+              className="btn btn-primary group w-full sm:w-auto"
+            >
+              Start a conversation
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+            <Link
+              href="/#work"
+              className="btn btn-secondary w-full border-t-0 sm:w-auto sm:border-t sm:border-l-0"
+            >
+              See our work
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Who it's for */}
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_1fr] lg:gap-16">
-            <div>
-              <span className="eyebrow">Who it&apos;s for</span>
-              <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-heading text-primary">
-                Is this the right fit?
-              </h2>
-              <p className="mt-4 text-secondary leading-body">
-                If more than one of these sounds like you, this is probably the
-                right place to start.
-              </p>
+      {/* ── Quick facts ────────────────────────────────────────────────── */}
+      <section className="band cells grid-cols-2 lg:grid-cols-4">
+        {service.highlights.map((item, i) => (
+          <div key={item.label} className={`cell reveal s${i + 1} px-6 py-6`}>
+            <p className="text-[0.6875rem] font-semibold uppercase tracking-eyebrow text-muted">
+              {item.label}
+            </p>
+            <p className="numeric mt-2.5 font-heading text-lg font-semibold tracking-title text-ink">
+              {item.value}
+            </p>
+          </div>
+        ))}
+      </section>
+
+      {/* ── Who it's for ───────────────────────────────────────────────── */}
+      <section className="band">
+        <SectionHead
+          eyebrow="Who it's for"
+          title="Is this the right fit?"
+          body="If more than one of these sounds like you, this is probably the right place to start."
+        />
+      </section>
+
+      <section className="band cells sm:grid-cols-2">
+        {service.idealFor.map((item, i) => (
+          <div
+            key={item}
+            className={`cell reveal s${(i % 4) + 1} flex items-start gap-3.5 px-6 py-6 sm:px-8`}
+          >
+            <Check
+              className="mt-0.5 h-4 w-4 shrink-0 text-lime-ink"
+              strokeWidth={2.75}
+            />
+            <p className="text-[0.9375rem] leading-body text-body">{item}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* ── Deliverables ───────────────────────────────────────────────── */}
+      <section className="band">
+        <SectionHead
+          eyebrow="What you get"
+          lime
+          title="Everything included, written down"
+          body="No vague statements of work. This is the scope you get, and it is agreed before anyone writes code."
+        />
+      </section>
+
+      <section className="band cells md:grid-cols-2 lg:grid-cols-3">
+        {service.deliverables.map((item, i) => (
+          <div
+            key={item.title}
+            className={`cell reveal s${(i % 3) + 1} p-7 transition-colors hover:bg-panel md:p-9`}
+          >
+            <Index n={i + 1} />
+            <h3 className="mt-5 text-lg font-semibold tracking-title text-ink">
+              {item.title}
+            </h3>
+            <p className="mt-2.5 text-[0.9375rem] leading-body text-body">
+              {item.body}
+            </p>
+          </div>
+        ))}
+      </section>
+
+      {/* ── Process ────────────────────────────────────────────────────── */}
+      <section className="band">
+        <SectionHead
+          eyebrow="How it works"
+          title="Four steps, no surprises"
+          body="You always know what is happening, what it costs, and what comes next."
+        />
+      </section>
+
+      <section className="band">
+        <ol className="cells sm:grid-cols-2 lg:grid-cols-4">
+          {service.process.map((step, i) => {
+            const Glyph = processGlyphs[i % processGlyphs.length];
+            return (
+              <li
+                key={step.title}
+                className={`cell reveal s${i + 1} flex flex-col p-7 md:p-9`}
+              >
+                <div className="flex items-start justify-between">
+                  <Glyph />
+                  <Index n={i + 1} />
+                </div>
+                <h3 className="mt-7 text-lg font-semibold tracking-title text-ink">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-[0.9375rem] leading-body text-body">
+                  {step.body}
+                </p>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+
+      {/* ── Price + stack ──────────────────────────────────────────────── */}
+      <section className="band">
+        <div className="grid lg:grid-cols-12">
+          {/* Price panel — the one inverted block on the page. */}
+          <div className="reveal bg-inverse p-8 text-white md:p-12 lg:col-span-5">
+            <span className="text-[0.6875rem] font-semibold uppercase tracking-eyebrow text-white/55">
+              Investment
+            </span>
+            <div className="mt-6 flex items-baseline gap-2.5">
+              <span className="text-sm font-medium text-white/55">from</span>
+              <span className="numeric font-heading text-[3.5rem] font-semibold leading-none tracking-display">
+                {service.price}
+              </span>
             </div>
-            <ul className="grid gap-4 sm:grid-cols-2">
-              {service.idealFor.map((item) => (
-                <li key={item} className="card flex items-start gap-3.5 p-6">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
-                    <Check className="h-3 w-3" strokeWidth={3} />
+            <p className="mt-5 max-w-sm text-[0.9375rem] leading-body text-white/70">
+              {service.priceNote}
+            </p>
+
+            <dl className="mt-9 border-t border-white/15">
+              {[
+                { k: "Timeline", v: service.timeline },
+                { k: "Pricing model", v: "Fixed scope, fixed price" },
+                { k: "Code ownership", v: "Yours" },
+              ].map((row) => (
+                <div
+                  key={row.k}
+                  className="flex items-baseline justify-between gap-4 border-b border-white/15 py-3.5 text-sm"
+                >
+                  <dt className="text-white/55">{row.k}</dt>
+                  <dd className="text-right font-medium text-white">{row.v}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <a href="#contact" className="btn btn-lime group mt-9 w-full">
+              Get a fixed quote
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </a>
+          </div>
+
+          {/* Stack */}
+          <div className="reveal s2 border-t border-line p-8 md:p-12 lg:col-span-7 lg:border-t-0 lg:border-l">
+            <span className="eyebrow">Technology</span>
+            <h2 className="mt-5 max-w-lg text-[1.75rem] font-semibold leading-title tracking-heading text-ink md:text-[2.25rem]">
+              Built on tools that will still be here in five years
+            </h2>
+            <p className="mt-5 max-w-xl leading-body text-body">
+              Mature, widely adopted technology — so any competent developer can
+              pick the project up after us.
+            </p>
+
+            <div className="mt-9 border-t border-line">
+              {service.stack.map((group) => (
+                <div key={group.group} className="border-b border-line py-5">
+                  <h3 className="text-[0.6875rem] font-semibold uppercase tracking-eyebrow text-muted">
+                    {group.group}
+                  </h3>
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <li
+                        key={item}
+                        className="border border-line bg-panel px-3 py-1.5 text-sm font-medium text-body transition-colors hover:border-ink hover:text-ink"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ────────────────────────────────────────────────────────── */}
+      <section className="band">
+        <div className="grid lg:grid-cols-12">
+          <div className="pad reveal py-12 md:py-16 lg:col-span-4">
+            <span className="eyebrow">FAQ</span>
+            <h2 className="mt-5 text-[1.75rem] font-semibold leading-title tracking-heading text-ink md:text-[2.25rem]">
+              Questions we get asked
+            </h2>
+            <p className="mt-5 leading-body text-body">
+              Something else on your mind?{" "}
+              <a
+                href="#contact"
+                className="font-medium text-ink underline decoration-line-strong underline-offset-4 transition-colors hover:decoration-ink"
+              >
+                Ask us directly
+              </a>
+              .
+            </p>
+          </div>
+
+          <div className="border-t border-line lg:col-span-8 lg:border-t-0 lg:border-l">
+            {service.faqs.map((faq) => (
+              <details
+                key={faq.q}
+                className="group border-b border-line last:border-b-0"
+              >
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 px-6 py-5 text-left transition-colors hover:bg-panel sm:px-9">
+                  <span className="font-heading text-[1.0625rem] font-semibold tracking-title text-ink">
+                    {faq.q}
                   </span>
-                  <p className="text-[0.9375rem] font-medium text-secondary leading-body">
-                    {item}
-                  </p>
+                  <Plus
+                    className="mt-0.5 h-5 w-5 shrink-0 text-muted transition-transform duration-300 group-open:rotate-45"
+                    strokeWidth={1.75}
+                  />
+                </summary>
+                <p className="max-w-2xl px-6 pb-6 text-[0.9375rem] leading-prose text-body sm:px-9">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Contact ────────────────────────────────────────────────────── */}
+      <section id="contact" className="band">
+        <div className="grid lg:grid-cols-12">
+          <div className="pad reveal py-12 md:py-16 lg:col-span-6">
+            <span className="eyebrow eyebrow-lime">Get started</span>
+            <h2 className="mt-5 text-[2rem] font-semibold leading-title tracking-heading text-ink sm:text-[2.5rem]">
+              {service.formHeading}
+            </h2>
+            <p className="mt-6 max-w-lg text-[1.0625rem] leading-body text-body">
+              {service.formBody}
+            </p>
+
+            <ul className="mt-9 border border-line">
+              {[
+                "A reply within 24 hours, from the person who does the work",
+                "A fixed price before anything starts",
+                "An honest answer if we're not the right fit",
+              ].map((item, i) => (
+                <li
+                  key={item}
+                  className={`flex items-center gap-3 px-5 py-3.5 text-[0.9375rem] text-body${
+                    i > 0 ? " border-t border-line" : ""
+                  }`}
+                >
+                  <Check
+                    className="h-4 w-4 shrink-0 text-lime-ink"
+                    strokeWidth={2.75}
+                  />
+                  {item}
                 </li>
               ))}
             </ul>
           </div>
-        </div>
-      </section>
 
-      {/* What's included */}
-      <section className="border-y border-border bg-surface py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="max-w-2xl">
-            <span className="eyebrow">What you get</span>
-            <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-heading text-primary">
-              Everything included, written down
-            </h2>
-            <p className="mt-4 text-lg text-secondary leading-body">
-              No vague statements of work. This is the scope you get, and it is
-              agreed before anyone writes code.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {service.deliverables.map((item, i) => (
-              <div key={item.title} className="card card-interactive p-7">
-                <span className="numeric text-sm font-semibold text-muted">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-4 text-lg font-semibold tracking-title text-primary">
-                  {item.title}
-                </h3>
-                <p className="mt-2.5 text-[0.9375rem] text-secondary leading-body">
-                  {item.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="max-w-2xl">
-            <span className="eyebrow">How it works</span>
-            <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-heading text-primary">
-              Four steps, no surprises
-            </h2>
-            <p className="mt-4 text-lg text-secondary leading-body">
-              You always know what is happening, what it costs, and what comes
-              next.
-            </p>
-          </div>
-
-          <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {service.process.map((step, i) => (
-              <li key={step.title} className="card relative p-7">
-                <span className="numeric flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-semibold text-white">
-                  {i + 1}
-                </span>
-                <h3 className="mt-5 text-lg font-semibold tracking-title text-primary">
-                  {step.title}
-                </h3>
-                <p className="mt-2.5 text-[0.9375rem] text-secondary leading-body">
-                  {step.body}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* Pricing + stack */}
-      <section className="pb-20 md:pb-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-6 lg:grid-cols-[1fr_1.25fr]">
-            {/* Price panel */}
-            <div className="rounded-card bg-surface-inverse p-8 md:p-10 text-white shadow-panel">
-              <span className="text-xs font-semibold uppercase tracking-eyebrow text-white/55">
-                Investment
-              </span>
-              <div className="mt-6 flex items-baseline gap-2">
-                <span className="text-sm font-medium text-white/60">from</span>
-                <span className="numeric text-5xl font-bold tracking-display">
-                  {service.price}
-                </span>
-              </div>
-              <p className="mt-4 text-[0.9375rem] leading-body text-white/70">
-                {service.priceNote}
-              </p>
-              <div className="mt-8 h-px bg-white/12" />
-              <dl className="mt-6 space-y-4 text-sm">
-                <div className="flex items-baseline justify-between gap-4">
-                  <dt className="text-white/60">Timeline</dt>
-                  <dd className="font-medium text-white text-right">
-                    {service.timeline}
-                  </dd>
-                </div>
-                <div className="flex items-baseline justify-between gap-4">
-                  <dt className="text-white/60">Pricing model</dt>
-                  <dd className="font-medium text-white text-right">
-                    Fixed scope, fixed price
-                  </dd>
-                </div>
-                <div className="flex items-baseline justify-between gap-4">
-                  <dt className="text-white/60">Code ownership</dt>
-                  <dd className="font-medium text-white text-right">Yours</dd>
-                </div>
-              </dl>
-              <a
-                href="#contact"
-                className="btn group mt-9 w-full bg-white text-primary hover:bg-white/90"
-              >
-                Get a fixed quote
-                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-              </a>
-            </div>
-
-            {/* Stack */}
-            <div className="card p-8 md:p-10">
-              <span className="eyebrow">Technology</span>
-              <h2 className="mt-4 text-2xl md:text-3xl font-bold tracking-heading text-primary">
-                Built on tools that will still be here in five years
-              </h2>
-              <p className="mt-4 text-secondary leading-body">
-                Mature, widely adopted technology — so any competent developer
-                can pick the project up after us.
-              </p>
-              <div className="mt-8 space-y-6">
-                {service.stack.map((group) => (
-                  <div key={group.group}>
-                    <h3 className="text-xs font-semibold uppercase tracking-eyebrow text-muted">
-                      {group.group}
-                    </h3>
-                    <ul className="mt-3 flex flex-wrap gap-2">
-                      {group.items.map((item) => (
-                        <li
-                          key={item}
-                          className="rounded-full border border-border bg-surface-subtle px-3.5 py-1.5 text-sm font-medium text-secondary"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="border-y border-border bg-surface py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-16">
-            <div>
-              <span className="eyebrow">FAQ</span>
-              <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-heading text-primary">
-                Questions we get asked
-              </h2>
-              <p className="mt-4 text-secondary leading-body">
-                Something else on your mind?{" "}
-                <a
-                  href="#contact"
-                  className="font-medium text-primary underline underline-offset-4 decoration-border-strong hover:decoration-primary transition-colors"
-                >
-                  Ask us directly
-                </a>
-                .
-              </p>
-            </div>
-
-            <div className="divide-y divide-border rounded-card border border-border bg-surface shadow-card">
-              {service.faqs.map((faq) => (
-                <details key={faq.q} className="group px-6 py-5 sm:px-8">
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-left">
-                    <span className="text-[1.0625rem] font-semibold tracking-title text-primary">
-                      {faq.q}
-                    </span>
-                    <Plus
-                      className="mt-0.5 h-5 w-5 shrink-0 text-muted transition-transform duration-200 group-open:rotate-45"
-                      strokeWidth={2}
-                    />
-                  </summary>
-                  <p className="mt-3 max-w-2xl text-[0.9375rem] text-secondary leading-prose">
-                    {faq.a}
-                  </p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-10 md:grid-cols-2 md:gap-16 items-start">
-            <div className="md:sticky md:top-24">
-              <span className="eyebrow">Get started</span>
-              <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-heading text-primary">
-                {service.formHeading}
-              </h2>
-              <p className="mt-4 text-lg text-secondary leading-body">
-                {service.formBody}
-              </p>
-
-              <ul className="mt-8 space-y-3">
-                {[
-                  "A reply within 24 hours, from the person who does the work",
-                  "A fixed price before anything starts",
-                  "An honest answer if we're not the right fit",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-white">
-                      <Check className="h-3 w-3" strokeWidth={3} />
-                    </span>
-                    <span className="text-[0.9375rem] text-secondary leading-body">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+          <div className="reveal s2 border-t border-line bg-panel p-6 sm:p-10 lg:col-span-6 lg:border-t-0 lg:border-l lg:p-12">
             <ContactForm
               service={service.name}
               messagePlaceholder={`Tell us about your ${service.name} project...`}
@@ -426,40 +430,40 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Other services */}
-      <section className="pb-20 md:pb-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-xl font-semibold tracking-title text-primary">
+      {/* ── Other services ─────────────────────────────────────────────── */}
+      <section className="band">
+        <div className="pad py-8">
+          <h2 className="text-[0.6875rem] font-semibold uppercase tracking-eyebrow text-muted">
             Other services
           </h2>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
-            {others.map((other) => {
-              const OtherIcon = other.icon;
-              return (
-                <Link
-                  key={other.slug}
-                  href={`/services/${other.slug}`}
-                  className="card card-interactive group flex items-start gap-4 p-6"
-                >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-surface-subtle text-primary">
-                    <OtherIcon className="h-5 w-5" strokeWidth={2} />
+        </div>
+        <div className="cells border-t border-line sm:grid-cols-2">
+          {others.map((other, i) => {
+            const OtherIcon = other.icon;
+            return (
+              <Link
+                key={other.slug}
+                href={`/services/${other.slug}`}
+                className={`cell group reveal s${i + 1} flex items-start gap-4 p-7 transition-colors hover:bg-panel md:p-9`}
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-line bg-panel text-ink transition-colors group-hover:border-ink group-hover:bg-ink group-hover:text-white">
+                  <OtherIcon className="h-5 w-5" strokeWidth={1.9} />
+                </span>
+                <div>
+                  <h3 className="text-lg font-semibold tracking-title text-ink">
+                    {other.name}
+                  </h3>
+                  <p className="mt-1 text-[0.9375rem] leading-body text-body">
+                    {other.tagline}
+                  </p>
+                  <span className="mt-3.5 inline-flex items-center gap-1.5 text-sm font-medium text-ink">
+                    <span className="underline-grow">Learn more</span>
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </span>
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-title text-primary">
-                      {other.name}
-                    </h3>
-                    <p className="mt-1 text-[0.9375rem] text-secondary leading-body">
-                      {other.tagline}
-                    </p>
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                      Learn more
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
     </>

@@ -50,8 +50,8 @@ export function CookieConsent() {
       {/* Consent banner — only shown when no decision has been made */}
       {consent === "pending" && (
         <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6">
-          <div className="mx-auto max-w-lg rounded-card border border-border bg-surface p-6 shadow-panel">
-            <p className="text-sm text-secondary leading-body">
+          <div className="mx-auto max-w-lg border border-ink bg-surface p-6">
+            <p className="text-sm leading-body text-body">
               We use cookies to understand how visitors interact with our
               website. Analytics are completely disabled until you accept.
             </p>
@@ -59,7 +59,7 @@ export function CookieConsent() {
               <button onClick={accept} className="btn btn-primary btn-sm">
                 Accept
               </button>
-              <button onClick={decline} className="btn btn-sm text-secondary hover:text-primary">
+              <button onClick={decline} className="btn btn-sm text-muted hover:text-ink">
                 Decline
               </button>
             </div>

@@ -7,10 +7,13 @@ export default function SiteLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen bg-page text-primary">
+    // The frame draws the two rails every band hangs off. It stays out of any
+    // overflow context so the sticky header and the crosshairs on the rails
+    // both keep working.
+    <div className="frame min-h-screen">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-accent focus:text-accent-foreground focus:px-5 focus:py-3 focus:rounded-button focus:text-sm focus:font-medium"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:border focus:border-ink focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:font-medium focus:text-white"
       >
         Skip to content
       </a>

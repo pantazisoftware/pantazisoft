@@ -1,289 +1,718 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   PantaziSoft — boxy design system
+
+   The whole site sits inside one bordered frame ("the rails"). Sections stack
+   edge to edge with a single hairline between them; nothing floats, nothing
+   is rounded, nothing casts a shadow. Depth comes from line weight, flat fill
+   and motion — never from elevation.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 @theme {
   /* ── Surfaces ─────────────────────────────────────────────────────────── */
-  --color-page: #f5f5f6;
-  --color-surface: #ffffff;
-  --color-surface-subtle: #fafafa;
-  --color-surface-hover: #f4f4f5;
-  --color-surface-inverse: #101012;
+  --color-canvas: #f2f2f0; /* outside the rails */
+  --color-surface: #ffffff; /* inside the rails */
+  --color-panel: #f8f8f6; /* subtle fill for nested boxes */
+  --color-panel-strong: #eeeeea; /* pressed / hovered fill */
+  --color-inverse: #0b0b0c; /* inverted sections */
 
-  /* ── Text (contrast on #ffffff / #f5f5f6) ─────────────────────────────── */
-  --color-primary: #09090b; /* 19.9:1 — headings, key numbers */
-  --color-secondary: #3f3f46; /* 10.4:1 — body copy */
-  --color-muted: #62626b; /*  6.3:1 — labels, meta (AA at any size) */
+  /* ── Ink (contrast measured on #ffffff) ───────────────────────────────── */
+  --color-ink: #0b0b0c; /* 19.7:1 — headings, numbers */
+  --color-body: #46464d; /* 9.3:1  — running copy */
+  --color-muted: #6b6b73; /* 5.3:1  — labels, meta (AA) */
 
   /* ── Lines ────────────────────────────────────────────────────────────── */
-  --color-border: #e3e3e7;
-  --color-border-strong: #d1d1d6;
+  --color-line: #e4e4e0;
+  --color-line-strong: #d0d0ca;
 
-  /* ── Actions ──────────────────────────────────────────────────────────── */
-  --color-accent: #18181b;
-  --color-accent-hover: #2f2f35;
-  --color-accent-foreground: #ffffff;
-  --color-accent-secondary: #ffffff;
-  --color-accent-secondary-hover: #f4f4f5;
+  /* ── Brand lime, from the logo ────────────────────────────────────────── */
+  --color-lime: #7ccf00; /* fills and marks only, never text on white */
+  --color-lime-soft: #eaf7d1;
+  --color-lime-ink: #45700c; /* 5.9:1 on white — safe for text */
 
-  /* Brand lime, from the logo. Only `brand-ink` is safe on light surfaces. */
-  --color-brand: #7ccf00;
-  --color-brand-ink: #4d7c0f; /* 4.8:1 on white */
-
+  /* ── iOS subtree ──────────────────────────────────────────────────────────
+     The /app/[slug] route tree is a separate dark, per-app-accent design that
+     this makeover deliberately leaves alone. It is the only thing on the site
+     with rounded corners, and these two radii are all it still resolves. */
   --radius-card: 1.5rem;
   --radius-button: 0.875rem;
-  --radius-input: 0.875rem;
 
   /* ── Type scale helpers ───────────────────────────────────────────────── */
-  --tracking-display: -0.033em;
-  --tracking-heading: -0.022em;
-  --tracking-title: -0.014em;
-  --tracking-body: -0.006em;
-  --tracking-eyebrow: 0.09em;
+  --tracking-display: -0.038em;
+  --tracking-heading: -0.028em;
+  --tracking-title: -0.018em;
+  --tracking-body: -0.005em;
+  --tracking-eyebrow: 0.11em;
 
-  --leading-display: 1.05;
-  --leading-title: 1.2;
+  --leading-display: 0.96;
+  --leading-title: 1.1;
   --leading-body: 1.6;
-  --leading-prose: 1.72;
+  --leading-prose: 1.75;
 
-  /* ── Elevation — soft, layered, never muddy ───────────────────────────── */
-  --shadow-card: 0 1px 2px rgb(9 9 11 / 0.04), 0 4px 14px -4px rgb(9 9 11 / 0.06);
-  --shadow-card-lift: 0 2px 4px rgb(9 9 11 / 0.05),
-    0 16px 32px -12px rgb(9 9 11 / 0.13);
-  --shadow-action: 0 1px 2px rgb(9 9 11 / 0.16), inset 0 1px 0 rgb(255 255 255 / 0.09);
-  --shadow-panel: 0 1px 2px rgb(9 9 11 / 0.04), 0 24px 48px -20px rgb(9 9 11 / 0.16);
+  /* ── Rhythm ───────────────────────────────────────────────────────────── */
+  --spacing-frame: 80rem; /* frame max-width */
 }
 
 @theme inline {
-  /* System UI stack — no webfonts are loaded anywhere on the site. The two
-     names are kept so headings and body copy can diverge in the future. */
-  --font-heading: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji";
-  --font-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji";
+  /* Outfit for headings, Inter for body — both self-hosted by next/font, so no
+     runtime request leaves the page. The `--font-*-src` variables are injected
+     by app/layout.tsx. */
+  --font-heading: var(--font-outfit), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
 
-  /* Per-app accent. Each iOS-app subtree sets --app-accent / --app-accent-hover
-     on its layout wrapper; falls back to FabricatorPro's orange when unset. */
+  /* Per-app accent for the untouched iOS subtree. */
   --color-app: var(--app-accent, #f97316);
   --color-app-hover: var(--app-accent-hover, #fb923c);
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  font-optical-sizing: auto;
-  font-synthesis-weight: none;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Base
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Element defaults live in @layer base so Tailwind utilities, which sit in a
+   later layer, can still override them. Unlayered rules would beat every
+   utility no matter its specificity — a `text-white` heading would come out
+   ink-black. */
+@layer base {
+  html {
+    background-color: var(--color-canvas);
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-optical-sizing: auto;
+    font-synthesis-weight: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-body);
+    font-family: var(--font-body);
+    letter-spacing: var(--tracking-body);
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1, "cv05" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    color: var(--color-ink);
+    text-wrap: balance;
+    letter-spacing: var(--tracking-heading);
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Numerals in stats and prices line up and never wobble between weights. */
+  .numeric {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1, "kern" 1;
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: #14210a;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+
+  /* Fields carry their own focus treatment (border + inset ring), so a second
+     outline is not stacked on top. It stays transparent rather than removed:
+     forced-colors mode drops box-shadow and repaints a transparent outline in
+     the system highlight colour. */
+  .field:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
 }
 
-*,
-*::before,
-*::after {
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-}
-
-body {
-  letter-spacing: var(--tracking-body);
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-  letter-spacing: var(--tracking-heading);
-}
-
-/* Proportional figures in running text; tabular ones only where they line up
-   in columns (see `.numeric`). */
-p {
-  text-wrap: pretty;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-}
-
-/* Numerals in stats/prices line up and never wobble between weights. */
-.numeric {
-  font-variant-numeric: tabular-nums lining-nums;
-  font-feature-settings: "tnum" 1, "lnum" 1, "kern" 1;
-}
-
-::selection {
-  background: #18181b;
-  color: #ffffff;
-}
-
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-}
-
-/* Inputs carry their own focus ring (border + shadow), so don't stack a second
-   outline on top. The outline stays transparent rather than removed: forced-colors
-   mode drops box-shadow and overrides border-color, and a transparent outline is
-   the one part it repaints in the system highlight colour. */
-.field:focus-visible {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
+/* ═══════════════════════════════════════════════════════════════════════════
+   Components
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 @layer components {
-  /* ── Buttons ───────────────────────────────────────────────────────────
-     Shared shape so every call to action has identical rhythm and optics. */
+  /* ── The frame ───────────────────────────────────────────────────────────
+     One column, centred, with a hairline running its full height. Every page
+     lives inside it; every section is a horizontal band within it. */
+  .frame {
+    width: 100%;
+    max-width: var(--spacing-frame);
+    margin-inline: auto;
+    background-color: var(--color-surface);
+    border-inline: 1px solid var(--color-line);
+  }
+
+  /* ── Section band ────────────────────────────────────────────────────────
+     Sections touch: each one owns its bottom rule, so there are no gaps and
+     never a doubled line. */
+  .band {
+    position: relative;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  /* Crosshairs where a band's rule meets the rails — the detail that makes the
+     grid feel drawn rather than merely divided. Suppressed below the width at
+     which canvas is visible either side, where they would overhang. */
+  @media (min-width: 1380px) {
+    .band::before,
+    .band::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      z-index: 3;
+      width: 9px;
+      height: 9px;
+      background-image: linear-gradient(
+          var(--color-line-strong),
+          var(--color-line-strong)
+        ),
+        linear-gradient(var(--color-line-strong), var(--color-line-strong));
+      background-size: 9px 1px, 1px 9px;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .band::before {
+      left: -5px;
+    }
+
+    .band::after {
+      right: -5px;
+    }
+  }
+
+  /* Standard inner padding. Bands set their own vertical rhythm. */
+  .pad {
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .pad {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pad {
+      padding-inline: 3.5rem;
+    }
+  }
+
+  /* ── Buttons ─────────────────────────────────────────────────────────────
+     Square, solid, no shadow. The hover state moves fill, not elevation. */
   .btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: var(--radius-button);
+    border-radius: 0;
+    font-family: var(--font-body);
     font-size: 0.9375rem;
-    font-weight: 550;
+    font-weight: 500;
     line-height: 1;
-    letter-spacing: -0.01em;
-    padding: 0.9375rem 1.5rem;
+    letter-spacing: -0.011em;
+    padding: 1rem 1.5rem;
     white-space: nowrap;
-    transition: background-color 150ms ease, color 150ms ease,
-      border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+    overflow: hidden;
+    transition: background-color 160ms ease, color 160ms ease,
+      border-color 160ms ease;
   }
 
   .btn-sm {
-    padding: 0.6875rem 1.125rem;
+    padding: 0.6875rem 1.0625rem;
     font-size: 0.875rem;
   }
 
   .btn-primary {
-    background-color: var(--color-accent);
-    color: var(--color-accent-foreground);
-    box-shadow: var(--shadow-action);
+    background-color: var(--color-ink);
+    color: #ffffff;
+    border: 1px solid var(--color-ink);
   }
 
   .btn-primary:hover {
-    background-color: var(--color-accent-hover);
+    background-color: #26262a;
+    border-color: #26262a;
+  }
+
+  /* A lime wipe crosses the button on hover — the one flourish allowed on a
+     surface that otherwise never moves. */
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      rgb(124 207 0 / 0.28) 45%,
+      transparent 90%
+    );
+    transform: translateX(-120%);
+    transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .btn-primary:hover::after {
+    transform: translateX(120%);
   }
 
   .btn-secondary {
-    background-color: var(--color-accent-secondary);
-    color: var(--color-primary);
-    border: 1px solid var(--color-border-strong);
-    box-shadow: var(--shadow-card);
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    border: 1px solid var(--color-line-strong);
   }
 
   .btn-secondary:hover {
-    background-color: var(--color-accent-secondary-hover);
-    border-color: #b9b9c0;
+    background-color: var(--color-panel);
+    border-color: var(--color-ink);
+  }
+
+  .btn-lime {
+    background-color: var(--color-lime);
+    color: #14210a;
+    border: 1px solid var(--color-lime);
+  }
+
+  .btn-lime:hover {
+    background-color: #8ee300;
+    border-color: #8ee300;
   }
 
   .btn:disabled {
-    opacity: 0.55;
+    opacity: 0.5;
     cursor: not-allowed;
   }
 
-  /* ── Cards ─────────────────────────────────────────────────────────────
-     A visible 1px edge + layered shadow, so a white card still reads as an
-     object when it sits on a white section. */
-  .card {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
+  .btn:disabled::after {
+    display: none;
   }
 
-  .card-interactive {
-    transition: box-shadow 220ms ease, border-color 220ms ease,
-      transform 220ms ease;
-  }
-
-  .card-interactive:hover {
-    border-color: var(--color-border-strong);
-    box-shadow: var(--shadow-card-lift);
-    transform: translateY(-2px);
-  }
-
-  /* ── Form fields ───────────────────────────────────────────────────────── */
+  /* ── Form fields ─────────────────────────────────────────────────────────── */
   .field {
     width: 100%;
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border-strong);
-    border-radius: var(--radius-input);
-    padding: 0.8125rem 1rem;
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-line-strong);
+    border-radius: 0;
+    padding: 0.875rem 1rem;
+    font-family: var(--font-body);
     font-size: 0.9375rem;
     line-height: 1.5;
-    color: var(--color-primary);
-    transition: border-color 150ms ease, box-shadow 150ms ease;
+    color: var(--color-ink);
+    transition: border-color 150ms ease, background-color 150ms ease,
+      box-shadow 150ms ease;
   }
 
-  /* 4.7:1 on white — readable, still clearly distinct from an entered value. */
+  /* The muted ink is the lightest grey that still clears 4.5:1 against the panel
+     fill a field sits on, and it stays clearly lighter than an entered value. */
   .field::placeholder {
-    color: #73737b;
+    color: var(--color-muted);
   }
 
   .field:hover {
-    border-color: #b9b9c0;
+    border-color: #b4b4ad;
   }
 
   .field:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgb(24 24 27 / 0.1);
+    background-color: var(--color-surface);
+    border-color: var(--color-ink);
+    box-shadow: inset 0 0 0 1px var(--color-ink);
   }
 
-  /* ── Eyebrow label ─────────────────────────────────────────────────────── */
+  /* ── Eyebrow ─────────────────────────────────────────────────────────────
+     A boxed label, not free-floating text — it repeats the frame motif at the
+     smallest scale. */
   .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.75rem;
+    border: 1px solid var(--color-line);
+    background-color: var(--color-panel);
+    padding: 0.375rem 0.625rem;
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
     color: var(--color-muted);
   }
+
+  .eyebrow-lime {
+    border-color: #cfe9a3;
+    background-color: var(--color-lime-soft);
+    color: var(--color-lime-ink);
+  }
+
+  /* ── Grid of cells ───────────────────────────────────────────────────────
+     A 1px gap over a line-coloured parent draws every internal rule in one
+     declaration, on both axes, with no edge overhang and no doubled borders
+     when cells wrap. */
+  .cells {
+    display: grid;
+    gap: 1px;
+    background-color: var(--color-line);
+  }
+
+  .cell {
+    background-color: var(--color-surface);
+  }
+
+  .cell-panel {
+    background-color: var(--color-panel);
+  }
+
+  /* ── Link with a rule that draws itself in ───────────────────────────────── */
+  .underline-grow {
+    background-image: linear-gradient(var(--color-ink), var(--color-ink));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    transition: background-size 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .underline-grow:hover,
+  a:hover > .underline-grow {
+    background-size: 100% 1px;
+  }
 }
 
-/* Faint grid used behind hero sections. */
+/* ═══════════════════════════════════════════════════════════════════════════
+   Texture
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Blueprint grid, used behind heroes and illustration plates. */
 .grid-backdrop {
   background-image: linear-gradient(
       to right,
-      rgb(9 9 11 / 0.035) 1px,
+      rgb(11 11 12 / 0.04) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgb(9 9 11 / 0.035) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, #000 30%, transparent 75%);
+    linear-gradient(to bottom, rgb(11 11 12 / 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.grid-backdrop-fade {
+  mask-image: radial-gradient(
+    ellipse 90% 80% at 50% 30%,
+    #000 20%,
+    transparent 78%
+  );
   -webkit-mask-image: radial-gradient(
-    ellipse 100% 70% at 50% 0%,
-    #000 30%,
-    transparent 75%
+    ellipse 90% 80% at 50% 30%,
+    #000 20%,
+    transparent 78%
   );
 }
 
-@keyframes hero-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+/* Diagonal hatch for "empty slot" boxes. */
+.hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-line) 0px,
+    var(--color-line) 1px,
+    transparent 1px,
+    transparent 9px
+  );
 }
 
-@keyframes hero-sparkle {
-  0%, 100% { opacity: 0.4; transform: scale(0.85); }
-  50% { opacity: 1; transform: scale(1.15); }
+/* ═══════════════════════════════════════════════════════════════════════════
+   Motion
+
+   Entrances run on a view-progress timeline, so there is no JavaScript, no
+   hydration cost and — critically — no hidden-until-scripted content: a
+   browser without scroll-driven animation support simply paints the finished
+   state. Everything is disabled under prefers-reduced-motion.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
-@keyframes hero-dash {
-  to { stroke-dashoffset: -12; }
+@keyframes focus-in {
+  from {
+    opacity: 0;
+    transform: scale(0.965);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
 }
 
-.hero-sparkle {
-  animation: hero-sparkle 3s ease-in-out infinite;
-  transform-box: fill-box;
-  transform-origin: center;
+@keyframes wipe-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
 }
 
+/* Scroll-linked entrance. `--in-start` / `--in-end` shift the range so a row of
+   siblings resolves in sequence rather than as one block. */
+.reveal {
+  --in-start: entry 5%;
+  --in-end: cover 26%;
+}
+
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: rise-in linear both;
+    animation-timeline: view();
+    animation-range: var(--in-start) var(--in-end);
+  }
+
+  .reveal-focus {
+    animation-name: focus-in;
+  }
+
+  .reveal-wipe {
+    animation-name: wipe-in;
+  }
+
+  /* Stagger — each step delays the range rather than the animation, because a
+     view timeline has no wall clock to delay against. */
+  .s1 {
+    --in-start: entry 8%;
+    --in-end: cover 30%;
+  }
+  .s2 {
+    --in-start: entry 12%;
+    --in-end: cover 34%;
+  }
+  .s3 {
+    --in-start: entry 16%;
+    --in-end: cover 38%;
+  }
+  .s4 {
+    --in-start: entry 20%;
+    --in-end: cover 42%;
+  }
+  .s5 {
+    --in-start: entry 24%;
+    --in-end: cover 46%;
+  }
+  .s6 {
+    --in-start: entry 28%;
+    --in-end: cover 50%;
+  }
+}
+
+/* Above-the-fold entrances run on load — the hero is already in view, so a
+   view timeline would resolve it instantly. */
+@keyframes load-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.load-in {
+  animation: load-rise 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.d1 {
+  animation-delay: 60ms;
+}
+.d2 {
+  animation-delay: 140ms;
+}
+.d3 {
+  animation-delay: 220ms;
+}
+.d4 {
+  animation-delay: 300ms;
+}
+.d5 {
+  animation-delay: 380ms;
+}
+.d6 {
+  animation-delay: 460ms;
+}
+
+/* ── Illustration primitives ──────────────────────────────────────────────
+   Layers drift at different speeds and depths of focus. The back plates stay
+   soft and slow, the front plates crisp and quick; the parallax between them
+   is what reads as volume on a page with no shadows. */
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(var(--dx, 0px), var(--dy, -12px), 0);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
+}
+
+/* An element slides in and out of focus, the way a lens hunts for it. */
+@keyframes rack-focus {
+  0%,
+  100% {
+    filter: blur(3.5px);
+    opacity: 0.4;
+  }
+  40%,
+  62% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dash-run {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes trace {
+  0% {
+    stroke-dashoffset: var(--len, 400);
+  }
+  55%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-6%);
+    opacity: 0;
+  }
+  12%,
+  76% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(106%);
+    opacity: 0;
+  }
+}
+
+@keyframes bar-rise {
+  0% {
+    transform: scaleY(0.12);
+  }
+  55%,
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes blink {
+  0%,
+  46% {
+    opacity: 1;
+  }
+  47%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.drift {
+  animation: drift var(--dur, 9s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.breathe {
+  animation: breathe var(--dur, 11s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.rack-focus {
+  animation: rack-focus var(--dur, 7s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.marquee-track {
+  animation: marquee var(--dur, 42s) linear infinite;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -294,6 +723,18 @@ p {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* Author !important outranks animations in the cascade, so these win over the
+     keyframes' `from` state — including clip-path, which reveal-wipe animates
+     and which would otherwise leave the footer wordmark clipped to nothing. */
+  .reveal,
+  .load-in {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    clip-path: none !important;
   }
 }

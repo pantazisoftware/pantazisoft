@@ -144,18 +144,21 @@ export function ContactForm({
 
   if (status === "success") {
     return (
-      <div role="status" className="card p-8 md:p-12 text-center">
-        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white">
-          <Check className="w-7 h-7" strokeWidth={2.5} />
+      <div
+        role="status"
+        className="border border-line bg-surface p-8 text-center md:p-12"
+      >
+        <div className="inline-flex h-14 w-14 items-center justify-center border border-ink bg-ink text-white">
+          <Check className="h-7 w-7" strokeWidth={2.25} />
         </div>
         <h3
           ref={successHeadingRef}
           tabIndex={-1}
-          className="mt-6 text-2xl font-semibold tracking-title text-primary"
+          className="mt-6 text-2xl font-semibold tracking-title text-ink"
         >
           Message sent
         </h3>
-        <p className="mt-3 text-secondary leading-body max-w-sm mx-auto">
+        <p className="mx-auto mt-3 max-w-sm leading-body text-body">
           Thanks for reaching out{service ? ` about ${service}` : ""}.
           We&apos;ll get back to you within 24 hours.
         </p>
@@ -164,16 +167,19 @@ export function ContactForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card p-6 sm:p-8 md:p-10">
+    <form
+      onSubmit={handleSubmit}
+      className="border border-line bg-surface p-6 sm:p-8 md:p-9"
+    >
       {service && (
-        <div className="mb-7 flex items-center justify-between gap-4 border-b border-border pb-5">
+        <div className="mb-7 flex items-center justify-between gap-4 border-b border-line pb-5">
           <div>
             <p className="eyebrow">Enquiry about</p>
-            <p className="mt-1.5 font-semibold text-primary tracking-title">
+            <p className="mt-2.5 font-heading font-semibold tracking-title text-ink">
               {service}
             </p>
           </div>
-          <span className="shrink-0 rounded-full bg-surface-hover px-3 py-1.5 text-xs font-semibold text-secondary">
+          <span className="shrink-0 border border-line bg-panel px-3 py-1.5 text-xs font-semibold text-body">
             Reply in 24h
           </span>
         </div>
@@ -183,7 +189,7 @@ export function ContactForm({
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-semibold text-primary mb-2"
+            className="mb-2 block text-[0.8125rem] font-semibold uppercase tracking-[0.08em] text-muted"
           >
             Name
           </label>
@@ -202,7 +208,7 @@ export function ContactForm({
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-semibold text-primary mb-2"
+            className="mb-2 block text-[0.8125rem] font-semibold uppercase tracking-[0.08em] text-muted"
           >
             Email
           </label>
@@ -221,7 +227,7 @@ export function ContactForm({
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-semibold text-primary mb-2"
+            className="mb-2 block text-[0.8125rem] font-semibold uppercase tracking-[0.08em] text-muted"
           >
             Message
           </label>
@@ -245,7 +251,7 @@ export function ContactForm({
         {status === "error" && errorMessage && (
           <p
             role="alert"
-            className="rounded-input border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
+            className="border border-red-300 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
           >
             {errorMessage}
           </p>
@@ -267,7 +273,7 @@ export function ContactForm({
             </>
           )}
         </button>
-        <p className="text-center text-xs text-muted leading-body">
+        <p className="text-center text-xs leading-body text-muted">
           We reply to every enquiry within 24 hours. No newsletters, no sales
           sequences.
         </p>
