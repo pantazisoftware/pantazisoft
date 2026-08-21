@@ -690,12 +690,49 @@ export const apps: AppProject[] = [
     longDescription:
       "Remoto is a clean, native iOS remote that pairs with your Android TV or Google TV device in under 30 seconds and stays out of your way. It replaces the plastic remote you lost between the couch cushions — nothing more.",
     logo: "/app/remoto/remoto-icon.png",
-    // Not published yet — set this to the real listing URL once it is live.
-    appStoreUrl: null,
+    appStoreUrl: "https://apps.apple.com/us/app/remoto-tv-remote/id6792331266",
+    appStoreId: "6792331266",
     accent: { base: "#6366f1", hover: "#818cf8" },
-    // Screenshots are added once the user provides them; drop the files in
-    // public/app/remoto/ and list them here to light up the hero + gallery.
-    screenshots: [],
+    /* Ordered as the journey runs — pair, navigate, jump to an app, search,
+       then the two places Remoto shows up outside the app itself. The home-page
+       card only slides through the first five, so the story has to land there. */
+    screenshots: [
+      {
+        src: "/app/remoto/pairing.png",
+        alt: "Remoto listening for nearby TVs, with a Xiaomi box discovered and already paired",
+        caption: "Finds your TV in seconds",
+      },
+      {
+        src: "/app/remoto/touchpad.png",
+        alt: "Remoto's full-screen touchpad, where a swipe navigates, a tap selects and a two-finger tap goes back",
+        caption: "Swipe to navigate",
+      },
+      {
+        src: "/app/remoto/shortcuts.png",
+        alt: "Remoto's shortcut grid of favourite TV apps, including YouTube, Netflix, Prime Video, Disney+, Max, Hulu and Spotify",
+        caption: "Jump straight into an app",
+      },
+      {
+        src: "/app/remoto/keyboard.png",
+        alt: "Typing a search into Remoto on the iPhone keyboard and sending the whole line to the TV at once",
+        caption: "Type on your phone, not the TV",
+      },
+      {
+        src: "/app/remoto/lockscreen.png",
+        alt: "An iPhone lock screen with Remoto's playback and volume controls available without unlocking",
+        caption: "Control it from the lock screen",
+      },
+      {
+        src: "/app/remoto/home-widget.png",
+        alt: "An iOS home screen widget showing Remoto's D-pad, volume and playback buttons",
+        caption: "A widget on your home screen",
+      },
+      {
+        src: "/app/remoto/settings.png",
+        alt: "Remoto settings showing Pro status, paired TVs, and toggles for haptic feedback, sound and keeping the screen awake",
+        caption: "Haptics, sound and 8 languages",
+      },
+    ],
     capabilities: [
       { label: "$5.99", detail: "one-time Pro unlock" },
       { label: "Zero ads", detail: "never, not once" },

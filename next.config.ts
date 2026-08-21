@@ -62,6 +62,10 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
+    // AppCardSlider and the app gallery ask for 95 on the phone screenshots —
+    // fine detail in a UI shot falls apart at the default. Next 16 only serves
+    // qualities declared here and warns on the rest, so both are listed.
+    qualities: [75, 95],
     remotePatterns: [
       { hostname: "bookify.one" },
       { hostname: "www.bookify.one" },
