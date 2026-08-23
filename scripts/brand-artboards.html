@@ -1,0 +1,199 @@
+<!--
+  Source artboards for the brand assets in public/brand/.
+
+  Regenerating: serve this file and open it with ?a=<name>, which parks that one
+  artboard at the viewport origin at its exact CSS pixel size. Capture the
+  region, then hand it to scripts/finish-brand.mjs to be cut to its final
+  dimensions.
+
+  It is a browser capture rather than a build step for the same reason the OG
+  card is: the artboards use live Outfit and Inter, and sharp's SVG renderer
+  goes through CoreText on macOS, so it only sees fonts installed system-wide.
+  Installing the brand fonts locally would let this move to sharp entirely.
+
+  The `wordmark` artboard is deliberately white-on-black. It becomes an alpha
+  mask, not a picture: solid text on a solid ground means luminance is exactly
+  the coverage, so the mask recolours cleanly and keeps its antialiasing. That
+  is what gives the lockups a genuinely transparent background, which a browser
+  screenshot cannot produce on its own.
+-->
+<!doctype html>
+<meta charset="utf-8">
+<title>brand artboards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0b0c; --body:#46464d; --muted:#6b6b73;
+    --line:#e4e4e0; --panel:#f8f8f6;
+    --lime:#7ccf00; --lime-soft:#eaf7d1; --lime-ink:#45700c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#555;font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}
+  .art{position:absolute;top:0;left:0;display:none;overflow:hidden}
+  .art.on{display:flex}
+
+  .grid-bg{position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(to right,var(--g) 1px,transparent 1px),
+                     linear-gradient(to bottom,var(--g) 1px,transparent 1px);
+    background-size:var(--gs,56px) var(--gs,56px)}
+
+  .mark{flex:none}
+  .wm{font-family:Outfit;font-weight:600;letter-spacing:-0.022em;line-height:1}
+  .h{font-family:Outfit;font-weight:600;letter-spacing:-0.038em;line-height:.98}
+  .s{color:var(--body);letter-spacing:-0.005em}
+  .rule{background:var(--lime)}
+  .chip{display:inline-flex;align-items:center;gap:.6em;border:1px solid #cfe9a3;background:var(--lime-soft);
+    font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--lime-ink)}
+  .chip i{width:.55em;height:.55em;background:var(--lime-ink);display:block}
+  .url{font-family:Outfit;font-weight:500;letter-spacing:-0.01em}
+</style>
+
+<!-- ── wordmark: alpha-mask source, white on black, nothing else ───────── -->
+<!-- Board is wider than the tile that gets captured on purpose: a tile flush
+     with the board's edge samples the page behind it, and one stray grey column
+     is enough to throw off the bounding box the lockup is trimmed to. -->
+<div class="art" id="wordmark" style="width:1300px;height:300px;background:#000;align-items:center;padding-left:20px">
+  <span class="wm" style="font-size:220px;color:#fff">PantaziSoft</span>
+</div>
+
+<!-- ── X / Twitter header 1500x500 ─────────────────────────────────────
+     The avatar overlaps bottom-left, so everything sits centred and high. -->
+<div class="art" id="x-header" style="width:1500px;height:500px;background:var(--ink);flex-direction:column;align-items:center;justify-content:center;position:relative">
+  <div class="grid-bg" style="--g:rgba(255,255,255,.055);--gs:60px"></div>
+  <div style="position:relative;display:flex;align-items:center;gap:26px">
+    <svg class="mark" width="72" height="96" viewBox="0 0 300 400"><path fill="#fff" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#fff" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+    <span class="wm" style="font-size:92px;color:#fff">PantaziSoft</span>
+  </div>
+  <div class="rule" style="position:relative;width:120px;height:6px;margin-top:34px"></div>
+  <p style="position:relative;margin-top:30px;font-size:27px;color:#a9a9b2;letter-spacing:-0.005em">Web apps, from MVP to production — fixed scope, fixed price.</p>
+</div>
+
+<!-- ── Facebook cover 1640x624 ─────────────────────────────────────────
+     Mobile crops to roughly the centre, so nothing important goes wide. -->
+<div class="art" id="facebook-cover" style="width:1640px;height:624px;background:#fff;flex-direction:column">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--line)">
+    <div class="grid-bg" style="--g:rgba(11,11,12,.045);--gs:56px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 45%,#000 20%,transparent 75%)"></div>
+    <div style="position:relative;display:flex;align-items:center;gap:22px">
+      <svg class="mark" width="60" height="80" viewBox="0 0 300 400"><path fill="#0b0b0c" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#0b0b0c" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+      <span class="wm" style="font-size:76px;color:var(--ink)">PantaziSoft</span>
+    </div>
+    <p class="h" style="position:relative;margin-top:38px;font-size:52px;color:var(--ink);text-align:center">We build web apps businesses run on</p>
+    <div class="rule" style="position:relative;width:104px;height:6px;margin-top:30px"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)">
+    <div style="background:#fff;padding:22px 0;text-align:center"><span class="wm" style="font-size:24px;color:var(--ink)">MVP Development</span></div>
+    <div style="background:#fff;padding:22px 0;text-align:center"><span class="wm" style="font-size:24px;color:var(--ink)">Custom Applications</span></div>
+    <div style="background:#fff;padding:22px 0;text-align:center"><span class="wm" style="font-size:24px;color:var(--ink)">AI Integration</span></div>
+  </div>
+</div>
+
+<!-- ── LinkedIn page cover 1128x376 ────────────────────────────────────── -->
+<div class="art" id="linkedin-cover" style="width:1128px;height:376px;background:#fff;align-items:center;position:relative">
+  <div class="grid-bg" style="--g:rgba(11,11,12,.045);--gs:48px;-webkit-mask-image:radial-gradient(ellipse 80% 90% at 25% 50%,#000 15%,transparent 78%)"></div>
+  <div style="position:relative;padding-left:64px">
+    <div style="display:flex;align-items:center;gap:18px">
+      <svg class="mark" width="45" height="60" viewBox="0 0 300 400"><path fill="#0b0b0c" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#0b0b0c" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+      <span class="wm" style="font-size:54px;color:var(--ink)">PantaziSoft</span>
+    </div>
+    <p class="h" style="margin-top:26px;font-size:40px;color:var(--ink)">We build web apps businesses run on</p>
+    <div class="rule" style="width:88px;height:5px;margin-top:22px"></div>
+  </div>
+</div>
+
+<!-- ── Landscape post 1200x630 (Facebook / LinkedIn / X) ───────────────── -->
+<div class="art" id="post-landscape" style="width:1200px;height:630px;background:#fff;flex-direction:column">
+  <div style="height:88px;display:flex;align-items:center;gap:14px;padding:0 44px;border-bottom:1px solid var(--line)">
+    <svg class="mark" width="24" height="32" viewBox="0 0 300 400"><path fill="#0b0b0c" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#0b0b0c" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+    <span class="wm" style="font-size:30px;color:var(--ink)">PantaziSoft</span>
+    <span class="chip" style="margin-left:auto;font-size:14px;padding:9px 13px"><i></i>Available for new projects</span>
+  </div>
+  <div style="flex:1;padding:0 44px;display:flex;flex-direction:column;justify-content:center;position:relative">
+    <div class="grid-bg" style="--g:rgba(11,11,12,.045);-webkit-mask-image:radial-gradient(ellipse 80% 90% at 30% 45%,#000 15%,transparent 75%)"></div>
+    <p class="h" style="position:relative;font-size:78px;color:var(--ink)">We build web apps<br>businesses run on</p>
+    <p class="s" style="position:relative;margin-top:24px;font-size:24px;line-height:1.5">From MVP to production — fixed scope,<br>fixed price, and a codebase you own.</p>
+    <div class="rule" style="position:relative;width:88px;height:6px;margin-top:30px"></div>
+  </div>
+  <div style="height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;border-top:1px solid var(--line)">
+    <span class="url" style="font-size:22px;color:var(--ink)">pantazisoft.com</span>
+    <span style="font-size:17px;color:var(--muted)">MVP · Custom apps · AI integration</span>
+  </div>
+</div>
+
+<!-- ── Square post 1080x1080 (Instagram / Facebook) ────────────────────── -->
+<div class="art" id="post-square" style="width:1080px;height:1080px;background:#fff;flex-direction:column">
+  <div style="height:110px;display:flex;align-items:center;gap:16px;padding:0 56px;border-bottom:1px solid var(--line)">
+    <svg class="mark" width="27" height="36" viewBox="0 0 300 400"><path fill="#0b0b0c" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#0b0b0c" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+    <span class="wm" style="font-size:34px;color:var(--ink)">PantaziSoft</span>
+  </div>
+  <div style="flex:1;padding:0 56px;display:flex;flex-direction:column;justify-content:center;position:relative">
+    <div class="grid-bg" style="--g:rgba(11,11,12,.045);--gs:60px;-webkit-mask-image:radial-gradient(ellipse 85% 70% at 40% 45%,#000 15%,transparent 78%)"></div>
+    <p class="h" style="position:relative;font-size:92px;color:var(--ink)">We build<br>web apps<br>businesses<br>run on</p>
+    <div class="rule" style="position:relative;width:100px;height:7px;margin-top:38px"></div>
+    <p class="s" style="position:relative;margin-top:34px;font-size:29px;line-height:1.5">From MVP to production — fixed<br>scope, fixed price, and a codebase<br>you own.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)">
+    <div style="background:#fff;padding:26px 0;text-align:center"><span class="wm" style="font-size:21px;color:var(--ink)">MVP</span></div>
+    <div style="background:#fff;padding:26px 0;text-align:center"><span class="wm" style="font-size:21px;color:var(--ink)">Custom apps</span></div>
+    <div style="background:#fff;padding:26px 0;text-align:center"><span class="wm" style="font-size:21px;color:var(--ink)">AI integration</span></div>
+  </div>
+</div>
+
+<!-- ── Story 1080x1920 (Instagram / Facebook), inverted ────────────────── -->
+<div class="art" id="story" style="width:1080px;height:1920px;background:var(--ink);flex-direction:column;position:relative">
+  <div class="grid-bg" style="--g:rgba(255,255,255,.05);--gs:72px"></div>
+  <div style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 80px">
+    <div style="display:flex;align-items:center;gap:22px">
+      <svg class="mark" width="54" height="72" viewBox="0 0 300 400"><path fill="#fff" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#fff" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+      <span class="wm" style="font-size:56px;color:#fff">PantaziSoft</span>
+    </div>
+    <p class="h" style="margin-top:80px;font-size:112px;color:#fff">We build<br>web apps<br>businesses<br>run on</p>
+    <div class="rule" style="width:120px;height:8px;margin-top:56px"></div>
+    <p style="margin-top:48px;font-size:34px;line-height:1.55;color:#a9a9b2;letter-spacing:-0.005em">From MVP to production —<br>fixed scope, fixed price, and a<br>codebase you own.</p>
+  </div>
+  <div style="position:relative;border-top:1px solid rgba(255,255,255,.14);padding:44px 80px;display:flex;align-items:center;justify-content:space-between">
+    <span class="url" style="font-size:36px;color:#fff">pantazisoft.com</span>
+    <span class="rule" style="width:56px;height:6px"></span>
+  </div>
+</div>
+
+<script>
+  /*
+    Two modes.
+
+    Fit mode (?a=name) scales the whole board into the window so it can be eyed
+    in one go. Handy for review, but a board larger than the viewport comes back
+    below its real size, and upscaling type is exactly what a brand asset cannot
+    afford.
+
+    Tile mode (?a=name&ox=&oy=&tw=&th=) is what the assets are actually captured
+    with. It pins the board at 1:1 and slides the requested tile to the origin,
+    so one captured pixel is one asset pixel. The capture comes back slightly
+    larger than the tile, so every tile resamples *down* on the way into the
+    final image and nothing is ever stretched.
+  */
+  const q = new URLSearchParams(location.search);
+  const name = q.get('a') || 'post-landscape';
+  const el = document.getElementById(name);
+  if (el) {
+    el.classList.add('on');
+    const w = parseFloat(el.style.width), h = parseFloat(el.style.height);
+    const tw = parseFloat(q.get('tw') || '0'), th = parseFloat(q.get('th') || '0');
+    el.style.transformOrigin = '0 0';
+    if (tw && th) {
+      const ox = parseFloat(q.get('ox') || '0'), oy = parseFloat(q.get('oy') || '0');
+      el.style.transform = `translate(${-ox}px, ${-oy}px)`;
+      window.__art = { w, h, mode: 'tile', ox, oy, tw, th };
+    } else {
+      const scale = Math.min(
+        1,
+        (document.documentElement.clientWidth - 8) / w,
+        (document.documentElement.clientHeight - 8) / h
+      );
+      el.style.transform = `scale(${scale})`;
+      window.__art = { w, h, mode: 'fit', scale };
+    }
+  }
+  document.title = 'artboard:' + name;
+</script>

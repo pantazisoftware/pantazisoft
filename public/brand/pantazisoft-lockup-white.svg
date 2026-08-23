@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 240" width="1180" height="240">
+  <!-- Wordmark is live text: it needs Outfit present to render correctly. Use
+       the PNG, or convert this to outlines, anywhere that cannot guarantee it. -->
+  <g transform="translate(0 4)">
+    <path fill="#ffffff" d="M0 58h58v58h58v58H58v58H0z" />
+    <path fill="#ffffff" d="M58 0h58v58H58zM116 58h58v58h-58z" />
+    <path fill="#7ccf00" d="M0 0h36.5v36.5H0z" />
+  </g>
+  <text x="238" y="163" fill="#ffffff" font-family="Outfit, ui-sans-serif, system-ui, sans-serif"
+        font-size="168" font-weight="600" letter-spacing="-3.7">PantaziSoft</text>
+</svg>
