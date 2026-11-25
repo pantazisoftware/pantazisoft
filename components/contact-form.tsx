@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Send, Check, Loader2 } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
+import type { Dictionary } from "@/lib/dictionary";
 
 declare global {
   interface Window {
@@ -13,7 +14,7 @@ declare global {
           callback: (token: string) => void;
           theme?: string;
           appearance?: string;
-        }
+        },
       ) => string;
       reset: (widgetId: string) => void;
       remove: (widgetId: string) => void;
@@ -23,19 +24,15 @@ declare global {
 }
 
 type Props = {
+  /** Interface strings for the current language (Dictionary["form"]). */
+  t: Dictionary["form"];
   /** Service name to tag the inquiry with, e.g. "MVP Development". */
   service?: string;
-  /** Prefilled placeholder for the message field. */
+  /** Placeholder for the message field; falls back to the generic one. */
   messagePlaceholder?: string;
-  /** Label on the submit button. */
-  submitLabel?: string;
 };
 
-export function ContactForm({
-  service,
-  messagePlaceholder = "Tell us about your project...",
-  submitLabel = "Send message",
-}: Props = {}) {
+export function ContactForm({ t, service, messagePlaceholder }: Props) {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [token, setToken] = useState("");
   const [status, setStatus] = useState<
@@ -98,7 +95,7 @@ export function ContactForm({
           observer.disconnect();
         }
       },
-      { rootMargin: "200px" }
+      { rootMargin: "200px" },
     );
 
     observer.observe(turnstileRef.current);
@@ -110,7 +107,7 @@ export function ContactForm({
     e.preventDefault();
 
     if (!token) {
-      setErrorMessage("Please complete the verification.");
+      setErrorMessage(t.verify);
       setStatus("error");
       return;
     }
@@ -125,158 +122,111 @@ export function ContactForm({
         body: JSON.stringify({ ...form, service, token }),
       });
 
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Failed to send message");
-      }
+      if (!res.ok) throw new Error("send failed");
 
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
-    } catch (err) {
+    } catch {
+      // The API answers in English; the visitor gets the message in their
+      // own language instead.
       setStatus("error");
-      setErrorMessage(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong. Please try again."
-      );
+      setErrorMessage(t.error);
     }
   };
 
   if (status === "success") {
     return (
-      <div
-        role="status"
-        className="border border-line bg-surface p-8 text-center md:p-12"
-      >
-        <div className="inline-flex h-14 w-14 items-center justify-center border border-ink bg-ink text-white">
-          <Check className="h-7 w-7" strokeWidth={2.25} />
-        </div>
+      <div role="status" className="rounded-2xl bg-soft p-8 text-center">
+        <Check className="mx-auto h-8 w-8 text-lime-ink" strokeWidth={2.25} />
         <h3
           ref={successHeadingRef}
           tabIndex={-1}
-          className="mt-6 text-2xl font-semibold tracking-title text-ink"
+          className="mt-4 text-xl outline-none"
         >
-          Message sent
+          {t.successTitle}
         </h3>
-        <p className="mx-auto mt-3 max-w-sm leading-body text-body">
-          Thanks for reaching out{service ? ` about ${service}` : ""}.
-          We&apos;ll get back to you within 24 hours.
-        </p>
+        <p className="mx-auto mt-2 max-w-sm">{t.success}</p>
       </div>
     );
   }
 
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className="border border-line bg-surface p-6 sm:p-8 md:p-9"
-    >
-      {service && (
-        <div className="mb-7 flex items-center justify-between gap-4 border-b border-line pb-5">
-          <div>
-            <p className="eyebrow">Enquiry about</p>
-            <p className="mt-2.5 font-heading font-semibold tracking-title text-ink">
-              {service}
-            </p>
-          </div>
-          <span className="shrink-0 border border-line bg-panel px-3 py-1.5 text-xs font-semibold text-body">
-            Reply in 24h
-          </span>
-        </div>
-      )}
+  const fields = [
+    {
+      id: "name",
+      label: t.name,
+      type: "text",
+      auto: "name",
+      ph: t.namePlaceholder,
+    },
+    {
+      id: "email",
+      label: t.email,
+      type: "email",
+      auto: "email",
+      ph: t.emailPlaceholder,
+    },
+  ] as const;
 
-      <div className="space-y-5">
-        <div>
-          <label
-            htmlFor="name"
-            className="mb-2 block text-[0.8125rem] font-semibold uppercase tracking-[0.08em] text-muted"
-          >
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            autoComplete="name"
-            required
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            placeholder="Your name"
-            className="field"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="email"
-            className="mb-2 block text-[0.8125rem] font-semibold uppercase tracking-[0.08em] text-muted"
-          >
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            placeholder="you@company.com"
-            className="field"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="message"
-            className="mb-2 block text-[0.8125rem] font-semibold uppercase tracking-[0.08em] text-muted"
-          >
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            required
-            rows={5}
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            placeholder={messagePlaceholder}
-            className="field resize-none"
-          />
-        </div>
-        <div ref={turnstileRef} className="empty:hidden" />
-        {/* Always mounted — a live region inserted at the same moment as its text
-            is announced unreliably, so the element outlives the state it reports. */}
-        <p aria-live="polite" className="sr-only">
-          {status === "loading" ? "Sending your message…" : ""}
+  return (
+    // Two columns from sm up: name and email share a row, everything else
+    // spans both, so the card uses its width instead of stacking thin fields.
+    <form onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
+      {service && (
+        <p className="label sm:col-span-2">
+          {t.about}: <span className="text-ink">{service}</span>
         </p>
-        {status === "error" && errorMessage && (
-          <p
-            role="alert"
-            className="border border-red-300 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"
-          >
-            {errorMessage}
-          </p>
-        )}
+      )}
+      {fields.map((f) => (
+        <label key={f.id} className="grid gap-2">
+          <span className="label">{f.label}</span>
+          <input
+            name={f.id}
+            type={f.type}
+            autoComplete={f.auto}
+            required
+            value={form[f.id]}
+            onChange={(e) => setForm({ ...form, [f.id]: e.target.value })}
+            placeholder={f.ph}
+            className="field"
+          />
+        </label>
+      ))}
+      <label className="grid gap-2 sm:col-span-2">
+        <span className="label">{t.message}</span>
+        <textarea
+          name="message"
+          required
+          rows={6}
+          value={form.message}
+          onChange={(e) => setForm({ ...form, message: e.target.value })}
+          placeholder={messagePlaceholder ?? t.messagePlaceholder}
+          className="field resize-none"
+        />
+      </label>
+      <div ref={turnstileRef} className="empty:hidden sm:col-span-2" />
+      {/* Always mounted: a live region inserted at the same moment as its text
+          is announced unreliably, so the element outlives the state it reports. */}
+      <p aria-live="polite" className="sr-only">
+        {status === "loading" ? t.sendingLive : ""}
+      </p>
+      {status === "error" && errorMessage && (
+        <p
+          role="alert"
+          className="text-sm font-medium text-red-700 sm:col-span-2"
+        >
+          {errorMessage}
+        </p>
+      )}
+      <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center sm:gap-5">
         <button
           type="submit"
           disabled={status === "loading"}
-          className="btn btn-primary group w-full cursor-pointer disabled:cursor-not-allowed"
+          className="btn btn-primary w-full shrink-0 sm:w-auto"
         >
-          {status === "loading" ? (
-            <>
-              <Loader2 className="w-4 h-4 animate-spin" />
-              Sending...
-            </>
-          ) : (
-            <>
-              <Send className="w-4 h-4 transition-transform duration-200 group-hover:rotate-45 group-hover:-translate-x-1" />
-              {submitLabel}
-            </>
-          )}
+          {status === "loading" && <Loader2 className="h-4 w-4 animate-spin" />}
+          {status === "loading" ? t.sending : t.submit}
         </button>
-        <p className="text-center text-xs leading-body text-muted">
-          We reply to every enquiry within 24 hours. No newsletters, no sales
-          sequences.
-        </p>
+        <p className="label">{t.note}</p>
       </div>
     </form>
   );

@@ -17,7 +17,7 @@ export function GET() {
   const body = `Contact: mailto:contact@pantazisoft.com
 Contact: ${BASE}/#contact
 Expires: ${expires.toISOString()}
-Preferred-Languages: en
+Preferred-Languages: en, ro
 Canonical: ${BASE}/.well-known/security.txt
 `;
 

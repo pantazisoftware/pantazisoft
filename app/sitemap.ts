@@ -1,61 +1,47 @@
 import type { MetadataRoute } from "next";
-import { projects } from "@/lib/projects";
-import { apps } from "@/lib/apps";
-import { services } from "@/lib/services";
+import { absolute, languageAlternates } from "@/lib/i18n";
+import { getAllProducts } from "@/lib/products";
+import { getServices } from "@/lib/services";
 
-const BASE = "https://pantazisoft.com";
+type Entry = MetadataRoute.Sitemap[number];
+
+/** One entry per language for a translated page, each carrying the hreflang
+ *  set, so search engines see the two versions as a pair. */
+function translated(
+  path: string,
+  priority: number,
+  changeFrequency: Entry["changeFrequency"] = "monthly"
+): Entry[] {
+  return (["en", "ro"] as const).map((locale) => ({
+    url: absolute(locale, path),
+    lastModified: new Date(),
+    changeFrequency,
+    priority: locale === "en" ? priority : Math.round((priority - 0.1) * 10) / 10,
+    alternates: { languages: languageAlternates(path) },
+  }));
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const serviceRoutes = services.map((service) => ({
-    url: `${BASE}/services/${service.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.9,
-  }));
-
-  const projectRoutes = projects.map((project) => ({
-    url: `${BASE}/projects/${project.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
-  const appRoutes = apps.flatMap((app) => [
-    {
-      url: `${BASE}/app/${app.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${BASE}/app/${app.slug}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly" as const,
-      priority: 0.3,
-    },
-    {
-      url: `${BASE}/app/${app.slug}/terms`,
-      lastModified: new Date(),
-      changeFrequency: "yearly" as const,
-      priority: 0.3,
-    },
-  ]);
+  // Unlisted products keep their pages, so they stay in the sitemap.
+  const products = getAllProducts("en");
 
   return [
-    {
-      url: BASE,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${BASE}/services`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    ...serviceRoutes,
-    ...projectRoutes,
-    ...appRoutes,
+    ...translated("/", 1, "weekly"),
+    ...translated("/services", 0.9),
+    ...getServices("en").flatMap((s) => translated(s.path, 0.9)),
+    ...products.flatMap((p) => translated(p.path, 0.8)),
+    // Legal documents are English only.
+    ...products
+      .filter((p) => p.hasLegal)
+      .flatMap((p) =>
+        ["privacy", "terms"].map(
+          (doc): Entry => ({
+            url: absolute("en", `${p.path}/${doc}`),
+            lastModified: new Date(),
+            changeFrequency: "yearly",
+            priority: 0.3,
+          })
+        )
+      ),
   ];
 }

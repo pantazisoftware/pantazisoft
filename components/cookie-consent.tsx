@@ -6,16 +6,36 @@ import Script from "next/script";
 const GA_ID = "G-N8S79HF2L9";
 const STORAGE_KEY = "cookie-consent";
 
+// Kept here rather than in the shared dictionary so this client bundle does
+// not pull in every page's copy for three short strings.
+const copy = {
+  en: {
+    text: "We use cookies to understand how visitors use this website. Analytics stay off until you accept.",
+    accept: "Accept",
+    decline: "Decline",
+  },
+  ro: {
+    text: "Folosim cookie-uri ca să înțelegem cum este folosit acest site. Statisticile rămân oprite până când accepți.",
+    accept: "Accept",
+    decline: "Refuz",
+  },
+};
+
 export function CookieConsent() {
-  // Safe to read localStorage directly — this component is loaded with ssr: false
-  const [consent, setConsent] = useState<
-    "pending" | "accepted" | "declined"
-  >(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "accepted") return "accepted";
-    if (stored === "declined") return "declined";
-    return "pending";
-  });
+  // Safe to read localStorage and the document directly: this component is
+  // loaded with ssr: false. The language comes from <html lang>, which the
+  // root layout of each language sets.
+  const [consent, setConsent] = useState<"pending" | "accepted" | "declined">(
+    () => {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored === "accepted") return "accepted";
+      if (stored === "declined") return "declined";
+      return "pending";
+    }
+  );
+  const [t] = useState(
+    () => copy[document.documentElement.lang === "ro" ? "ro" : "en"]
+  );
 
   const accept = useCallback(() => {
     localStorage.setItem(STORAGE_KEY, "accepted");
@@ -47,22 +67,16 @@ export function CookieConsent() {
         </>
       )}
 
-      {/* Consent banner — only shown when no decision has been made */}
       {consent === "pending" && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6">
-          <div className="mx-auto max-w-lg border border-ink bg-surface p-6">
-            <p className="text-sm leading-body text-body">
-              We use cookies to understand how visitors interact with our
-              website. Analytics are completely disabled until you accept.
-            </p>
-            <div className="mt-5 flex items-center gap-2">
-              <button onClick={accept} className="btn btn-primary btn-sm">
-                Accept
-              </button>
-              <button onClick={decline} className="btn btn-sm text-muted hover:text-ink">
-                Decline
-              </button>
-            </div>
+        <div className="fixed inset-x-4 bottom-4 z-50 mx-auto flex max-w-xl flex-col gap-4 rounded-2xl border border-line bg-paper p-5 shadow-lg sm:flex-row sm:items-center">
+          <p className="text-sm">{t.text}</p>
+          <div className="flex shrink-0 gap-2">
+            <button onClick={accept} className="btn btn-primary h-10 px-4">
+              {t.accept}
+            </button>
+            <button onClick={decline} className="btn btn-secondary h-10 px-4">
+              {t.decline}
+            </button>
           </div>
         </div>
       )}

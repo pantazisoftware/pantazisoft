@@ -8,8 +8,6 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com https://feedfa.st",
       "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://static.cloudflareinsights.com https://feedfa.st",
       "style-src 'self' 'unsafe-inline'",
-      // Site-chip favicons come through /api/site-icon now, so the icon service
-      // is no longer a browser-visible origin.
       "img-src 'self' data: blob: https://bookify.one https://www.bookify.one https://webscore.now https://www.webscore.now https://me-mo.ro https://www.me-mo.ro https://feedfa.st",
       "font-src 'self' https://fonts.gstatic.com",
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://challenges.cloudflare.com https://feedfa.st",
@@ -62,10 +60,10 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
-    // AppCardSlider and the app gallery ask for 95 on the phone screenshots —
-    // fine detail in a UI shot falls apart at the default. Next 16 only serves
-    // qualities declared here and warns on the rest, so both are listed.
-    qualities: [75, 95],
+    // Product pages ask for 90 on the phone screenshots — fine detail in a UI
+    // shot falls apart at the default. Next 16 only serves qualities declared
+    // here and warns on the rest, so both are listed.
+    qualities: [75, 90],
     remotePatterns: [
       { hostname: "bookify.one" },
       { hostname: "www.bookify.one" },
@@ -75,6 +73,17 @@ const nextConfig: NextConfig = {
       { hostname: "www.me-mo.ro" },
       { hostname: "feedfa.st" },
     ],
+  },
+  async redirects() {
+    return [
+      // Legal documents exist in English only; a Romanian-prefixed URL for one
+      // lands on the English document rather than a 404.
+      {
+        source: "/ro/app/:slug/:doc(privacy|terms)",
+        destination: "/app/:slug/:doc",
+        permanent: false,
+      },
+    ];
   },
   async headers() {
     return [

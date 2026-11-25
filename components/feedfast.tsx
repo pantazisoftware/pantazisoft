@@ -32,11 +32,9 @@ export function FeedFast() {
   const pathname = usePathname();
   const mounted = useRef(false);
 
-  // The App Router keeps the layout (and its mount points) alive across a
-  // same-group navigation, but crossing into the /app/[slug] subtree swaps the
-  // footer for a different one. Re-scanning after each route change covers that
-  // without caring which case it was. The first pass is skipped: the script's
-  // own load does it, and calling before it arrives is a no-op anyway.
+  // Re-scan after each route change so mount points rendered by the new page
+  // are picked up. The first pass is skipped: the script's own load does it,
+  // and calling before it arrives is a no-op anyway.
   useEffect(() => {
     if (!mounted.current) {
       mounted.current = true;
@@ -49,6 +47,9 @@ export function FeedFast() {
     <Script
       src="https://feedfa.st/embed.js"
       data-project="pantazi-soft"
+      // No floating "What's new" badge: the footer's mounts are the only
+      // FeedFast UI on the site.
+      data-badge="false"
       strategy="afterInteractive"
     />
   );
