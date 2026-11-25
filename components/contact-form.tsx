@@ -12,6 +12,8 @@ declare global {
         options: {
           sitekey: string;
           callback: (token: string) => void;
+          "expired-callback"?: () => void;
+          "error-callback"?: () => void;
           theme?: string;
           appearance?: string;
         },
@@ -40,6 +42,7 @@ export function ContactForm({ t, service, messagePlaceholder }: Props) {
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const turnstileRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const widgetId = useRef<string | null>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
 
@@ -54,13 +57,18 @@ export function ContactForm({ t, service, messagePlaceholder }: Props) {
 
   useEffect(() => {
     const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-    if (!siteKey || !turnstileRef.current) return;
+    const form = formRef.current;
+    if (!siteKey || !turnstileRef.current || !form) return;
 
     const renderWidget = () => {
       if (window.turnstile && turnstileRef.current && !widgetId.current) {
         widgetId.current = window.turnstile.render(turnstileRef.current, {
           sitekey: siteKey,
           callback: handleToken,
+          // A token lasts five minutes; drop it when it lapses so the form
+          // waits for the widget's automatic refresh instead of sending it.
+          "expired-callback": () => setToken(""),
+          "error-callback": () => setToken(""),
           theme: "light",
           appearance: "interaction-only",
         });
@@ -87,7 +95,9 @@ export function ContactForm({ t, service, messagePlaceholder }: Props) {
       document.head.appendChild(script);
     };
 
-    // Lazy-load Turnstile when the form enters the viewport
+    // Lazy-load Turnstile when the form enters the viewport. Watch the form,
+    // not the widget's box: that box is hidden while empty, and a hidden
+    // element never intersects, so the script would never load.
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -98,7 +108,7 @@ export function ContactForm({ t, service, messagePlaceholder }: Props) {
       { rootMargin: "200px" },
     );
 
-    observer.observe(turnstileRef.current);
+    observer.observe(form);
 
     return () => observer.disconnect();
   }, [handleToken]);
@@ -170,7 +180,11 @@ export function ContactForm({ t, service, messagePlaceholder }: Props) {
   return (
     // Two columns from sm up: name and email share a row, everything else
     // spans both, so the card uses its width instead of stacking thin fields.
-    <form onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
+    <form
+      ref={formRef}
+      onSubmit={handleSubmit}
+      className="grid gap-5 sm:grid-cols-2"
+    >
       {service && (
         <p className="label sm:col-span-2">
           {t.about}: <span className="text-ink">{service}</span>
