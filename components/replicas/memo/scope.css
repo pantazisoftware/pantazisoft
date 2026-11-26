@@ -1,0 +1,161 @@
+/* ── Memo scope ───────────────────────────────────────────────────────────
+   Memo's palette, radii and faces, copied from memo/app/globals.css, so its
+   screens render here as they do on me-mo.ro. Memo registers its palette
+   (cream, terracotta, ink, sage, blush) as Tailwind colours; pst does not,
+   so the colour utilities its markup uses are defined at the end of this
+   file against the same variables, and the copied markup keeps its class
+   names. `muted` is a text grey in pst and a fill in Memo, so the scope
+   redefines it. Guest pages re-point these variables at the album theme
+   (GUEST_VARS in ui.tsx), as memo/lib/album/themes.ts does. */
+.mm {
+  color-scheme: light;
+
+  /* Cream */
+  --color-cream-50: #fdfbf7;
+  --color-cream-100: #f8f3ec;
+  --color-cream-200: #efe5d3;
+  --color-cream-300: #e5d6bc;
+
+  /* Terracotta (primary accent) */
+  --color-terracotta-300: #e2b89a;
+  --color-terracotta-400: #d89f7a;
+  --color-terracotta-500: #9f6137;
+  --color-terracotta-600: #905832;
+  --color-terracotta-700: #7a4a2a;
+  --color-terracotta-800: #5f3921;
+
+  /* Ink (text) */
+  --color-ink-900: #2a2520;
+  --color-ink-700: #4a4138;
+  --color-ink-500: #7a6f62;
+  --color-ink-300: #b8ac9c;
+  --color-ink-200: #d9d0c2;
+
+  /* Accents */
+  --color-sage-400: #9caa8b;
+  --color-blush-300: #e8c7b8;
+
+  /* Semantic tokens (shadcn-style) */
+  --background: var(--color-cream-50);
+  --foreground: var(--color-ink-900);
+  --card: #ffffff;
+  --card-foreground: var(--color-ink-900);
+  --popover: #ffffff;
+  --primary: var(--color-terracotta-500);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-cream-100);
+  --secondary-foreground: var(--color-ink-900);
+  --muted: var(--color-cream-100);
+  --muted-foreground: var(--color-ink-500);
+  --accent: var(--color-cream-200);
+  --accent-foreground: var(--color-ink-900);
+  --destructive: #b85450;
+  --border: var(--color-cream-200);
+  --input: var(--color-cream-200);
+  --ring: var(--color-terracotta-500);
+
+  --color-muted: var(--muted);
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --font-serif: var(--font-mm-serif), ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  font-family: var(--font-mm-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer base {
+  .mm * {
+    border-color: var(--border);
+  }
+}
+
+/* Memo's soft shadows. */
+.mm .shadow-warm:not(.rp-lift) {
+  box-shadow: 0 8px 30px rgba(168, 106, 69, 0.08);
+}
+.mm .shadow-warm-lg:not(.rp-lift) {
+  box-shadow: 0 16px 50px rgba(168, 106, 69, 0.12);
+}
+
+/* ── Motion ──
+   On the replica cycle (--cycle, --d) like the shared rp-* classes. Each
+   element's resting style is the picture with motion off. */
+
+/* A scan line running down the QR code, then gone. */
+.mm .mm-scan {
+  opacity: 0;
+  animation: mm-scan var(--cycle) linear var(--d, 0s) infinite both;
+}
+@keyframes mm-scan {
+  0% { opacity: 0; translate: 0 0; }
+  2% { opacity: 1; }
+  22% { opacity: 1; translate: 0 62px; }
+  25%, 100% { opacity: 0; translate: 0 62px; }
+}
+
+/* A slide in the slideshow: in for a third of the cycle. Hidden at rest,
+   so the still picture is the first slide. */
+.mm .mm-slide {
+  opacity: 0;
+  animation: mm-slide var(--cycle) ease-in-out var(--d, 0s) infinite both;
+}
+@keyframes mm-slide {
+  0% { opacity: 0; }
+  6%, 33% { opacity: 1; }
+  39%, 100% { opacity: 0; }
+}
+/* The first slide's counter: shown while the others are not. */
+.mm .mm-first {
+  animation: mm-first var(--cycle) ease-in-out infinite both;
+}
+@keyframes mm-first {
+  0%, 33% { opacity: 1; }
+  36%, 97% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* The ZIP export: preparing, then ready. At rest, ready. */
+.mm .mm-swap-out {
+  opacity: 0;
+  animation: mm-swap-out var(--cycle) ease var(--d, 0s) infinite both;
+}
+@keyframes mm-swap-out {
+  0% { opacity: 0; }
+  4%, 52% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+.mm .mm-swap-in {
+  animation: mm-swap-in var(--cycle) ease var(--d, 0s) infinite both;
+}
+@keyframes mm-swap-in {
+  0%, 54% { opacity: 0; translate: 0 4px; }
+  60%, 96% { opacity: 1; translate: 0 0; }
+  100% { opacity: 0; translate: 0 0; }
+}
+
+/* ── Memo's colour utilities ──
+   Generated from the classes the replicas use; each resolves through the
+   palette variables above, so a guest theme re-points them. */
+.mm .bg-blush-300\/40 { background-color: color-mix(in oklab, var(--color-blush-300) 40%, transparent); }
+.mm .bg-cream-100 { background-color: var(--color-cream-100); }
+.mm .bg-cream-200 { background-color: var(--color-cream-200); }
+.mm .bg-cream-50 { background-color: var(--color-cream-50); }
+.mm .bg-sage-400 { background-color: var(--color-sage-400); }
+.mm .bg-terracotta-500 { background-color: var(--color-terracotta-500); }
+.mm .border-cream-200 { border-color: var(--color-cream-200); }
+.mm .border-cream-300 { border-color: var(--color-cream-300); }
+.mm .border-ink-300 { border-color: var(--color-ink-300); }
+.mm .border-terracotta-500 { border-color: var(--color-terracotta-500); }
+.mm .ring-terracotta-300\/30 { --tw-ring-color: color-mix(in oklab, var(--color-terracotta-300) 30%, transparent); }
+.mm .text-ink-500 { color: var(--color-ink-500); }
+.mm .text-ink-700 { color: var(--color-ink-700); }
+.mm .text-ink-900 { color: var(--color-ink-900); }
+.mm .text-sage-400 { color: var(--color-sage-400); }
+.mm .text-terracotta-500 { color: var(--color-terracotta-500); }
+.mm .text-terracotta-600 { color: var(--color-terracotta-600); }
+.mm .text-terracotta-700 { color: var(--color-terracotta-700); }

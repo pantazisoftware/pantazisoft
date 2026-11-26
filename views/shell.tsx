@@ -1,5 +1,11 @@
 import "@/app/globals.css";
-import { inter, interTight } from "@/lib/fonts";
+import {
+  googleSans,
+  inter,
+  interTight,
+  instrumentSerif,
+  jetbrainsMono,
+} from "@/lib/fonts";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/dictionary";
 import { Header } from "@/components/header";
@@ -17,7 +23,7 @@ export function Shell({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={locale} className={`${interTight.variable} ${inter.variable}`}>
+    <html lang={locale} className={`${instrumentSerif.variable} ${interTight.variable} ${inter.variable} ${googleSans.variable} ${jetbrainsMono.variable}`}>
       <body>
         {/* Turnstile sits on the conversion path, so its connection is warmed
             up front (React hoists this link into <head>). Google Tag Manager

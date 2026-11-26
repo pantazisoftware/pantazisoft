@@ -1,0 +1,109 @@
+/*
+ * Bookify scope. Bookify's light theme, copied from its stylesheet
+ * (bookify: resources/css/app.css, plus the Flux skin it sits on), so its
+ * markup renders here as it does on bookify.one.
+ *
+ * Bookify redefines Tailwind's zinc as a neutral grey and uses smaller radii
+ * than Tailwind's defaults; both are restated here. `line`, `accent`,
+ * `subtle` and `brand` are names this site also uses, so the scope sets them.
+ */
+.bk {
+  --color-zinc-50: #fafafa;
+  --color-zinc-100: #f5f5f5;
+  --color-zinc-200: #e5e5e5;
+  --color-zinc-300: #d4d4d4;
+  --color-zinc-400: #a3a3a3;
+  --color-zinc-500: #737373;
+  --color-zinc-600: #525252;
+  --color-zinc-700: #404040;
+  --color-zinc-800: #262626;
+  --color-zinc-900: #171717;
+  --color-zinc-950: #0a0a0a;
+
+  /* Brand: the orange "booked slot" from the logo. */
+  --color-brand: #ea580c;
+  --brand: #ea580c;
+  --color-brand-strong: #c2410c;
+  --color-brand-soft: #fff4ed;
+
+  /* Lines: one hairline weight, two strengths. */
+  --color-line: #e7e7e4;
+  --color-line-strong: #d6d6d2;
+  --border: #e7e7e4;
+
+  /* Flat surfaces: the page, a quiet tint for stages and bands. */
+  --color-canvas: #ffffff;
+  --color-subtle: #f8f8f6;
+  --subtle: #f8f8f6;
+
+  --color-accent: #171717;
+  --accent: #171717;
+  --color-accent-content: #171717;
+  --color-accent-foreground: #ffffff;
+  --accent-foreground: #ffffff;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.625rem;
+  --radius-2xl: 0.75rem;
+  --radius-3xl: 1rem;
+
+  font-family: var(--bk-font-inter), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.01em;
+  font-optical-sizing: auto;
+  color: var(--color-zinc-900);
+}
+
+@layer base {
+  .bk *,
+  .bk ::after,
+  .bk ::before {
+    border-color: var(--color-line);
+  }
+}
+
+/* flux:heading — semibold, set tight (Bookify's [data-flux-heading] skin). */
+.bk .bk-heading {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Calendar: hours outside the working schedule read as hatched. */
+.bk .cal-closed {
+  background-color: rgb(24 24 27 / 0.025);
+  background-image: repeating-linear-gradient(-45deg, transparent 0 5px, rgb(24 24 27 / 0.045) 5px 6px);
+}
+
+/* Fine-line graph paper behind a product illustration. */
+.bk .bg-grid-lines {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* flux:select — the native select's double chevron (flux.css). */
+.bk .flux-select {
+  background-image: url("data:image/svg+xml,%3csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M8 9L12 5L16 9' stroke='%23d4d4d4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath d='M16 15L12 19L8 15' stroke='%23d4d4d4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+}
+
+/* Bookify's own motion, on the replica's cycle: something just changed
+   here (motion-flash, a dropped appointment) and the ping on "Try it". */
+.bk .bk-flash {
+  animation: bk-flash var(--cycle) var(--ease) var(--d, 0s) infinite both;
+}
+@keyframes bk-flash {
+  0% { box-shadow: 0 0 0 3px transparent; }
+  3% { box-shadow: 0 0 0 3px var(--color-brand); }
+  25%, 100% { box-shadow: 0 0 0 3px transparent; }
+}
+.bk .bk-ping {
+  animation: bk-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes bk-ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}

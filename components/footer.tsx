@@ -39,19 +39,25 @@ export function Footer({ locale }: { locale: Locale }) {
       links: [
         { href: "/#about", label: dict.nav.about },
         { href: "/#contact", label: dict.nav.contact },
+        { href: "/media-kit", label: t.mediaKit },
       ],
     },
   ];
 
   return (
-    <footer className="border-t border-line">
-      <div className="wrap grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="overflow-hidden bg-ink text-white/65">
+      <div className="frame grid gap-10 border-t border-white/10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Link
             href={href(locale, "/")}
-            className="inline-flex items-center gap-2.5 text-[1.0625rem] font-semibold tracking-tight text-ink"
+            className="inline-flex items-center gap-2.5 text-[1.0625rem] font-semibold tracking-tight text-white"
           >
-            <Image src="/logo-transparent.svg" alt="" width={15} height={20} />
+            <Image
+              src="/brand/pantazisoft-mark-white.svg"
+              alt=""
+              width={24}
+              height={17}
+            />
             PantaziSoft
           </Link>
           <p className="mt-3 max-w-xs text-[0.9375rem]">{t.blurb}</p>
@@ -63,7 +69,7 @@ export function Footer({ locale }: { locale: Locale }) {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://webscore.now/api/badge/cmm59joqj000wkvl8ec5yjred?theme=light&style=score"
+              src="https://webscore.now/api/badge/cmm59joqj000wkvl8ec5yjred?theme=dark&style=score"
               alt="WebScore Trust Badge"
               width="200"
               height="48"
@@ -83,13 +89,13 @@ export function Footer({ locale }: { locale: Locale }) {
 
         {columns.map((column) => (
           <div key={column.heading}>
-            <h2 className="label">{column.heading}</h2>
+            <h2 className="label text-white/45">{column.heading}</h2>
             <ul className="mt-4 grid gap-2.5 text-[0.9375rem]">
               {column.links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={href(locale, link.href)}
-                    className="inline-flex items-center gap-2 transition-colors hover:text-ink"
+                    className="inline-flex items-center gap-2 transition-colors hover:text-white"
                   >
                     {link.icon && (
                       <Image
@@ -112,7 +118,7 @@ export function Footer({ locale }: { locale: Locale }) {
                         href={s.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="transition-colors hover:text-ink"
+                        className="transition-colors hover:text-white"
                       >
                         {s.label}
                       </a>
@@ -125,7 +131,7 @@ export function Footer({ locale }: { locale: Locale }) {
                     <button
                       type="button"
                       data-feedfast="feedback"
-                      className="cursor-pointer transition-colors hover:text-ink"
+                      className="cursor-pointer transition-colors hover:text-white"
                     >
                       {t.feedback}
                     </button>
@@ -137,7 +143,7 @@ export function Footer({ locale }: { locale: Locale }) {
         ))}
       </div>
 
-      <div className="wrap label flex flex-col gap-2 border-t border-line py-6 sm:flex-row sm:items-center sm:justify-between">
+      <div className="frame label flex flex-col gap-2 border-t border-white/10 py-6 text-white/45 sm:flex-row sm:items-center sm:justify-between">
         <p>
           &copy; {new Date().getFullYear()} PantaziSoft. {t.rights}
         </p>
@@ -151,6 +157,16 @@ export function Footer({ locale }: { locale: Locale }) {
           {t.madeIn.after}
         </p>
       </div>
+
+      {/* The name, as large as the page is wide, fading into the dark
+          ground towards the bottom edge. Decorative: the logo link above
+          already names the studio. */}
+      <p
+        aria-hidden="true"
+        className="-mb-[0.12em] bg-linear-to-b from-white/55 via-white/15 via-50% to-white/0 to-85% bg-clip-text pt-[0.05em] text-center font-display text-[18.5vw] leading-[0.85] tracking-[-0.03em] whitespace-nowrap text-transparent select-none"
+      >
+        PantaziSoft
+      </p>
     </footer>
   );
 }

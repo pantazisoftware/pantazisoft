@@ -22,7 +22,7 @@
 <title>brand artboards</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#0b0b0c; --body:#46464d; --muted:#6b6b73;
@@ -40,8 +40,12 @@
     background-size:var(--gs,56px) var(--gs,56px)}
 
   .mark{flex:none}
+  /* The wave pattern, as the boards' quiet background (it replaced a square grid). */
+  .wave-bg{position:absolute;inset:0;pointer-events:none;background-size:calc(var(--gs) * 2) calc(var(--gs) * 2)}
+  .wave-bg.on-light{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Cg%20transform%3D%22translate(0%200)%22%3E%3Cpath%20fill%3D%22rgba(11%2C11%2C12%2C.05)%22%20d%3D%22M0%2050A50%2050%200%200%201%20100%2050Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(100%200)%22%3E%3Cpath%20fill%3D%22rgba(11%2C11%2C12%2C.05)%22%20d%3D%22M0%2050H100A50%2050%200%200%201%200%2050Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(0%20100)%22%3E%3Cpath%20fill%3D%22rgba(11%2C11%2C12%2C.05)%22%20d%3D%22M0%2050H100A50%2050%200%200%201%200%2050Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(100%20100)%22%3E%3Cpath%20fill%3D%22rgba(11%2C11%2C12%2C.05)%22%20d%3D%22M0%2050A50%2050%200%200%201%20100%2050Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E")}
+  .wave-bg.on-dark{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Cg%20transform%3D%22translate(0%200)%22%3E%3Cpath%20fill%3D%22rgba(255%2C255%2C255%2C.06)%22%20d%3D%22M0%2050A50%2050%200%200%201%20100%2050Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(100%200)%22%3E%3Cpath%20fill%3D%22rgba(255%2C255%2C255%2C.06)%22%20d%3D%22M0%2050H100A50%2050%200%200%201%200%2050Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(0%20100)%22%3E%3Cpath%20fill%3D%22rgba(255%2C255%2C255%2C.06)%22%20d%3D%22M0%2050H100A50%2050%200%200%201%200%2050Z%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(100%20100)%22%3E%3Cpath%20fill%3D%22rgba(255%2C255%2C255%2C.06)%22%20d%3D%22M0%2050A50%2050%200%200%201%20100%2050Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E")}
   .wm{font-family:Outfit;font-weight:600;letter-spacing:-0.022em;line-height:1}
-  .h{font-family:Outfit;font-weight:600;letter-spacing:-0.038em;line-height:.98}
+  .h{font-family:"Instrument Serif";font-weight:400;letter-spacing:-0.012em;line-height:.98}
   .s{color:var(--body);letter-spacing:-0.005em}
   .rule{background:var(--lime)}
   .chip{display:inline-flex;align-items:center;gap:.6em;border:1px solid #cfe9a3;background:var(--lime-soft);
@@ -61,9 +65,9 @@
 <!-- ── X / Twitter header 1500x500 ─────────────────────────────────────
      The avatar overlaps bottom-left, so everything sits centred and high. -->
 <div class="art" id="x-header" style="width:1500px;height:500px;background:var(--ink);flex-direction:column;align-items:center;justify-content:center;position:relative">
-  <div class="grid-bg" style="--g:rgba(255,255,255,.055);--gs:60px"></div>
+  <div class="wave-bg on-dark" style="--gs:60px;"></div>
   <div style="position:relative;display:flex;align-items:center;gap:26px">
-    <svg class="mark" width="72" height="96" viewBox="0 0 300 400"><path fill="#fff" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#fff" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+    <svg class="mark" width="86" height="60" viewBox="0 0 100 70"><path fill="#fff" d="M0 35A35 35 0 0 1 70 35Z"/><path fill="#7ccf00" d="M30 35H100A35 35 0 0 1 30 35Z"/></svg>
     <span class="wm" style="font-size:92px;color:#fff">PantaziSoft</span>
   </div>
   <div class="rule" style="position:relative;width:120px;height:6px;margin-top:34px"></div>
@@ -74,12 +78,12 @@
      Mobile crops to roughly the centre, so nothing important goes wide. -->
 <div class="art" id="facebook-cover" style="width:1640px;height:624px;background:#fff;flex-direction:column">
   <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--line)">
-    <div class="grid-bg" style="--g:rgba(11,11,12,.045);--gs:56px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 45%,#000 20%,transparent 75%)"></div>
+    <div class="wave-bg on-light" style="--gs:56px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 45%,#000 20%,transparent 75%)"></div>
     <div style="position:relative;display:flex;align-items:center;gap:22px">
-      <svg class="mark" width="60" height="80" viewBox="0 0 300 400"><path fill="#0b0b0c" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#0b0b0c" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+      <svg class="mark" width="71" height="50" viewBox="0 0 100 70"><path fill="#0b0b0c" d="M0 35A35 35 0 0 1 70 35Z"/><path fill="#7ccf00" d="M30 35H100A35 35 0 0 1 30 35Z"/></svg>
       <span class="wm" style="font-size:76px;color:var(--ink)">PantaziSoft</span>
     </div>
-    <p class="h" style="position:relative;margin-top:38px;font-size:52px;color:var(--ink);text-align:center">We build web apps businesses run on</p>
+    <p class="h" style="position:relative;margin-top:38px;font-size:52px;color:var(--ink);text-align:center">We build the software your business runs on</p>
     <div class="rule" style="position:relative;width:104px;height:6px;margin-top:30px"></div>
   </div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)">
@@ -91,13 +95,13 @@
 
 <!-- ── LinkedIn page cover 1128x376 ────────────────────────────────────── -->
 <div class="art" id="linkedin-cover" style="width:1128px;height:376px;background:#fff;align-items:center;position:relative">
-  <div class="grid-bg" style="--g:rgba(11,11,12,.045);--gs:48px;-webkit-mask-image:radial-gradient(ellipse 80% 90% at 25% 50%,#000 15%,transparent 78%)"></div>
+  <div class="wave-bg on-light" style="--gs:48px;-webkit-mask-image:radial-gradient(ellipse 80% 90% at 25% 50%,#000 15%,transparent 78%)"></div>
   <div style="position:relative;padding-left:64px">
     <div style="display:flex;align-items:center;gap:18px">
-      <svg class="mark" width="45" height="60" viewBox="0 0 300 400"><path fill="#0b0b0c" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#0b0b0c" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+      <svg class="mark" width="50" height="35" viewBox="0 0 100 70"><path fill="#0b0b0c" d="M0 35A35 35 0 0 1 70 35Z"/><path fill="#7ccf00" d="M30 35H100A35 35 0 0 1 30 35Z"/></svg>
       <span class="wm" style="font-size:54px;color:var(--ink)">PantaziSoft</span>
     </div>
-    <p class="h" style="margin-top:26px;font-size:40px;color:var(--ink)">We build web apps businesses run on</p>
+    <p class="h" style="margin-top:26px;font-size:40px;color:var(--ink)">We build the software your business runs on</p>
     <div class="rule" style="width:88px;height:5px;margin-top:22px"></div>
   </div>
 </div>
@@ -105,13 +109,13 @@
 <!-- ── Landscape post 1200x630 (Facebook / LinkedIn / X) ───────────────── -->
 <div class="art" id="post-landscape" style="width:1200px;height:630px;background:#fff;flex-direction:column">
   <div style="height:88px;display:flex;align-items:center;gap:14px;padding:0 44px;border-bottom:1px solid var(--line)">
-    <svg class="mark" width="24" height="32" viewBox="0 0 300 400"><path fill="#0b0b0c" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#0b0b0c" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+    <svg class="mark" width="29" height="20" viewBox="0 0 100 70"><path fill="#0b0b0c" d="M0 35A35 35 0 0 1 70 35Z"/><path fill="#7ccf00" d="M30 35H100A35 35 0 0 1 30 35Z"/></svg>
     <span class="wm" style="font-size:30px;color:var(--ink)">PantaziSoft</span>
     <span class="chip" style="margin-left:auto;font-size:14px;padding:9px 13px"><i></i>Available for new projects</span>
   </div>
   <div style="flex:1;padding:0 44px;display:flex;flex-direction:column;justify-content:center;position:relative">
-    <div class="grid-bg" style="--g:rgba(11,11,12,.045);-webkit-mask-image:radial-gradient(ellipse 80% 90% at 30% 45%,#000 15%,transparent 75%)"></div>
-    <p class="h" style="position:relative;font-size:78px;color:var(--ink)">We build web apps<br>businesses run on</p>
+    <div class="wave-bg on-light" style="--gs:56px;-webkit-mask-image:radial-gradient(ellipse 80% 90% at 30% 45%,#000 15%,transparent 75%)"></div>
+    <p class="h" style="position:relative;font-size:78px;color:var(--ink)">We build the software<br>your business runs on</p>
     <p class="s" style="position:relative;margin-top:24px;font-size:24px;line-height:1.5">From MVP to production — fixed scope,<br>fixed price, and a codebase you own.</p>
     <div class="rule" style="position:relative;width:88px;height:6px;margin-top:30px"></div>
   </div>
@@ -124,12 +128,12 @@
 <!-- ── Square post 1080x1080 (Instagram / Facebook) ────────────────────── -->
 <div class="art" id="post-square" style="width:1080px;height:1080px;background:#fff;flex-direction:column">
   <div style="height:110px;display:flex;align-items:center;gap:16px;padding:0 56px;border-bottom:1px solid var(--line)">
-    <svg class="mark" width="27" height="36" viewBox="0 0 300 400"><path fill="#0b0b0c" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#0b0b0c" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+    <svg class="mark" width="31" height="22" viewBox="0 0 100 70"><path fill="#0b0b0c" d="M0 35A35 35 0 0 1 70 35Z"/><path fill="#7ccf00" d="M30 35H100A35 35 0 0 1 30 35Z"/></svg>
     <span class="wm" style="font-size:34px;color:var(--ink)">PantaziSoft</span>
   </div>
   <div style="flex:1;padding:0 56px;display:flex;flex-direction:column;justify-content:center;position:relative">
-    <div class="grid-bg" style="--g:rgba(11,11,12,.045);--gs:60px;-webkit-mask-image:radial-gradient(ellipse 85% 70% at 40% 45%,#000 15%,transparent 78%)"></div>
-    <p class="h" style="position:relative;font-size:92px;color:var(--ink)">We build<br>web apps<br>businesses<br>run on</p>
+    <div class="wave-bg on-light" style="--gs:60px;-webkit-mask-image:radial-gradient(ellipse 85% 70% at 40% 45%,#000 15%,transparent 78%)"></div>
+    <p class="h" style="position:relative;font-size:92px;color:var(--ink)">We build<br>the software<br>your business<br>runs on</p>
     <div class="rule" style="position:relative;width:100px;height:7px;margin-top:38px"></div>
     <p class="s" style="position:relative;margin-top:34px;font-size:29px;line-height:1.5">From MVP to production — fixed<br>scope, fixed price, and a codebase<br>you own.</p>
   </div>
@@ -142,13 +146,13 @@
 
 <!-- ── Story 1080x1920 (Instagram / Facebook), inverted ────────────────── -->
 <div class="art" id="story" style="width:1080px;height:1920px;background:var(--ink);flex-direction:column;position:relative">
-  <div class="grid-bg" style="--g:rgba(255,255,255,.05);--gs:72px"></div>
+  <div class="wave-bg on-dark" style="--gs:72px;"></div>
   <div style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 80px">
     <div style="display:flex;align-items:center;gap:22px">
-      <svg class="mark" width="54" height="72" viewBox="0 0 300 400"><path fill="#fff" d="M0 100h100v100h100v100H100v100H0z"/><path fill="#fff" d="M100 0h100v100H100zM200 100h100v100H200z"/><path fill="#7ccf00" d="M0 0h63v63H0z"/></svg>
+      <svg class="mark" width="53" height="37" viewBox="0 0 100 70"><path fill="#fff" d="M0 35A35 35 0 0 1 70 35Z"/><path fill="#7ccf00" d="M30 35H100A35 35 0 0 1 30 35Z"/></svg>
       <span class="wm" style="font-size:56px;color:#fff">PantaziSoft</span>
     </div>
-    <p class="h" style="margin-top:80px;font-size:112px;color:#fff">We build<br>web apps<br>businesses<br>run on</p>
+    <p class="h" style="margin-top:80px;font-size:112px;color:#fff">We build<br>the software<br>your business<br>runs on</p>
     <div class="rule" style="width:120px;height:8px;margin-top:56px"></div>
     <p style="margin-top:48px;font-size:34px;line-height:1.55;color:#a9a9b2;letter-spacing:-0.005em">From MVP to production —<br>fixed scope, fixed price, and a<br>codebase you own.</p>
   </div>

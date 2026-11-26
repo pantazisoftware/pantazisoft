@@ -83,6 +83,7 @@ const shots = (dir: string, names: string[]) =>
 const base: ProductBase[] = [
   {
     slug: "fabricator-pro",
+    tint: "#ff9f1c",
     kind: "ios",
     path: "/app/fabricator-pro",
     appStoreUrl: "https://apps.apple.com/us/app/fabricatorpro/id6762883398",
@@ -120,6 +121,7 @@ const base: ProductBase[] = [
   },
   {
     slug: "remoto",
+    tint: "#2a7fff",
     kind: "ios",
     path: "/app/remoto",
     appStoreUrl: "https://apps.apple.com/us/app/remoto-tv-remote/id6792331266",
@@ -151,6 +153,7 @@ const base: ProductBase[] = [
   },
   {
     slug: "feedfast",
+    tint: "#6f5cf6",
     kind: "web",
     path: "/projects/feedfast",
     url: "https://feedfa.st",
@@ -221,6 +224,7 @@ const base: ProductBase[] = [
   },
   {
     slug: "bookify",
+    tint: "#ff8f66",
     kind: "web",
     path: "/projects/bookify",
     url: "https://bookify.one",
@@ -257,6 +261,7 @@ const base: ProductBase[] = [
   },
   {
     slug: "webscore",
+    tint: "#123d2e",
     kind: "web",
     path: "/projects/webscore",
     url: "https://webscore.now",
@@ -312,6 +317,7 @@ const base: ProductBase[] = [
   },
   {
     slug: "gdprfix",
+    tint: "#f4c542",
     kind: "web",
     path: "/projects/gdprfix",
     url: "https://gdprfix.eu",
@@ -376,6 +382,7 @@ const base: ProductBase[] = [
   },
   {
     slug: "memo",
+    tint: "#f1d6de",
     kind: "web",
     path: "/projects/memo",
     url: "https://me-mo.ro",

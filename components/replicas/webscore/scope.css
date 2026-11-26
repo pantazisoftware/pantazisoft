@@ -1,0 +1,84 @@
+/* ── WebScore scope ───────────────────────────────────────────────────────
+   WebScore's light canvas (`.mk` in analytica-alignui/app/globals.css), so
+   its marketing replicas render here as they do on webscore.now. The source
+   reads these through Tailwind names it registers itself (text-mk-ink,
+   bg-success-base, text-text-strong-950…); pst does not register them, so
+   the copied markup uses arbitrary values (`text-[var(--mk-ink)]`). */
+.ws {
+  color-scheme: light;
+
+  --mk-bg: #ffffff;
+  --mk-ink: #1f1f1f;
+  --mk-body: #3d3d3d;
+  --mk-muted: #5c5c5c;
+  --mk-faint: #707070;
+  --mk-surface: #f5f5f5;
+  --mk-surface-strong: #ececec;
+  --mk-line: #ebebeb;
+  --mk-accent: #047857;
+
+  /* AlignUI semantic colours, flattened onto the same neutrals. */
+  --color-text-strong-950: var(--mk-ink);
+  --color-text-sub-600: var(--mk-muted);
+  --color-text-soft-400: var(--mk-faint);
+  --color-bg-weak-50: var(--mk-surface);
+  --color-bg-white-0: #ffffff;
+  --color-bg-soft-200: var(--mk-surface-strong);
+  --color-stroke-soft-200: var(--mk-line);
+
+  /* Score and state colours. */
+  --color-success-base: var(--mk-accent);
+  --color-warning-base: #d97706;
+  --color-warning-ink: #a8500a;
+  --color-error-base: #dc2626;
+  --color-error-ink: #c81e1e;
+
+  --background: #ffffff;
+  --foreground: var(--mk-ink);
+  --card: #ffffff;
+  --card-foreground: var(--mk-ink);
+  --muted: var(--mk-surface);
+  --muted-foreground: var(--mk-muted);
+  --secondary: var(--mk-surface);
+  --accent: var(--mk-surface);
+  --border: var(--mk-line);
+  --input: #e5e5e5;
+  --radius: 0.875rem;
+
+  /* pst's own names that WebScore's markup would otherwise pick up. */
+  --color-muted: var(--mk-surface);
+  --color-line: var(--mk-line);
+
+  --font-mk: var(--font-ws-google-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-mk);
+  --font-heading: var(--font-mk);
+
+  color: var(--mk-ink);
+  font-family: var(--font-mk);
+  letter-spacing: -0.01em;
+}
+
+.ws * {
+  border-color: var(--border);
+}
+
+/* Display numbers: `.mk .mk-headline` on the dashboard canvas. */
+.ws .mk-headline {
+  font-family: var(--font-mk);
+  font-weight: 450;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+}
+
+/* The gauge's own motion (gauge-tick in the source: each filled tick fades
+   up from 0.12 in order, 14ms apart), put on the replica's 6s cycle so it
+   replays while the card is on screen. Resting state is fully lit. */
+.ws .ws-tick {
+  animation: ws-gauge-tick var(--cycle, 6s) ease-out var(--d, 0s) infinite both;
+}
+@keyframes ws-gauge-tick {
+  0% { opacity: 0.12; }
+  8%, 92% { opacity: 1; }
+  100% { opacity: 0.12; }
+}

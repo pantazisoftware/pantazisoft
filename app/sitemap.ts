@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...translated("/", 1, "weekly"),
     ...translated("/services", 0.9),
+    ...translated("/media-kit", 0.4),
     ...getServices("en").flatMap((s) => translated(s.path, 0.9)),
     ...products.flatMap((p) => translated(p.path, 0.8)),
     // Legal documents are English only.

@@ -25,6 +25,9 @@ export type ProductBase = {
   /** App Store listing; iOS only. */
   appStoreUrl?: string;
   appStoreId?: string;
+  /** The product's own colour: the solid ground its cards and feature
+   *  replicas sit on. */
+  tint: string;
   /** Small square mark shown beside the name. */
   icon: string;
   /** Social / hero image. */

@@ -1,0 +1,114 @@
+/* ── Remoto scope ─────────────────────────────────────────────────────────
+   Remoto is a SwiftUI app in dark mode. These are iOS's dark system colours
+   and the app's own palette (RemoteTheme.swift, WidgetPalette, PaywallView),
+   so the replicas render with the same values the app draws with. Screens
+   are laid out in points (1px = 1pt) at a real iPhone width and scaled. */
+.rmt {
+  /* iOS dark system colours */
+  --rmt-green: #30d158;
+  --rmt-blue: #0a84ff;
+  --rmt-orange: #ff9f0a;
+  --rmt-red: #ff453a;
+  --rmt-purple: #bf5af2;
+  --rmt-pink: #ff375f;
+  --rmt-yellow: #ffd60a;
+  --rmt-gray: #8e8e93;
+  --rmt-cell: #1c1c1e;
+  --rmt-sep: #38383a;
+  --rmt-label2: rgba(235, 235, 245, 0.6);
+  --rmt-label3: rgba(235, 235, 245, 0.3);
+
+  /* RemoteTheme */
+  --rmt-icon: rgba(255, 255, 255, 0.92);
+  --rmt-subtle: rgba(255, 255, 255, 0.55);
+  --rmt-stroke: rgba(255, 255, 255, 0.06);
+  --rmt-divider: rgba(255, 255, 255, 0.08);
+  --rmt-power: #fa5252; /* (0.98, 0.32, 0.32) */
+  --rmt-press: #4d9eff; /* PressFeedback.tint (0.30, 0.62, 1.00) */
+  --rmt-bg: linear-gradient(#0f0f17, #050508); /* RemoteTheme.background */
+  --rmt-button: linear-gradient(#333333, #212121); /* buttonFill, white 0.20 → 0.13 */
+  --rmt-ring: linear-gradient(#2e2e2e, #171717); /* dpadRing, white 0.18 → 0.09 */
+  --rmt-accent: linear-gradient(#4d9eff, #2e70e6); /* accentFill */
+
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", system-ui,
+    "Helvetica Neue", sans-serif;
+  color: #fff;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.025em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rmt-rounded {
+  font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+}
+
+/* ── Motion, on the replica's cycle (see .rp-* in globals.css) ──────────── */
+
+/* A press highlight: off at rest, lights once at --d. */
+.rmt-flash {
+  opacity: 0;
+  animation: rmt-flash var(--cycle) ease-out var(--d, 0s) infinite both;
+}
+@keyframes rmt-flash {
+  0% { opacity: 0; }
+  2%, 6% { opacity: 1; }
+  12%, 100% { opacity: 0; }
+}
+
+/* Shown at the start of the cycle, gone by --d + ~1s (a state that is
+   replaced, e.g. "Searching for TVs…" before "Listening"). */
+.rmt-out {
+  opacity: 0;
+  animation: rmt-out var(--cycle) ease var(--d, 0s) infinite both;
+}
+@keyframes rmt-out {
+  0%, 16% { opacity: 1; }
+  21%, 100% { opacity: 0; }
+}
+
+/* SwiftUI Toggle switching on at --d: the knob springs across, the track
+   fills green. The resting style is "on". */
+.rmt-knob {
+  animation: rmt-knob var(--cycle) cubic-bezier(0.3, 0.8, 0.35, 1.15) var(--d, 0s) infinite both;
+}
+@keyframes rmt-knob {
+  0%, 2% { translate: -21px 0; }
+  7%, 100% { translate: 0 0; }
+}
+.rmt-track {
+  animation: rmt-track var(--cycle) ease var(--d, 0s) infinite both;
+}
+@keyframes rmt-track {
+  0%, 2% { background-color: #39393d; }
+  7%, 100% { background-color: var(--rmt-green); }
+}
+.rmt-off-mark {
+  opacity: 0;
+  animation: rmt-out-fast var(--cycle) ease var(--d, 0s) infinite both;
+}
+@keyframes rmt-out-fast {
+  0%, 2% { opacity: 1; }
+  5%, 100% { opacity: 0; }
+}
+
+/* A haptic tap: a ring leaves the button once at --d. */
+.rmt-ring {
+  opacity: 0;
+  animation: rmt-ring var(--cycle) ease-out var(--d, 0s) infinite both;
+}
+@keyframes rmt-ring {
+  0% { opacity: 0.75; scale: 1; }
+  16%, 100% { opacity: 0; scale: 1.55; }
+}
+
+/* SF Symbols' variable-colour effect (.variableColor.iterative): each arc
+   of a radio-waves glyph dims in turn, inner to outer. Own clock. */
+.rmt-wave {
+  animation: rmt-wave 1.5s ease-in-out var(--w, 0s) infinite;
+}
+@keyframes rmt-wave {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}

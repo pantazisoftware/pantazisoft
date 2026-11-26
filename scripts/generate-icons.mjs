@@ -38,7 +38,7 @@ const icoSizes = [16, 32, 48];
 /**
  * The SVG is rasterised once, large, and then downsampled per size. Letting
  * librsvg re-render at each tiny size gives noticeably rougher edges on
- * geometry this angular than one good Lanczos reduction does.
+ * small marks like this one than one good Lanczos reduction does.
  */
 const MASTER = 1024;
 

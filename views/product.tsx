@@ -10,7 +10,7 @@ import { AppStoreBadge } from "@/components/app-store-badge";
 import { JsonLd } from "@/components/json-ld";
 import { Faq, faqSchema } from "@/components/faq";
 import { TechList } from "@/components/tech-list";
-import { ScreenshotGallery } from "@/components/screenshot-gallery";
+import { ReplicaStage, replicas } from "@/components/replicas";
 import { Breadcrumb, breadcrumbSchema } from "@/components/breadcrumb";
 import { IllustratedSteps } from "@/components/illustrated-steps";
 import { productStepArt } from "@/components/illustrations";
@@ -148,24 +148,6 @@ export function ProductPage({
         )}
       </section>
 
-      {/* Screenshots */}
-      {product.screenshots.length > 0 && (
-        <section className="section" aria-labelledby="screenshots">
-          <div className="wrap">
-            <h2 id="screenshots">{t.screenshots(name)}</h2>
-            <div className="mt-8">
-              <ScreenshotGallery
-                labels={t.gallery}
-                shots={product.screenshots.map((shot, i) => ({
-                  ...shot,
-                  ...product.screenshotCopy[i],
-                }))}
-              />
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* Overview */}
       <section className="section">
         <div className="wrap split">
@@ -180,22 +162,49 @@ export function ProductPage({
         </div>
       </section>
 
-      {/* Features */}
+      {/* Features: one large row each, a working replica of the product
+          on its own colour beside the words, alternating sides. */}
       <section className="section">
-        <div className="wrap split">
-          <h2>{t.features(name)}</h2>
-          <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        <div className="wrap">
+          <h2 className="max-w-[18ch]">{t.features(name)}</h2>
+          <ul className="mt-12 grid gap-16 md:mt-16 md:gap-24">
             {product.features.map((feature, i) => {
               const Icon = product.featureIcons[i];
+              const Replica = replicas[product.slug][i];
+              const flip = i % 2 === 1;
               return (
-                <li key={feature.title}>
-                  <Icon
-                    aria-hidden="true"
-                    className="mb-3 h-6 w-6 text-ink"
-                    strokeWidth={1.5}
-                  />
-                  <h3>{feature.title}</h3>
-                  <p className="mt-1.5 text-[0.9375rem]">{feature.body}</p>
+                <li
+                  key={feature.title}
+                  className={`grid items-center gap-7 md:gap-14 ${
+                    flip
+                      ? "md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
+                      : "md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]"
+                  }`}
+                >
+                  <div className={flip ? "md:order-2" : ""}>
+                    {Replica ? (
+                      <ReplicaStage tint={product.tint}>
+                        <Replica />
+                      </ReplicaStage>
+                    ) : (
+                      <div
+                        aria-hidden="true"
+                        className="grid aspect-[4/3] w-full place-items-center rounded-[1.75rem]"
+                        style={{ background: product.tint }}
+                      >
+                        <Icon className="h-16 w-16 text-white/90" strokeWidth={1.25} />
+                      </div>
+                    )}
+                  </div>
+                  <div className={flip ? "md:order-1" : ""}>
+                    <span className="text-[0.875rem] text-muted tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="mt-3 font-display text-[clamp(1.75rem,3vw,2.375rem)] leading-[1.05] font-normal">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-4 max-w-md">{feature.body}</p>
+                  </div>
                 </li>
               );
             })}

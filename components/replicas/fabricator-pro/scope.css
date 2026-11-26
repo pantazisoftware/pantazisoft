@@ -1,0 +1,67 @@
+/* FabricatorPro replicas: the app's dark theme (Shared/Theme/Brutal.swift, AppTheme.swift).
+   iOS 26+ dark system colours, sampled from the App Store captures (orange #FF9230). */
+.fp {
+  --fp-paper: #000;
+  --fp-ink: #fff;
+  --fp-ink2: rgb(255 255 255 / 0.62);
+  --fp-rule: rgb(255 255 255 / 0.25);
+  --fp-accent: #ff9230;
+  --fp-green: #30d158;
+  --fp-yellow: #ffd60a;
+  --fp-red: #ff4245;
+  font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  color: var(--fp-ink);
+  line-height: 1.193;
+  -webkit-font-smoothing: antialiased;
+}
+.fp-mono,
+.fp .fp-mono {
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+}
+
+/* Animated SVG groups transform around their own box. */
+.fp svg g[class*="rp-"] {
+  transform-box: fill-box;
+}
+.fp svg .rp-pop {
+  transform-origin: center;
+}
+
+/* A cut line drawing itself in (path has pathLength=1). */
+.fp-draw {
+  animation: fp-draw var(--cycle) var(--ease) var(--d, 0s) infinite both;
+}
+@keyframes fp-draw {
+  0% { stroke-dasharray: 1 1; stroke-dashoffset: 1; opacity: 1; }
+  28%, 90% { stroke-dasharray: 1 1; stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dasharray: 1 1; stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* Area washes fading in. */
+.fp-fade {
+  animation: fp-fade var(--cycle) ease-out var(--d, 0s) infinite both;
+}
+@keyframes fp-fade {
+  0% { opacity: 0; }
+  14%, 88% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* The saw blade swinging from square to the miter angle. */
+.fp-swing {
+  animation: fp-swing var(--cycle) var(--ease) var(--d, 0s) infinite both;
+}
+@keyframes fp-swing {
+  0% { rotate: var(--from-r, -45deg); }
+  22%, 100% { rotate: 0deg; }
+}
+
+/* PressedInk: a faint ink fill while a cell is tapped. */
+.fp-tap {
+  animation: fp-tap var(--cycle) ease-in-out var(--d, 0s) infinite both;
+}
+@keyframes fp-tap {
+  0%, 100% { background: transparent; }
+  3%, 12% { background: rgb(255 255 255 / 0.16); }
+  18% { background: transparent; }
+}

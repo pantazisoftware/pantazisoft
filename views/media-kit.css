@@ -1,0 +1,45 @@
+/* The logo reveal on the media kit page: the symbol unfolds out of its
+   centre line, then the name slides out from behind it. Same motion as
+   public/brand/animated/wave-unfold-*.svg, on a longer beat so the name has
+   time to land. Resting state is the finished logo; reduced motion keeps it
+   there. */
+
+.mk-reveal .mk-r,
+.mk-reveal .mk-f {
+  transform-box: fill-box;
+}
+.mk-reveal .mk-r {
+  transform-origin: 50% 100%;
+  animation: mk-r 4.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.mk-reveal .mk-f {
+  transform-origin: 50% 0%;
+  animation: mk-f 4.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.mk-reveal .mk-name {
+  animation: mk-name 4.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes mk-r {
+  0% { transform: scaleY(0); }
+  14%, 88% { transform: none; }
+  97%, 100% { transform: scaleY(0); }
+}
+@keyframes mk-f {
+  0%, 5% { transform: scaleY(0); }
+  19%, 88% { transform: none; }
+  97%, 100% { transform: scaleY(0); }
+}
+@keyframes mk-name {
+  0%, 18% { clip-path: inset(0 100% 0 0); transform: translateX(-40px); opacity: 0; }
+  40%, 86% { clip-path: inset(0 0 0 0); transform: none; opacity: 1; }
+  95%, 100% { clip-path: inset(0 0 0 0); transform: none; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-reveal .mk-r,
+  .mk-reveal .mk-f,
+  .mk-reveal .mk-name {
+    animation: none;
+  }
+}

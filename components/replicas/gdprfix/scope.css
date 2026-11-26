@@ -1,0 +1,129 @@
+/* ── GDPR Fix scope ───────────────────────────────────────────────────────
+   GDPR Fix's light palette, radii, type scale and faces, copied from its
+   src/app/globals.css (:root and @theme), so its report components render
+   here as they do on gdprfix.eu. GDPR Fix uses the system UI face and
+   system mono (no web fonts), so nothing is downloaded for it.
+
+   `muted` is a fill in GDPR Fix and a text grey on this site, so the scope
+   redefines --color-muted. The radius scale and the bumped text sizes
+   (text-xs 13px, text-sm 15px…) are redefined too, since the utilities read
+   them from variables. */
+.gf {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.255 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.255 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.255 0 0);
+  --primary: oklch(0.255 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --brand: oklch(0.681 0.162 75.834);
+  --secondary: oklch(0.975 0 0);
+  --secondary-foreground: oklch(0.255 0 0);
+  --muted: oklch(0.975 0 0);
+  --muted-foreground: oklch(0.52 0 0);
+  --subtle: oklch(0.55 0 0);
+  --accent: oklch(0.955 0 0);
+  --accent-foreground: oklch(0.255 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.93 0 0);
+  --input: oklch(0.91 0 0);
+  --ring: oklch(0.7 0 0);
+
+  --color-muted: var(--muted);
+
+  --radius: 0.875rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.5;
+  --text-lg: 1.1875rem;
+  --text-lg--line-height: 1.45;
+  --text-xl: 1.3125rem;
+  --text-xl--line-height: 1.4;
+
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
+
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+  font-kerning: normal;
+  overflow-wrap: break-word;
+}
+
+/* GDPR Fix's base layer: borders, headings, paragraphs, small text. In the
+   base layer so utilities still win, as they do in GDPR Fix. */
+@layer base {
+  .gf * {
+    border-color: var(--border);
+  }
+  .rp-stage .gf :is(h1, h2, h3, h4) {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .rp-stage .gf p {
+    line-height: 1.65;
+  }
+  .gf .text-xs {
+    letter-spacing: 0.01em;
+  }
+  .gf :is(table, time, [data-tabular]) {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Highlighted code (GDPR Fix's .hl-dark palette and hljs token rules). */
+.gf .hl-dark {
+  --hl-comment: #71717a;
+  --hl-punct: #a1a1aa;
+  --hl-keyword: #c4a7f5;
+  --hl-string: #9fe0a8;
+  --hl-number: #f5b97a;
+  --hl-tag: #7cc4fa;
+  --hl-attr: #f3d27a;
+  --hl-title: #8fb8ff;
+  --hl-type: #67d4c8;
+}
+.gf .hljs-string { color: var(--hl-string); }
+.gf .hljs-attr { color: var(--hl-attr); }
+.gf .hljs-title { color: var(--hl-title); }
+
+/* GDPR Fix's own keyframes (globals.css). */
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+
+/* A copy button turning into its "Copied" state for a moment, then back:
+   the report's CopyBtn after a click. At rest it shows the button. */
+.gf .gf-copied {
+  opacity: 0;
+  animation: gf-copied var(--cycle) var(--d, 0s) infinite both;
+}
+@keyframes gf-copied {
+  0%, 2% { opacity: 0; }
+  5%, 40% { opacity: 1; }
+  44%, 100% { opacity: 0; }
+}
+.gf .gf-copy-label {
+  animation: gf-copy-label var(--cycle) var(--d, 0s) infinite both;
+}
+@keyframes gf-copy-label {
+  0%, 2% { opacity: 1; }
+  5%, 40% { opacity: 0; }
+  44%, 100% { opacity: 1; }
+}

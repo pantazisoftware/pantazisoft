@@ -25,6 +25,24 @@ the text to outlines.
 
 The mark SVGs have no text and are safe everywhere.
 
+## Animated
+
+`animated/wave-<name>-<light|dark>.svg` — the symbol in motion, each a
+self-contained SVG that loops and plays in a browser or an `<img>` tag. Each
+one holds still when the viewer has reduced motion turned on.
+
+| Name | Motion | Use |
+| --- | --- | --- |
+| `arrive` | The halves slide in from opposite sides and meet | Intros, splash screens |
+| `wave` | The halves rise and fall a quarter-beat apart | Idle and waiting states |
+| `unfold` | Each half opens out of the shared line | Reveals, transitions |
+| `draw` | The outlines draw themselves, then fill | Video openers |
+| `spin` | Half a turn at a time, landing on itself | Loaders |
+
+Regenerate them with `npm run brand:motion`. The animated logo (symbol plus
+name) appears on the site's media kit page only: an SVG file can't carry the
+brand font reliably.
+
 ## Social
 
 | File | Platform | Size |
@@ -74,3 +92,7 @@ than a build step because the layouts use live Outfit and Inter, and sharp's SVG
 renderer goes through CoreText on macOS — it only sees fonts installed
 system-wide. Install Outfit and Inter locally and this could move to sharp
 entirely.
+
+The downloadable `pantazisoft-media-kit.zip` (linked from `/media-kit`) bundles
+this folder plus the root logo files; rebuild it with `npm run brand:zip` after
+changing any of them.

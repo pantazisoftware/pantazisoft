@@ -187,8 +187,7 @@ export function ServicePage({
 
       <section className="wrap pt-10 pb-16 md:pt-14 md:pb-20">
         <Breadcrumb locale={locale} crumbs={crumbs} />
-        <p className="label mt-8 text-lime-ink">{service.name}</p>
-        <h1 className="mt-3 max-w-[20ch]">{service.h1}</h1>
+        <h1 className="mt-8 max-w-[20ch]">{service.h1}</h1>
         <p className="lead mt-6 max-w-2xl">{service.lead}</p>
         <a href="#contact" className="btn btn-primary mt-9">
           {dict.nav.cta}

@@ -21,6 +21,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import sharp from "sharp";
+import { markSvg as wave, solid, W as MARK_W, H as MARK_H } from "./brand-mark.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = join(root, "public", "brand");
@@ -65,26 +66,30 @@ const ASSETS = {
   },
 };
 
-/** The mark, as vector, in whichever ink the surface needs. */
-const markSvg = (fill) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">` +
-  `<path fill="${fill}" d="M0 100h100v100h100v100H100v100H0z"/>` +
-  `<path fill="${fill}" d="M100 0h100v100H100zM200 100h100v100H200z"/>` +
-  `<path fill="${LIME}" d="M0 0h63v63H0z"/></svg>`;
+/** The mark, as vector, in whichever ink the surface needs. Drawn from
+ *  brand-mark.mjs, the mark's one source. */
+const markSvg = (fill) => wave(fill, LIME);
+
+/* The lockup's proportions, as fractions of the wordmark's font size. The
+   wave is wide, not tall, so it is sized to the wordmark's cap height rather
+   than its full height: 0.655 of the font size tall, centred on the caps, with
+   a 0.3 gap. The artboards use the same ratios, so every lockup matches. */
+const MARK_HEIGHT = 0.655;
+const GAP = 0.3;
 
 /** Horizontal lockup as live text — for design tools that have Outfit. */
-const lockupSvg = (fill) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 240" width="1180" height="240">
+const lockupSvg = (fill) => {
+  const font = 168, mh = font * MARK_HEIGHT, mw = mh * (MARK_W / MARK_H);
+  const baseline = 163, capTop = baseline - font * 0.7;
+  const y = (capTop + baseline) / 2 - mh / 2, textX = mw + font * GAP;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${Math.ceil(textX + 945)} 240" width="${Math.ceil(textX + 945)}" height="240">
   <!-- Wordmark is live text: it needs Outfit present to render correctly. Use
        the PNG, or convert this to outlines, anywhere that cannot guarantee it. -->
-  <g transform="translate(0 4)">
-    <path fill="${fill}" d="M0 58h58v58h58v58H58v58H0z" />
-    <path fill="${fill}" d="M58 0h58v58H58zM116 58h58v58h-58z" />
-    <path fill="${LIME}" d="M0 0h36.5v36.5H0z" />
-  </g>
-  <text x="238" y="163" fill="${fill}" font-family="Outfit, ui-sans-serif, system-ui, sans-serif"
-        font-size="168" font-weight="600" letter-spacing="-3.7">PantaziSoft</text>
+  <g transform="translate(0 ${y.toFixed(2)}) scale(${(mh / MARK_H).toFixed(4)})">${solid(fill, LIME)}</g>
+  <text x="${textX.toFixed(1)}" y="${baseline}" fill="${fill}" font-family="Outfit, ui-sans-serif, system-ui, sans-serif"
+        font-size="${font}" font-weight="600" letter-spacing="-3.7">PantaziSoft</text>
 </svg>`;
+};
 
 const hex = (h) => ({
   r: parseInt(h.slice(1, 3), 16),
@@ -133,13 +138,11 @@ async function buildLockups() {
   const box = bbox(data, info.width, info.height);
   const maskRaw = await sharp(plate).greyscale().extract(box).raw().toBuffer();
 
-  // The artboards set the mark's height at 1.043x the wordmark's font size and
-  // the gap at 0.283x; keeping those ratios here means the standalone lockup
-  // matches the one used on the covers.
+  // Same ratios as lockupSvg and the artboards (MARK_HEIGHT, GAP).
   const FONT = 220;
-  const markH = Math.round(FONT * 1.043);
-  const markW = Math.round(markH * 0.75);
-  const gap = Math.round(FONT * 0.283);
+  const markH = Math.round(FONT * MARK_HEIGHT);
+  const markW = Math.round(markH * (MARK_W / MARK_H));
+  const gap = Math.round(FONT * GAP);
   const H = Math.max(markH, box.height);
   const W = markW + gap + box.width;
 
