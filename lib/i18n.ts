@@ -88,7 +88,7 @@ export function pageMeta({
       url,
       locale: ogLocale[locale],
       alternateLocale: translated ? other.map((l) => ogLocale[l]) : undefined,
-      images: [{ url: image, alt: imageAlt ?? title }],
+      images: [{ url: image, width: 1200, height: 630, alt: imageAlt ?? title }],
     },
     twitter: {
       card: "summary_large_image",

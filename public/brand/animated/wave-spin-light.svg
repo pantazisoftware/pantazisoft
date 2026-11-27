@@ -3,7 +3,7 @@
 <style>
       .m { transform-origin: 50px 35px; animation: spin 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
       @keyframes spin { 0%, 12% { transform: rotate(0); } 42%, 58% { transform: rotate(180deg); } 88%, 100% { transform: rotate(360deg); } }
-  @media (prefers-reduced-motion: reduce) { .m, .r, .f { animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .lift, .m, .r, .f { animation: none !important; } }
 </style>
 <g class="m"><path class="r" fill="#0b0b0c" d="M0 35A35 35 0 0 1 70 35Z"/><path class="f" fill="#7ccf00" d="M30 35H100A35 35 0 0 1 30 35Z"/></g>
 </svg>

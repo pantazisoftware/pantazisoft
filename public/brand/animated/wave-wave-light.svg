@@ -4,7 +4,7 @@
       .r, .f { animation: wave 2.4s ease-in-out infinite; }
       .f { animation-delay: -0.6s; }
       @keyframes wave { 0%, 100% { transform: translateY(0); } 25% { transform: translateY(-6px); } 75% { transform: translateY(6px); } }
-  @media (prefers-reduced-motion: reduce) { .m, .r, .f { animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .lift, .m, .r, .f { animation: none !important; } }
 </style>
 <g class="m"><path class="r" fill="#0b0b0c" d="M0 35A35 35 0 0 1 70 35Z"/><path class="f" fill="#7ccf00" d="M30 35H100A35 35 0 0 1 30 35Z"/></g>
 </svg>

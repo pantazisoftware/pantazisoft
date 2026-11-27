@@ -26,8 +26,7 @@ export function productMetadata(locale: Locale, slug: string): Metadata {
       title: product.title,
       description: product.description,
       keywords: product.keywords,
-      image: product.image,
-      imageAlt: product.imageAlt,
+      image: `/og/${locale}/${product.slug}.png`,
       absoluteTitle: true,
     }),
     // Safari's Smart App Banner, for the iOS apps.

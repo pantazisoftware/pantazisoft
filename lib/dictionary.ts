@@ -253,6 +253,7 @@ const en = {
         use: "The symbol unfolds, then the name follows. Shown here only, as it needs the brand font.",
       },
       items: {
+        initials: { name: "Initials", use: "A circle opens into a P, then flips into an S" },
         arrive: { name: "Arrive", use: "Intros and splash screens" },
         wave: { name: "Wave", use: "Idle and waiting states" },
         unfold: { name: "Unfold", use: "Reveals and transitions" },
@@ -533,6 +534,7 @@ const ro: Dictionary = {
         use: "Simbolul se deschide, apoi urmează numele. Doar aici, pentru că are nevoie de fontul brandului.",
       },
       items: {
+        initials: { name: "Inițiale", use: "Un cerc se deschide într-un P, apoi se întoarce într-un S" },
         arrive: { name: "Sosire", use: "Intro-uri și ecrane de pornire" },
         wave: { name: "Val", use: "Stări de așteptare" },
         unfold: { name: "Deschidere", use: "Dezvăluiri și tranziții" },

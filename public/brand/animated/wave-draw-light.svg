@@ -9,7 +9,7 @@
         52%, 86% { stroke-dashoffset: 0; fill-opacity: 1; }
         100% { stroke-dashoffset: 0; fill-opacity: 0; }
       }
-  @media (prefers-reduced-motion: reduce) { .m, .r, .f { animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .lift, .m, .r, .f { animation: none !important; } }
 </style>
 <g class="m"><path class="r" fill="#0b0b0c" stroke="#0b0b0c" pathLength="1" stroke-width="1.6" stroke-linejoin="round" d="M0 35A35 35 0 0 1 70 35Z"/><path class="f" fill="#7ccf00" stroke="#7ccf00" pathLength="1" stroke-width="1.6" stroke-linejoin="round" d="M30 35H100A35 35 0 0 1 30 35Z"/></g>
 </svg>

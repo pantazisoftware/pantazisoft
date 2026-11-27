@@ -32,7 +32,7 @@ const STYLES = [
   "hashed",
   "dither",
 ] as const;
-const MOTIONS = ["arrive", "wave", "unfold", "draw", "spin"] as const;
+const MOTIONS = ["initials", "arrive", "wave", "unfold", "draw", "spin"] as const;
 
 export function mediaKitMetadata(locale: Locale) {
   const t = getDictionary(locale).mediaKit;
@@ -41,6 +41,7 @@ export function mediaKitMetadata(locale: Locale) {
     path: "/media-kit",
     title: t.title,
     description: t.description,
+    image: `/og/${locale}/media-kit.png`,
   });
 }
 

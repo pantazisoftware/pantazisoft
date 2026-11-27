@@ -33,6 +33,7 @@ one holds still when the viewer has reduced motion turned on.
 
 | Name | Motion | Use |
 | --- | --- | --- |
+| `initials` | A circle splits; one half drops into a P (the mark stood upright), then flips into an S | Intros, the PS monogram |
 | `arrive` | The halves slide in from opposite sides and meet | Intros, splash screens |
 | `wave` | The halves rise and fall a quarter-beat apart | Idle and waiting states |
 | `unfold` | Each half opens out of the shared line | Reveals, transitions |

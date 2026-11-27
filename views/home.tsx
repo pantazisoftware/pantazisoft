@@ -37,6 +37,7 @@ export function homeMetadata(locale: Locale) {
     path: "/",
     title: t.title,
     description: t.description,
+    image: `/og/${locale}/home.png`,
     absoluteTitle: true,
   });
 }

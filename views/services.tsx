@@ -23,7 +23,7 @@ export function servicesMetadata(locale: Locale) {
     path: "/services",
     title: t.title,
     description: t.description,
-    image: "/photos/startup.jpg",
+    image: `/og/${locale}/services.png`,
   });
 }
 
@@ -141,7 +141,7 @@ export function serviceMetadata(locale: Locale, slug: string) {
     title: service.title,
     description: service.description,
     keywords: service.keywords,
-    image: service.photo,
+    image: `/og/${locale}/${service.slug}.png`,
   });
 }
 

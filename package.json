@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "icons": "node scripts/generate-icons.mjs",
+    "og": "node scripts/og-images.mjs",
     "brand:motion": "node scripts/brand-motion.mjs",
     "brand:zip": "cd public && rm -f pantazisoft-media-kit.zip && zip -rqX pantazisoft-media-kit.zip brand logo-transparent.svg logo-transparent.png logo-icon.svg logo-green-bg.svg logo.png -x '*.DS_Store'"
   },
